@@ -4,6 +4,7 @@ cat alternative written in Go.
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [LICENSE](#license)
 
 ## Installation
 
