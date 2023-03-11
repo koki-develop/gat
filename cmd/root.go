@@ -11,6 +11,7 @@ import (
 var (
 	version string
 
+	lang   string
 	format string
 	theme  string
 )
@@ -21,6 +22,7 @@ var rootCmd = &cobra.Command{
 	Long:  "cat alternative written in Go.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		p := printer.New(&printer.PrinterConfig{
+			Lang:   lang,
 			Format: format,
 			Theme:  theme,
 		})
@@ -65,6 +67,7 @@ func init() {
 	rootCmd.Version = version
 
 	// flags
+	rootCmd.Flags().StringVarP(&lang, "lang", "l", "", "language for syntax highlighting")
 	rootCmd.Flags().StringVarP(&format, "format", "f", printer.DefaultFormat, "output format")
 	rootCmd.Flags().StringVarP(&theme, "theme", "t", printer.DefaultTheme, "highlight theme")
 }

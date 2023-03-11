@@ -17,17 +17,20 @@ var (
 )
 
 type Printer struct {
+	lang   string
 	format string
 	theme  string
 }
 
 type PrinterConfig struct {
+	Lang   string
 	Format string
 	Theme  string
 }
 
 func New(cfg *PrinterConfig) *Printer {
 	return &Printer{
+		lang:   cfg.Lang,
 		format: cfg.Format,
 		theme:  cfg.Theme,
 	}
@@ -72,14 +75,21 @@ func (p *Printer) Print(ipt *PrintInput) error {
 
 	// get lexer
 	var l chroma.Lexer
-	if ipt.Filename != nil {
-		l = lexers.Match(*ipt.Filename)
-	}
-	if l == nil {
-		l = lexers.Analyse(src)
-	}
-	if l == nil {
-		l = lexers.Fallback
+	if p.lang == "" {
+		if ipt.Filename != nil {
+			l = lexers.Match(*ipt.Filename)
+		}
+		if l == nil {
+			l = lexers.Analyse(src)
+		}
+		if l == nil {
+			l = lexers.Fallback
+		}
+	} else {
+		l = lexers.Get(p.lang)
+		if l == nil {
+			return fmt.Errorf("unknown lang: %s", p.lang)
+		}
 	}
 	l = chroma.Coalesce(l)
 
