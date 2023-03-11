@@ -2,12 +2,15 @@ package cmd
 
 import (
 	"os"
+	"runtime/debug"
 
 	"github.com/koki-develop/gat/pkg/printer"
 	"github.com/spf13/cobra"
 )
 
 var (
+	version string
+
 	format string
 	theme  string
 )
@@ -52,6 +55,16 @@ func Execute() {
 }
 
 func init() {
+	// version
+	if version == "" {
+		if info, ok := debug.ReadBuildInfo(); ok {
+			version = info.Main.Version
+		}
+	}
+
+	rootCmd.Version = version
+
+	// flags
 	rootCmd.Flags().StringVarP(&format, "format", "f", printer.DefaultFormat, "output format")
 	rootCmd.Flags().StringVarP(&theme, "theme", "t", printer.DefaultTheme, "highlight theme")
 }
