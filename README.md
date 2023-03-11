@@ -41,7 +41,9 @@ Usage:
 Flags:
   -f, --format string   output format (default "terminal256")
   -h, --help            help for gat
+  -l, --lang string     language for syntax highlighting
   -t, --theme string    highlight theme (default "monokai")
+  -v, --version         version for gat
 ```
 
 ### Language
