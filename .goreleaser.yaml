@@ -2,7 +2,9 @@ before:
   hooks:
     - go mod tidy
 builds:
-  - env:
+  - ldflags:
+      - -s -w -X github.com/koki-develop/gat/cmd.version=v{{.Version}}
+    env:
       - CGO_ENABLED=0
     goos:
       - linux
@@ -31,3 +33,9 @@ changelog:
     exclude:
       - '^docs:'
       - '^test:'
+
+brews:
+  - tap:
+      owner: koki-develop
+      name: homebrew-tap
+      token: "{{ .Env.TAP_GITHUB_TOKEN }}"
