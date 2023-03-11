@@ -13,6 +13,12 @@ cat alternative written in Go.
 
 ## Installation
 
+### Homebrew
+
+```console
+$ brew install koki-develop/tap/gat
+```
+
 ### `go install`
 
 ```console
