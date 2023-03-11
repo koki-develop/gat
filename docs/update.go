@@ -6,9 +6,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/alecthomas/chroma/formatters"
-	"github.com/alecthomas/chroma/lexers"
-	"github.com/alecthomas/chroma/styles"
+	"github.com/alecthomas/chroma/v2/formatters"
+	"github.com/alecthomas/chroma/v2/lexers"
+	"github.com/alecthomas/chroma/v2/styles"
 	"github.com/koki-develop/gat/pkg/printer"
 )
 
@@ -62,7 +62,7 @@ func updateLanguages() {
 	f.WriteString("| Language | Aliases |\n")
 	f.WriteString("| --- | --- |\n")
 
-	for _, l := range lexers.Registry.Lexers {
+	for _, l := range lexers.GlobalLexerRegistry.Lexers {
 		cfg := l.Config()
 		f.WriteString(fmt.Sprintf("| `%s` ", cfg.Name))
 

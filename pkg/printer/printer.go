@@ -5,10 +5,10 @@ import (
 	"io"
 	"os"
 
-	"github.com/alecthomas/chroma"
-	"github.com/alecthomas/chroma/formatters"
-	"github.com/alecthomas/chroma/lexers"
-	"github.com/alecthomas/chroma/styles"
+	"github.com/alecthomas/chroma/v2"
+	"github.com/alecthomas/chroma/v2/formatters"
+	"github.com/alecthomas/chroma/v2/lexers"
+	"github.com/alecthomas/chroma/v2/styles"
 )
 
 var (

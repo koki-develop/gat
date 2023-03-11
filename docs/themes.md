@@ -5,9 +5,14 @@
 - [`algol_nu`](#algol_nu)
 - [`arduino`](#arduino)
 - [`autumn`](#autumn)
+- [`average`](#average)
 - [`base16-snazzy`](#base16-snazzy)
 - [`borland`](#borland)
 - [`bw`](#bw)
+- [`catppuccin-frappe`](#catppuccin-frappe)
+- [`catppuccin-latte`](#catppuccin-latte)
+- [`catppuccin-macchiato`](#catppuccin-macchiato)
+- [`catppuccin-mocha`](#catppuccin-mocha)
 - [`colorful`](#colorful)
 - [`doom-one`](#doom-one)
 - [`doom-one2`](#doom-one2)
@@ -16,16 +21,22 @@
 - [`friendly`](#friendly)
 - [`fruity`](#fruity)
 - [`github`](#github)
+- [`github-dark`](#github-dark)
+- [`gruvbox`](#gruvbox)
+- [`gruvbox-light`](#gruvbox-light)
 - [`hr_high_contrast`](#hr_high_contrast)
 - [`hrdark`](#hrdark)
 - [`igor`](#igor)
 - [`lovelace`](#lovelace)
 - [`manni`](#manni)
+- [`modus-operandi`](#modus-operandi)
+- [`modus-vivendi`](#modus-vivendi)
 - [`monokai`](#monokai)
 - [`monokailight`](#monokailight)
 - [`murphy`](#murphy)
 - [`native`](#native)
 - [`nord`](#nord)
+- [`onedark`](#onedark)
 - [`onesenterprise`](#onesenterprise)
 - [`paraiso-dark`](#paraiso-dark)
 - [`paraiso-light`](#paraiso-light)
@@ -33,6 +44,9 @@
 - [`perldoc`](#perldoc)
 - [`pygments`](#pygments)
 - [`rainbow_dash`](#rainbow_dash)
+- [`rose-pine`](#rose-pine)
+- [`rose-pine-dawn`](#rose-pine-dawn)
+- [`rose-pine-moon`](#rose-pine-moon)
 - [`rrt`](#rrt)
 - [`solarized-dark`](#solarized-dark)
 - [`solarized-dark256`](#solarized-dark256)
@@ -67,6 +81,10 @@
 
 ![autumn](./themes/autumn.svg)
 
+## `average`
+
+![average](./themes/average.svg)
+
 ## `base16-snazzy`
 
 ![base16-snazzy](./themes/base16-snazzy.svg)
@@ -78,6 +96,22 @@
 ## `bw`
 
 ![bw](./themes/bw.svg)
+
+## `catppuccin-frappe`
+
+![catppuccin-frappe](./themes/catppuccin-frappe.svg)
+
+## `catppuccin-latte`
+
+![catppuccin-latte](./themes/catppuccin-latte.svg)
+
+## `catppuccin-macchiato`
+
+![catppuccin-macchiato](./themes/catppuccin-macchiato.svg)
+
+## `catppuccin-mocha`
+
+![catppuccin-mocha](./themes/catppuccin-mocha.svg)
 
 ## `colorful`
 
@@ -111,6 +145,18 @@
 
 ![github](./themes/github.svg)
 
+## `github-dark`
+
+![github-dark](./themes/github-dark.svg)
+
+## `gruvbox`
+
+![gruvbox](./themes/gruvbox.svg)
+
+## `gruvbox-light`
+
+![gruvbox-light](./themes/gruvbox-light.svg)
+
 ## `hr_high_contrast`
 
 ![hr_high_contrast](./themes/hr_high_contrast.svg)
@@ -131,6 +177,14 @@
 
 ![manni](./themes/manni.svg)
 
+## `modus-operandi`
+
+![modus-operandi](./themes/modus-operandi.svg)
+
+## `modus-vivendi`
+
+![modus-vivendi](./themes/modus-vivendi.svg)
+
 ## `monokai`
 
 ![monokai](./themes/monokai.svg)
@@ -150,6 +204,10 @@
 ## `nord`
 
 ![nord](./themes/nord.svg)
+
+## `onedark`
+
+![onedark](./themes/onedark.svg)
 
 ## `onesenterprise`
 
@@ -178,6 +236,18 @@
 ## `rainbow_dash`
 
 ![rainbow_dash](./themes/rainbow_dash.svg)
+
+## `rose-pine`
+
+![rose-pine](./themes/rose-pine.svg)
+
+## `rose-pine-dawn`
+
+![rose-pine-dawn](./themes/rose-pine-dawn.svg)
+
+## `rose-pine-moon`
+
+![rose-pine-moon](./themes/rose-pine-moon.svg)
 
 ## `rrt`
 
