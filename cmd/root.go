@@ -7,12 +7,20 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	format string
+	style  string
+)
+
 var rootCmd = &cobra.Command{
 	Use:   "gat [file]...",
 	Short: "cat alternative written in Go",
 	Long:  "cat alternative written in Go.",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		p := printer.New()
+		p := printer.New(&printer.PrinterConfig{
+			Format: format,
+			Style:  style,
+		})
 
 		if len(args) == 0 {
 			if err := p.Print(&printer.PrintInput{
@@ -41,4 +49,9 @@ func Execute() {
 	if err != nil {
 		os.Exit(1)
 	}
+}
+
+func init() {
+	rootCmd.Flags().StringVarP(&format, "format", "f", printer.DefaultFormat, "output format")
+	rootCmd.Flags().StringVarP(&style, "style", "s", printer.DefaultStyle, "color style")
 }

@@ -1,6 +1,7 @@
 package printer
 
 import (
+	"fmt"
 	"io"
 	"os"
 
@@ -11,14 +12,25 @@ import (
 )
 
 var (
-	DefaultFormatter = "terminal256"
-	DefaultStyle     = "monokai"
+	DefaultFormat = "terminal256"
+	DefaultStyle  = "monokai"
 )
 
-type Printer struct{}
+type Printer struct {
+	format string
+	style  string
+}
 
-func New() *Printer {
-	return &Printer{}
+type PrinterConfig struct {
+	Format string
+	Style  string
+}
+
+func New(cfg *PrinterConfig) *Printer {
+	return &Printer{
+		format: cfg.Format,
+		style:  cfg.Style,
+	}
 }
 
 type PrintFileInput struct {
@@ -72,15 +84,15 @@ func (p *Printer) Print(ipt *PrintInput) error {
 	l = chroma.Coalesce(l)
 
 	// get formatter
-	f := formatters.Get(DefaultFormatter)
-	if f == nil {
-		f = formatters.Fallback
+	f, ok := formatters.Registry[p.format]
+	if !ok {
+		return fmt.Errorf("unknown formatter: %s", p.format)
 	}
 
 	// get style
-	s := styles.Get(DefaultStyle)
-	if s == nil {
-		s = styles.Fallback
+	s, ok := styles.Registry[p.style]
+	if !ok {
+		return fmt.Errorf("unknown style: %s", p.style)
 	}
 
 	// format
