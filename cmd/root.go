@@ -9,7 +9,7 @@ import (
 
 var (
 	format string
-	style  string
+	theme  string
 )
 
 var rootCmd = &cobra.Command{
@@ -19,7 +19,7 @@ var rootCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		p := printer.New(&printer.PrinterConfig{
 			Format: format,
-			Style:  style,
+			Theme:  theme,
 		})
 
 		if len(args) == 0 {
@@ -53,5 +53,5 @@ func Execute() {
 
 func init() {
 	rootCmd.Flags().StringVarP(&format, "format", "f", printer.DefaultFormat, "output format")
-	rootCmd.Flags().StringVarP(&style, "style", "s", printer.DefaultStyle, "color style")
+	rootCmd.Flags().StringVarP(&theme, "theme", "t", printer.DefaultTheme, "highlight theme")
 }

@@ -13,23 +13,23 @@ import (
 
 var (
 	DefaultFormat = "terminal256"
-	DefaultStyle  = "monokai"
+	DefaultTheme  = "monokai"
 )
 
 type Printer struct {
 	format string
-	style  string
+	theme  string
 }
 
 type PrinterConfig struct {
 	Format string
-	Style  string
+	Theme  string
 }
 
 func New(cfg *PrinterConfig) *Printer {
 	return &Printer{
 		format: cfg.Format,
-		style:  cfg.Style,
+		theme:  cfg.Theme,
 	}
 }
 
@@ -90,9 +90,9 @@ func (p *Printer) Print(ipt *PrintInput) error {
 	}
 
 	// get style
-	s, ok := styles.Registry[p.style]
+	s, ok := styles.Registry[p.theme]
 	if !ok {
-		return fmt.Errorf("unknown style: %s", p.style)
+		return fmt.Errorf("unknown theme: %s", p.theme)
 	}
 
 	// format
