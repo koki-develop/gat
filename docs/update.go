@@ -6,6 +6,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/alecthomas/chroma/formatters"
 	"github.com/alecthomas/chroma/styles"
 	"github.com/koki-develop/gat/pkg/printer"
 )
@@ -26,6 +27,47 @@ func String(s string) *string {
 
 func main() {
 	updateThemes()
+	updateFormats()
+}
+
+func updateFormats() {
+	f, err := os.Create("docs/formats.md")
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+
+	f.WriteString("# Formats\n\n")
+
+	for _, format := range formatters.Names() {
+		f.WriteString(fmt.Sprintf("- [`%s`](#%s)\n", format, format))
+	}
+	f.WriteString("\n")
+
+	for _, format := range formatters.Names() {
+		f.WriteString(fmt.Sprintf("## `%s`\n\n", format))
+
+		p := printer.New(&printer.PrinterConfig{
+			Format: format,
+			Theme:  printer.DefaultTheme,
+		})
+
+		b := new(bytes.Buffer)
+		if err := p.Print(&printer.PrintInput{
+			In:       strings.NewReader(src),
+			Out:      b,
+			Filename: String("main.go"),
+		}); err != nil {
+			panic(err)
+		}
+
+		f.WriteString(fmt.Sprintf("```%s\n", format))
+		f.WriteString(strings.TrimSpace(b.String()))
+		f.WriteString("\n")
+		f.WriteString("```\n")
+
+		f.WriteString("\n")
+	}
 }
 
 func updateThemes() {
