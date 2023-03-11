@@ -26,6 +26,7 @@ func String(s string) *string {
 	return &s
 }
 
+// TODO: refactor
 func main() {
 	updateLanguages()
 	updateThemes()
@@ -89,7 +90,11 @@ func updateFormats() {
 		}
 
 		f.WriteString(fmt.Sprintf("```%s\n", format))
-		f.WriteString(strings.TrimSpace(b.String()))
+		if strings.HasPrefix(format, "terminal") {
+			f.WriteString(strings.Trim(strings.ReplaceAll(fmt.Sprintf("%#v", strings.TrimSpace(b.String())), "\\n", "\n"), "\""))
+		} else {
+			f.WriteString(strings.TrimSpace(b.String()))
+		}
 		f.WriteString("\n")
 		f.WriteString("```\n")
 

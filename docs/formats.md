@@ -161,61 +161,61 @@ func main() {
 ## `terminal`
 
 ```terminal
-[1m[31mpackage[0m[1m[37m [0m[1m[33mmain[0m[1m[37m
+\x1b[1m\x1b[31mpackage\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[33mmain\x1b[0m\x1b[1m\x1b[37m
 
-[0m[1m[31mimport[0m[1m[37m [0m[37m"fmt"[0m[1m[37m
+\x1b[0m\x1b[1m\x1b[31mimport\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[37m\"fmt\"\x1b[0m\x1b[1m\x1b[37m
 
-[0m[1m[36mfunc[0m[1m[37m [0m[1m[33mmain[0m[1m[37m()[0m[1m[37m [0m[1m[37m{[0m[1m[37m
-	[0m[1m[33mfmt[0m[1m[37m.[0m[1m[33mPrintln[0m[1m[37m([0m[37m"hello world"[0m[1m[37m)[0m[1m[37m
-[0m[1m[37m}[0m
+\x1b[0m\x1b[1m\x1b[36mfunc\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[33mmain\x1b[0m\x1b[1m\x1b[37m()\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[37m{\x1b[0m\x1b[1m\x1b[37m
+\t\x1b[0m\x1b[1m\x1b[33mfmt\x1b[0m\x1b[1m\x1b[37m.\x1b[0m\x1b[1m\x1b[33mPrintln\x1b[0m\x1b[1m\x1b[37m(\x1b[0m\x1b[37m\"hello world\"\x1b[0m\x1b[1m\x1b[37m)\x1b[0m\x1b[1m\x1b[37m
+\x1b[0m\x1b[1m\x1b[37m}\x1b[0m
 ```
 
 ## `terminal16`
 
 ```terminal16
-[91mpackage[0m[97m [0m[93mmain[0m[97m
+\x1b[91mpackage\x1b[0m\x1b[97m \x1b[0m\x1b[93mmain\x1b[0m\x1b[97m
 
-[0m[91mimport[0m[97m [0m[37m"fmt"[0m[97m
+\x1b[0m\x1b[91mimport\x1b[0m\x1b[97m \x1b[0m\x1b[37m\"fmt\"\x1b[0m\x1b[97m
 
-[0m[96mfunc[0m[97m [0m[93mmain[0m[97m()[0m[97m [0m[97m{[0m[97m
-	[0m[93mfmt[0m[97m.[0m[93mPrintln[0m[97m([0m[37m"hello world"[0m[97m)[0m[97m
-[0m[97m}[0m
+\x1b[0m\x1b[96mfunc\x1b[0m\x1b[97m \x1b[0m\x1b[93mmain\x1b[0m\x1b[97m()\x1b[0m\x1b[97m \x1b[0m\x1b[97m{\x1b[0m\x1b[97m
+\t\x1b[0m\x1b[93mfmt\x1b[0m\x1b[97m.\x1b[0m\x1b[93mPrintln\x1b[0m\x1b[97m(\x1b[0m\x1b[37m\"hello world\"\x1b[0m\x1b[97m)\x1b[0m\x1b[97m
+\x1b[0m\x1b[97m}\x1b[0m
 ```
 
 ## `terminal16m`
 
 ```terminal16m
-[38;2;249;38;114mpackage[0m[38;2;248;248;242m [0m[38;2;166;226;46mmain[0m[38;2;248;248;242m
+\x1b[38;2;249;38;114mpackage\x1b[0m\x1b[38;2;248;248;242m \x1b[0m\x1b[38;2;166;226;46mmain\x1b[0m\x1b[38;2;248;248;242m
 
-[0m[38;2;249;38;114mimport[0m[38;2;248;248;242m [0m[38;2;230;219;116m"fmt"[0m[38;2;248;248;242m
+\x1b[0m\x1b[38;2;249;38;114mimport\x1b[0m\x1b[38;2;248;248;242m \x1b[0m\x1b[38;2;230;219;116m\"fmt\"\x1b[0m\x1b[38;2;248;248;242m
 
-[0m[38;2;102;217;239mfunc[0m[38;2;248;248;242m [0m[38;2;166;226;46mmain[0m[38;2;248;248;242m()[0m[38;2;248;248;242m [0m[38;2;248;248;242m{[0m[38;2;248;248;242m
-	[0m[38;2;166;226;46mfmt[0m[38;2;248;248;242m.[0m[38;2;166;226;46mPrintln[0m[38;2;248;248;242m([0m[38;2;230;219;116m"hello world"[0m[38;2;248;248;242m)[0m[38;2;248;248;242m
-[0m[38;2;248;248;242m}[0m
+\x1b[0m\x1b[38;2;102;217;239mfunc\x1b[0m\x1b[38;2;248;248;242m \x1b[0m\x1b[38;2;166;226;46mmain\x1b[0m\x1b[38;2;248;248;242m()\x1b[0m\x1b[38;2;248;248;242m \x1b[0m\x1b[38;2;248;248;242m{\x1b[0m\x1b[38;2;248;248;242m
+\t\x1b[0m\x1b[38;2;166;226;46mfmt\x1b[0m\x1b[38;2;248;248;242m.\x1b[0m\x1b[38;2;166;226;46mPrintln\x1b[0m\x1b[38;2;248;248;242m(\x1b[0m\x1b[38;2;230;219;116m\"hello world\"\x1b[0m\x1b[38;2;248;248;242m)\x1b[0m\x1b[38;2;248;248;242m
+\x1b[0m\x1b[38;2;248;248;242m}\x1b[0m
 ```
 
 ## `terminal256`
 
 ```terminal256
-[38;5;197mpackage[0m[38;5;231m [0m[38;5;148mmain[0m[38;5;231m
+\x1b[38;5;197mpackage\x1b[0m\x1b[38;5;231m \x1b[0m\x1b[38;5;148mmain\x1b[0m\x1b[38;5;231m
 
-[0m[38;5;197mimport[0m[38;5;231m [0m[38;5;186m"fmt"[0m[38;5;231m
+\x1b[0m\x1b[38;5;197mimport\x1b[0m\x1b[38;5;231m \x1b[0m\x1b[38;5;186m\"fmt\"\x1b[0m\x1b[38;5;231m
 
-[0m[38;5;81mfunc[0m[38;5;231m [0m[38;5;148mmain[0m[38;5;231m()[0m[38;5;231m [0m[38;5;231m{[0m[38;5;231m
-	[0m[38;5;148mfmt[0m[38;5;231m.[0m[38;5;148mPrintln[0m[38;5;231m([0m[38;5;186m"hello world"[0m[38;5;231m)[0m[38;5;231m
-[0m[38;5;231m}[0m
+\x1b[0m\x1b[38;5;81mfunc\x1b[0m\x1b[38;5;231m \x1b[0m\x1b[38;5;148mmain\x1b[0m\x1b[38;5;231m()\x1b[0m\x1b[38;5;231m \x1b[0m\x1b[38;5;231m{\x1b[0m\x1b[38;5;231m
+\t\x1b[0m\x1b[38;5;148mfmt\x1b[0m\x1b[38;5;231m.\x1b[0m\x1b[38;5;148mPrintln\x1b[0m\x1b[38;5;231m(\x1b[0m\x1b[38;5;186m\"hello world\"\x1b[0m\x1b[38;5;231m)\x1b[0m\x1b[38;5;231m
+\x1b[0m\x1b[38;5;231m}\x1b[0m
 ```
 
 ## `terminal8`
 
 ```terminal8
-[1m[31mpackage[0m[1m[37m [0m[1m[33mmain[0m[1m[37m
+\x1b[1m\x1b[31mpackage\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[33mmain\x1b[0m\x1b[1m\x1b[37m
 
-[0m[1m[31mimport[0m[1m[37m [0m[37m"fmt"[0m[1m[37m
+\x1b[0m\x1b[1m\x1b[31mimport\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[37m\"fmt\"\x1b[0m\x1b[1m\x1b[37m
 
-[0m[1m[36mfunc[0m[1m[37m [0m[1m[33mmain[0m[1m[37m()[0m[1m[37m [0m[1m[37m{[0m[1m[37m
-	[0m[1m[33mfmt[0m[1m[37m.[0m[1m[33mPrintln[0m[1m[37m([0m[37m"hello world"[0m[1m[37m)[0m[1m[37m
-[0m[1m[37m}[0m
+\x1b[0m\x1b[1m\x1b[36mfunc\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[33mmain\x1b[0m\x1b[1m\x1b[37m()\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[37m{\x1b[0m\x1b[1m\x1b[37m
+\t\x1b[0m\x1b[1m\x1b[33mfmt\x1b[0m\x1b[1m\x1b[37m.\x1b[0m\x1b[1m\x1b[33mPrintln\x1b[0m\x1b[1m\x1b[37m(\x1b[0m\x1b[37m\"hello world\"\x1b[0m\x1b[1m\x1b[37m)\x1b[0m\x1b[1m\x1b[37m
+\x1b[0m\x1b[1m\x1b[37m}\x1b[0m
 ```
 
 ## `tokens`
