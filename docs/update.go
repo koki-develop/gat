@@ -26,18 +26,35 @@ func String(s string) *string {
 	return &s
 }
 
-// TODO: refactor
 func main() {
 	updateLanguages()
 	updateThemes()
 	updateFormats()
 }
 
-func updateLanguages() {
-	f, err := os.Create("docs/languages.md")
+func Must[T any](t T, err error) T {
 	if err != nil {
 		panic(err)
 	}
+	return t
+}
+
+func OrPanic(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+
+func Map[T, I any](ts []T, f func(t T) I) []I {
+	is := []I{}
+	for _, t := range ts {
+		is = append(is, f(t))
+	}
+	return is
+}
+
+func updateLanguages() {
+	f := Must(os.Create("docs/languages.md"))
 	defer f.Close()
 
 	f.WriteString("# Languages\n\n")
@@ -45,24 +62,27 @@ func updateLanguages() {
 	for _, l := range lexers.Registry.Lexers {
 		cfg := l.Config()
 		f.WriteString(fmt.Sprintf("- `%s`", cfg.Name))
+
 		if len(cfg.Aliases) > 0 {
-			f.WriteString("( alias: ")
-			aliases := []string{}
-			for _, a := range cfg.Aliases {
-				aliases = append(aliases, fmt.Sprintf("`%s`", a))
-			}
-			f.WriteString(strings.Join(aliases, ", "))
-			f.WriteString(" )")
+			f.WriteString(
+				fmt.Sprintf(
+					"( alias: %s )",
+					strings.Join(
+						Map(
+							cfg.Aliases,
+							func(a string) string { return fmt.Sprintf("`%s`", a) },
+						),
+						", ",
+					),
+				),
+			)
 		}
 		f.WriteString("\n")
 	}
 }
 
 func updateFormats() {
-	f, err := os.Create("docs/formats.md")
-	if err != nil {
-		panic(err)
-	}
+	f := Must(os.Create("docs/formats.md"))
 	defer f.Close()
 
 	f.WriteString("# Output Formats\n\n")
@@ -81,13 +101,11 @@ func updateFormats() {
 		})
 
 		b := new(bytes.Buffer)
-		if err := p.Print(&printer.PrintInput{
+		OrPanic(p.Print(&printer.PrintInput{
 			In:       strings.NewReader(src),
 			Out:      b,
 			Filename: String("main.go"),
-		}); err != nil {
-			panic(err)
-		}
+		}))
 
 		f.WriteString(fmt.Sprintf("```%s\n", format))
 		if strings.HasPrefix(format, "terminal") {
@@ -103,10 +121,7 @@ func updateFormats() {
 }
 
 func updateThemes() {
-	f, err := os.Create("docs/themes.md")
-	if err != nil {
-		panic(err)
-	}
+	f := Must(os.Create("docs/themes.md"))
 	defer f.Close()
 
 	f.WriteString("# Highlight Themes\n\n")
@@ -125,18 +140,13 @@ func updateThemes() {
 		})
 
 		b := new(bytes.Buffer)
-		if err := p.Print(&printer.PrintInput{
+		OrPanic(p.Print(&printer.PrintInput{
 			In:       strings.NewReader(src),
 			Out:      b,
 			Filename: String("main.go"),
-		}); err != nil {
-			panic(err)
-		}
+		}))
 
-		img, err := os.Create(fmt.Sprintf("./docs/themes/%s.svg", s))
-		if err != nil {
-			panic(err)
-		}
+		img := Must(os.Create(fmt.Sprintf("./docs/themes/%s.svg", s)))
 		defer img.Close()
 		img.Write(b.Bytes())
 
