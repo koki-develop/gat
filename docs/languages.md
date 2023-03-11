@@ -1,215 +1,217 @@
 # Languages
 
-- `ABAP` ( alias: `abap` )
-- `ABNF` ( alias: `abnf` )
-- `ActionScript` ( alias: `as`, `actionscript` )
-- `ActionScript 3` ( alias: `as3`, `actionscript3` )
-- `Ada` ( alias: `ada`, `ada95`, `ada2005` )
-- `AL` ( alias: `al` )
-- `Angular2` ( alias: `ng2` )
-- `ANTLR` ( alias: `antlr` )
-- `ApacheConf` ( alias: `apacheconf`, `aconf`, `apache` )
-- `APL` ( alias: `apl` )
-- `AppleScript` ( alias: `applescript` )
-- `Arduino` ( alias: `arduino` )
-- `ArmAsm` ( alias: `armasm` )
-- `Awk` ( alias: `awk`, `gawk`, `mawk`, `nawk` )
-- `Ballerina` ( alias: `ballerina` )
-- `Bash` ( alias: `bash`, `sh`, `ksh`, `zsh`, `shell` )
-- `BashSession` ( alias: `bash-session`, `console`, `shell-session` )
-- `Batchfile` ( alias: `bat`, `batch`, `dosbatch`, `winbatch` )
-- `BibTeX` ( alias: `bib`, `bibtex` )
-- `Bicep` ( alias: `bicep` )
-- `BlitzBasic` ( alias: `blitzbasic`, `b3d`, `bplus` )
-- `BNF` ( alias: `bnf` )
-- `Brainfuck` ( alias: `brainfuck`, `bf` )
-- `PacmanConf` ( alias: `pacmanconf` )
-- `Perl` ( alias: `perl`, `pl` )
-- `Pig` ( alias: `pig` )
-- `PkgConfig` ( alias: `pkgconfig` )
-- `plaintext` ( alias: `text`, `plain`, `no-highlight` )
-- `PL/pgSQL` ( alias: `plpgsql` )
-- `Plutus Core` ( alias: `plutus-core`, `plc` )
-- `Pony` ( alias: `pony` )
-- `PostgreSQL SQL dialect` ( alias: `postgresql`, `postgres` )
-- `PostScript` ( alias: `postscript`, `postscr` )
-- `POVRay` ( alias: `pov` )
-- `PowerQuery` ( alias: `powerquery`, `pq` )
-- `PowerShell` ( alias: `powershell`, `posh`, `ps1`, `psm1`, `psd1` )
-- `Prolog` ( alias: `prolog` )
-- `PromQL` ( alias: `promql` )
-- `Protocol Buffer` ( alias: `protobuf`, `proto` )
-- `Puppet` ( alias: `puppet` )
-- `Python` ( alias: `python`, `py`, `sage`, `python3`, `py3` )
-- `Python 2` ( alias: `python2`, `py2` )
-- `C` ( alias: `c` )
-- `Caddyfile` ( alias: `caddyfile`, `caddy` )
-- `Caddyfile Directives` ( alias: `caddyfile-directives`, `caddyfile-d`, `caddy-d` )
-- `Cap'n Proto` ( alias: `capnp` )
-- `Ceylon` ( alias: `ceylon` )
-- `CFEngine3` ( alias: `cfengine3`, `cf3` )
-- `ChaiScript` ( alias: `chai`, `chaiscript` )
-- `Cheetah` ( alias: `cheetah`, `spitfire` )
-- `Common Lisp` ( alias: `common-lisp`, `cl`, `lisp` )
-- `Clojure` ( alias: `clojure`, `clj` )
-- `CMake` ( alias: `cmake` )
-- `COBOL` ( alias: `cobol` )
-- `CoffeeScript` ( alias: `coffee-script`, `coffeescript`, `coffee` )
-- `cfstatement` ( alias: `cfs` )
-- `Coq` ( alias: `coq` )
-- `C++` ( alias: `cpp`, `c++` )
-- `Cassandra CQL` ( alias: `cassandra`, `cql` )
-- `Crystal` ( alias: `cr`, `crystal` )
-- `C#` ( alias: `csharp`, `c#` )
-- `CSS` ( alias: `css` )
-- `Cython` ( alias: `cython`, `pyx`, `pyrex` )
-- `J` ( alias: `j` )
-- `Java` ( alias: `java` )
-- `JavaScript` ( alias: `js`, `javascript` )
-- `JSON` ( alias: `json` )
-- `react` ( alias: `jsx`, `react` )
-- `Julia` ( alias: `julia`, `jl` )
-- `Jungle` ( alias: `jungle` )
-- `Handlebars` ( alias: `handlebars`, `hbs` )
-- `Haskell` ( alias: `haskell`, `hs` )
-- `Haxe` ( alias: `hx`, `haxe`, `hxsl` )
-- `HCL` ( alias: `hcl` )
-- `Hexdump` ( alias: `hexdump` )
-- `HLB` ( alias: `hlb` )
-- `HTML` ( alias: `html` )
-- `HTTP` ( alias: `http` )
-- `Hy` ( alias: `hylang` )
-- `PHP` ( alias: `php`, `php3`, `php4`, `php5` )
-- `PHTML` ( alias: `phtml` )
-- `D` ( alias: `d` )
-- `Dart` ( alias: `dart` )
-- `Diff` ( alias: `diff`, `udiff` )
-- `Django/Jinja` ( alias: `django`, `jinja` )
-- `Docker` ( alias: `docker`, `dockerfile` )
-- `DTD` ( alias: `dtd` )
-- `Dylan` ( alias: `dylan` )
-- `EBNF` ( alias: `ebnf` )
-- `Elixir` ( alias: `elixir`, `ex`, `exs` )
-- `Elm` ( alias: `elm` )
-- `EmacsLisp` ( alias: `emacs`, `elisp`, `emacs-lisp` )
-- `Erlang` ( alias: `erlang` )
-- `Factor` ( alias: `factor` )
-- `Fennel` ( alias: `fennel`, `fnl` )
-- `Fish` ( alias: `fish`, `fishshell` )
-- `Forth` ( alias: `forth` )
-- `Fortran` ( alias: `fortran` )
-- `FortranFixed` ( alias: `fortranfixed` )
-- `FSharp` ( alias: `fsharp` )
-- `GAS` ( alias: `gas`, `asm` )
-- `GDScript` ( alias: `gdscript`, `gd` )
-- `Genshi Text` ( alias: `genshitext` )
-- `Genshi HTML` ( alias: `html+genshi`, `html+kid` )
-- `Genshi` ( alias: `genshi`, `kid`, `xml+genshi`, `xml+kid` )
-- `Gherkin` ( alias: `cucumber`, `Cucumber`, `gherkin`, `Gherkin` )
-- `GLSL` ( alias: `glsl` )
-- `Gnuplot` ( alias: `gnuplot` )
-- `Go HTML Template` ( alias: `go-html-template` )
-- `Go Text Template` ( alias: `go-text-template` )
-- `Go` ( alias: `go`, `golang` )
-- `GraphQL` ( alias: `graphql`, `graphqls`, `gql` )
-- `Groff` ( alias: `groff`, `nroff`, `man` )
-- `Groovy` ( alias: `groovy` )
-- `Idris` ( alias: `idris`, `idr` )
-- `Igor` ( alias: `igor`, `igorpro` )
-- `INI` ( alias: `ini`, `cfg`, `dosini` )
-- `Io` ( alias: `io` )
-- `Kotlin` ( alias: `kotlin` )
-- `Lighttpd configuration file` ( alias: `lighty`, `lighttpd` )
-- `LLVM` ( alias: `llvm` )
-- `Lua` ( alias: `lua` )
-- `Base Makefile` ( alias: `make`, `makefile`, `mf`, `bsdmake` )
-- `Mako` ( alias: `mako` )
-- `markdown` ( alias: `md`, `mkd` )
-- `Mason` ( alias: `mason` )
-- `Mathematica` ( alias: `mathematica`, `mma`, `nb` )
-- `Matlab` ( alias: `matlab` )
-- `mcfunction` ( alias: `mcfunction` )
-- `Meson` ( alias: `meson`, `meson.build` )
-- `Metal` ( alias: `metal` )
-- `MiniZinc` ( alias: `minizinc`, `MZN`, `mzn` )
-- `MLIR` ( alias: `mlir` )
-- `Modula-2` ( alias: `modula2`, `m2` )
-- `MonkeyC` ( alias: `monkeyc` )
-- `MorrowindScript` ( alias: `morrowind`, `mwscript` )
-- `Myghty` ( alias: `myghty` )
-- `MySQL` ( alias: `mysql` )
-- `NASM` ( alias: `nasm` )
-- `Newspeak` ( alias: `newspeak` )
-- `Nginx configuration file` ( alias: `nginx` )
-- `Nim` ( alias: `nim`, `nimrod` )
-- `Nix` ( alias: `nixos`, `nix` )
-- `Objective-C` ( alias: `objective-c`, `objectivec`, `obj-c`, `objc` )
-- `OCaml` ( alias: `ocaml` )
-- `Octave` ( alias: `octave` )
-- `OnesEnterprise` ( alias: `ones`, `onesenterprise`, `1S`, `1S:Enterprise` )
-- `OpenEdge ABL` ( alias: `openedge`, `abl`, `progress`, `openedgeabl` )
-- `OpenSCAD` ( alias: `openscad` )
-- `Org Mode` ( alias: `org`, `orgmode` )
-- `QBasic` ( alias: `qbasic`, `basic` )
-- `QML` ( alias: `qml`, `qbs` )
-- `R` ( alias: `splus`, `s`, `r` )
-- `Racket` ( alias: `racket`, `rkt` )
-- `Ragel` ( alias: `ragel` )
-- `Raku` ( alias: `perl6`, `pl6`, `raku` )
-- `ReasonML` ( alias: `reason`, `reasonml` )
-- `reg` ( alias: `registry` )
-- `Rexx` ( alias: `rexx`, `arexx` )
-- `reStructuredText` ( alias: `rst`, `rest`, `restructuredtext` )
-- `Ruby` ( alias: `rb`, `ruby`, `duby` )
-- `Rust` ( alias: `rust`, `rs` )
-- `TableGen` ( alias: `tablegen` )
-- `TASM` ( alias: `tasm` )
-- `Tcl` ( alias: `tcl` )
-- `Tcsh` ( alias: `tcsh`, `csh` )
-- `Termcap` ( alias: `termcap` )
-- `Terminfo` ( alias: `terminfo` )
-- `Terraform` ( alias: `terraform`, `tf` )
-- `TeX` ( alias: `tex`, `latex` )
-- `Thrift` ( alias: `thrift` )
-- `TOML` ( alias: `toml` )
-- `TradingView` ( alias: `tradingview`, `tv` )
-- `Transact-SQL` ( alias: `tsql`, `t-sql` )
-- `Turing` ( alias: `turing` )
-- `Turtle` ( alias: `turtle` )
-- `Twig` ( alias: `twig` )
-- `TypeScript` ( alias: `ts`, `tsx`, `typescript` )
-- `TypoScriptCssData` ( alias: `typoscriptcssdata` )
-- `TypoScriptHtmlData` ( alias: `typoscripthtmldata` )
-- `TypoScript` ( alias: `typoscript` )
-- `SAS` ( alias: `sas` )
-- `Sass` ( alias: `sass` )
-- `Scala` ( alias: `scala` )
-- `Scheme` ( alias: `scheme`, `scm` )
-- `Scilab` ( alias: `scilab` )
-- `SCSS` ( alias: `scss` )
-- `Sieve` ( alias: `sieve` )
-- `Smalltalk` ( alias: `smalltalk`, `squeak`, `st` )
-- `Smarty` ( alias: `smarty` )
-- `Standard ML` ( alias: `sml` )
-- `Snobol` ( alias: `snobol` )
-- `Solidity` ( alias: `sol`, `solidity` )
-- `SPARQL` ( alias: `sparql` )
-- `SQL` ( alias: `sql` )
-- `SquidConf` ( alias: `squidconf`, `squid.conf`, `squid` )
-- `Stylus` ( alias: `stylus` )
-- `Svelte` ( alias: `svelte` )
-- `Swift` ( alias: `swift` )
-- `SYSTEMD` ( alias: `systemd` )
-- `systemverilog` ( alias: `systemverilog`, `sv` )
-- `VB.net` ( alias: `vb.net`, `vbnet` )
-- `verilog` ( alias: `verilog`, `v` )
-- `VHDL` ( alias: `vhdl` )
-- `VimL` ( alias: `vim` )
-- `vue` ( alias: `vue`, `vuejs` )
-- `WDTE`
-- `XML` ( alias: `xml` )
-- `Xorg` ( alias: `xorg.conf` )
-- `YAML` ( alias: `yaml` )
-- `YANG` ( alias: `yang` )
-- `Zed` ( alias: `zed` )
-- `Zig` ( alias: `zig` )
+| Language | Aliases |
+| --- | --- |
+| `ABAP` | `abap` |
+| `ABNF` | `abnf` |
+| `ActionScript` | `as`, `actionscript` |
+| `ActionScript 3` | `as3`, `actionscript3` |
+| `Ada` | `ada`, `ada95`, `ada2005` |
+| `AL` | `al` |
+| `Angular2` | `ng2` |
+| `ANTLR` | `antlr` |
+| `ApacheConf` | `apacheconf`, `aconf`, `apache` |
+| `APL` | `apl` |
+| `AppleScript` | `applescript` |
+| `Arduino` | `arduino` |
+| `ArmAsm` | `armasm` |
+| `Awk` | `awk`, `gawk`, `mawk`, `nawk` |
+| `Ballerina` | `ballerina` |
+| `Bash` | `bash`, `sh`, `ksh`, `zsh`, `shell` |
+| `BashSession` | `bash-session`, `console`, `shell-session` |
+| `Batchfile` | `bat`, `batch`, `dosbatch`, `winbatch` |
+| `BibTeX` | `bib`, `bibtex` |
+| `Bicep` | `bicep` |
+| `BlitzBasic` | `blitzbasic`, `b3d`, `bplus` |
+| `BNF` | `bnf` |
+| `Brainfuck` | `brainfuck`, `bf` |
+| `PacmanConf` | `pacmanconf` |
+| `Perl` | `perl`, `pl` |
+| `Pig` | `pig` |
+| `PkgConfig` | `pkgconfig` |
+| `plaintext` | `text`, `plain`, `no-highlight` |
+| `PL/pgSQL` | `plpgsql` |
+| `Plutus Core` | `plutus-core`, `plc` |
+| `Pony` | `pony` |
+| `PostgreSQL SQL dialect` | `postgresql`, `postgres` |
+| `PostScript` | `postscript`, `postscr` |
+| `POVRay` | `pov` |
+| `PowerQuery` | `powerquery`, `pq` |
+| `PowerShell` | `powershell`, `posh`, `ps1`, `psm1`, `psd1` |
+| `Prolog` | `prolog` |
+| `PromQL` | `promql` |
+| `Protocol Buffer` | `protobuf`, `proto` |
+| `Puppet` | `puppet` |
+| `Python` | `python`, `py`, `sage`, `python3`, `py3` |
+| `Python 2` | `python2`, `py2` |
+| `C` | `c` |
+| `Caddyfile` | `caddyfile`, `caddy` |
+| `Caddyfile Directives` | `caddyfile-directives`, `caddyfile-d`, `caddy-d` |
+| `Cap'n Proto` | `capnp` |
+| `Ceylon` | `ceylon` |
+| `CFEngine3` | `cfengine3`, `cf3` |
+| `ChaiScript` | `chai`, `chaiscript` |
+| `Cheetah` | `cheetah`, `spitfire` |
+| `Common Lisp` | `common-lisp`, `cl`, `lisp` |
+| `Clojure` | `clojure`, `clj` |
+| `CMake` | `cmake` |
+| `COBOL` | `cobol` |
+| `CoffeeScript` | `coffee-script`, `coffeescript`, `coffee` |
+| `cfstatement` | `cfs` |
+| `Coq` | `coq` |
+| `C++` | `cpp`, `c++` |
+| `Cassandra CQL` | `cassandra`, `cql` |
+| `Crystal` | `cr`, `crystal` |
+| `C#` | `csharp`, `c#` |
+| `CSS` | `css` |
+| `Cython` | `cython`, `pyx`, `pyrex` |
+| `J` | `j` |
+| `Java` | `java` |
+| `JavaScript` | `js`, `javascript` |
+| `JSON` | `json` |
+| `react` | `jsx`, `react` |
+| `Julia` | `julia`, `jl` |
+| `Jungle` | `jungle` |
+| `Handlebars` | `handlebars`, `hbs` |
+| `Haskell` | `haskell`, `hs` |
+| `Haxe` | `hx`, `haxe`, `hxsl` |
+| `HCL` | `hcl` |
+| `Hexdump` | `hexdump` |
+| `HLB` | `hlb` |
+| `HTML` | `html` |
+| `HTTP` | `http` |
+| `Hy` | `hylang` |
+| `PHP` | `php`, `php3`, `php4`, `php5` |
+| `PHTML` | `phtml` |
+| `D` | `d` |
+| `Dart` | `dart` |
+| `Diff` | `diff`, `udiff` |
+| `Django/Jinja` | `django`, `jinja` |
+| `Docker` | `docker`, `dockerfile` |
+| `DTD` | `dtd` |
+| `Dylan` | `dylan` |
+| `EBNF` | `ebnf` |
+| `Elixir` | `elixir`, `ex`, `exs` |
+| `Elm` | `elm` |
+| `EmacsLisp` | `emacs`, `elisp`, `emacs-lisp` |
+| `Erlang` | `erlang` |
+| `Factor` | `factor` |
+| `Fennel` | `fennel`, `fnl` |
+| `Fish` | `fish`, `fishshell` |
+| `Forth` | `forth` |
+| `Fortran` | `fortran` |
+| `FortranFixed` | `fortranfixed` |
+| `FSharp` | `fsharp` |
+| `GAS` | `gas`, `asm` |
+| `GDScript` | `gdscript`, `gd` |
+| `Genshi Text` | `genshitext` |
+| `Genshi HTML` | `html+genshi`, `html+kid` |
+| `Genshi` | `genshi`, `kid`, `xml+genshi`, `xml+kid` |
+| `Gherkin` | `cucumber`, `Cucumber`, `gherkin`, `Gherkin` |
+| `GLSL` | `glsl` |
+| `Gnuplot` | `gnuplot` |
+| `Go HTML Template` | `go-html-template` |
+| `Go Text Template` | `go-text-template` |
+| `Go` | `go`, `golang` |
+| `GraphQL` | `graphql`, `graphqls`, `gql` |
+| `Groff` | `groff`, `nroff`, `man` |
+| `Groovy` | `groovy` |
+| `Idris` | `idris`, `idr` |
+| `Igor` | `igor`, `igorpro` |
+| `INI` | `ini`, `cfg`, `dosini` |
+| `Io` | `io` |
+| `Kotlin` | `kotlin` |
+| `Lighttpd configuration file` | `lighty`, `lighttpd` |
+| `LLVM` | `llvm` |
+| `Lua` | `lua` |
+| `Base Makefile` | `make`, `makefile`, `mf`, `bsdmake` |
+| `Mako` | `mako` |
+| `markdown` | `md`, `mkd` |
+| `Mason` | `mason` |
+| `Mathematica` | `mathematica`, `mma`, `nb` |
+| `Matlab` | `matlab` |
+| `mcfunction` | `mcfunction` |
+| `Meson` | `meson`, `meson.build` |
+| `Metal` | `metal` |
+| `MiniZinc` | `minizinc`, `MZN`, `mzn` |
+| `MLIR` | `mlir` |
+| `Modula-2` | `modula2`, `m2` |
+| `MonkeyC` | `monkeyc` |
+| `MorrowindScript` | `morrowind`, `mwscript` |
+| `Myghty` | `myghty` |
+| `MySQL` | `mysql` |
+| `NASM` | `nasm` |
+| `Newspeak` | `newspeak` |
+| `Nginx configuration file` | `nginx` |
+| `Nim` | `nim`, `nimrod` |
+| `Nix` | `nixos`, `nix` |
+| `Objective-C` | `objective-c`, `objectivec`, `obj-c`, `objc` |
+| `OCaml` | `ocaml` |
+| `Octave` | `octave` |
+| `OnesEnterprise` | `ones`, `onesenterprise`, `1S`, `1S:Enterprise` |
+| `OpenEdge ABL` | `openedge`, `abl`, `progress`, `openedgeabl` |
+| `OpenSCAD` | `openscad` |
+| `Org Mode` | `org`, `orgmode` |
+| `QBasic` | `qbasic`, `basic` |
+| `QML` | `qml`, `qbs` |
+| `R` | `splus`, `s`, `r` |
+| `Racket` | `racket`, `rkt` |
+| `Ragel` | `ragel` |
+| `Raku` | `perl6`, `pl6`, `raku` |
+| `ReasonML` | `reason`, `reasonml` |
+| `reg` | `registry` |
+| `Rexx` | `rexx`, `arexx` |
+| `reStructuredText` | `rst`, `rest`, `restructuredtext` |
+| `Ruby` | `rb`, `ruby`, `duby` |
+| `Rust` | `rust`, `rs` |
+| `TableGen` | `tablegen` |
+| `TASM` | `tasm` |
+| `Tcl` | `tcl` |
+| `Tcsh` | `tcsh`, `csh` |
+| `Termcap` | `termcap` |
+| `Terminfo` | `terminfo` |
+| `Terraform` | `terraform`, `tf` |
+| `TeX` | `tex`, `latex` |
+| `Thrift` | `thrift` |
+| `TOML` | `toml` |
+| `TradingView` | `tradingview`, `tv` |
+| `Transact-SQL` | `tsql`, `t-sql` |
+| `Turing` | `turing` |
+| `Turtle` | `turtle` |
+| `Twig` | `twig` |
+| `TypeScript` | `ts`, `tsx`, `typescript` |
+| `TypoScriptCssData` | `typoscriptcssdata` |
+| `TypoScriptHtmlData` | `typoscripthtmldata` |
+| `TypoScript` | `typoscript` |
+| `SAS` | `sas` |
+| `Sass` | `sass` |
+| `Scala` | `scala` |
+| `Scheme` | `scheme`, `scm` |
+| `Scilab` | `scilab` |
+| `SCSS` | `scss` |
+| `Sieve` | `sieve` |
+| `Smalltalk` | `smalltalk`, `squeak`, `st` |
+| `Smarty` | `smarty` |
+| `Standard ML` | `sml` |
+| `Snobol` | `snobol` |
+| `Solidity` | `sol`, `solidity` |
+| `SPARQL` | `sparql` |
+| `SQL` | `sql` |
+| `SquidConf` | `squidconf`, `squid.conf`, `squid` |
+| `Stylus` | `stylus` |
+| `Svelte` | `svelte` |
+| `Swift` | `swift` |
+| `SYSTEMD` | `systemd` |
+| `systemverilog` | `systemverilog`, `sv` |
+| `VB.net` | `vb.net`, `vbnet` |
+| `verilog` | `verilog`, `v` |
+| `VHDL` | `vhdl` |
+| `VimL` | `vim` |
+| `vue` | `vue`, `vuejs` |
+| `WDTE` | |
+| `XML` | `xml` |
+| `Xorg` | `xorg.conf` |
+| `YAML` | `yaml` |
+| `YANG` | `yang` |
+| `Zed` | `zed` |
+| `Zig` | `zig` |
