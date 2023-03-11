@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/alecthomas/chroma/formatters"
+	"github.com/alecthomas/chroma/lexers"
 	"github.com/alecthomas/chroma/styles"
 	"github.com/koki-develop/gat/pkg/printer"
 )
@@ -26,8 +27,34 @@ func String(s string) *string {
 }
 
 func main() {
+	updateLanguages()
 	updateThemes()
 	updateFormats()
+}
+
+func updateLanguages() {
+	f, err := os.Create("docs/languages.md")
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+
+	f.WriteString("# Languages\n\n")
+
+	for _, l := range lexers.Registry.Lexers {
+		cfg := l.Config()
+		f.WriteString(fmt.Sprintf("- `%s`", cfg.Name))
+		if len(cfg.Aliases) > 0 {
+			f.WriteString("( alias: ")
+			aliases := []string{}
+			for _, a := range cfg.Aliases {
+				aliases = append(aliases, fmt.Sprintf("`%s`", a))
+			}
+			f.WriteString(strings.Join(aliases, ", "))
+			f.WriteString(" )")
+		}
+		f.WriteString("\n")
+	}
 }
 
 func updateFormats() {

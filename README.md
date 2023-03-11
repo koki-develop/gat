@@ -44,9 +44,14 @@ Flags:
   -t, --theme string    highlight theme (default "monokai")
 ```
 
+### Language
+
+`--lang` flag to set the language for syntax highlighting.  
+See [languages.md](./docs/languages.md) for valid languages.
+
 ### Format
 
-`--format` flag to set the output format ( default: `terminal256` ).  
+`--format` flag to explicitly set the output format ( default: `terminal256` ).  
 See [formats.md](./docs/formats.md) for valid formats.
 
 ### Theme
