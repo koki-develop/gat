@@ -66,7 +66,7 @@ func updateLanguages() {
 		if len(cfg.Aliases) > 0 {
 			f.WriteString(
 				fmt.Sprintf(
-					"( alias: %s )",
+					" ( alias: %s )",
 					strings.Join(
 						Map(
 							cfg.Aliases,
