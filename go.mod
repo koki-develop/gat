@@ -3,7 +3,6 @@ module github.com/koki-develop/gat
 go 1.20
 
 require (
-	github.com/alecthomas/chroma v0.10.0
 	github.com/alecthomas/chroma/v2 v2.5.0
 	github.com/spf13/cobra v1.6.1
 )
