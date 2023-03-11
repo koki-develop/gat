@@ -59,14 +59,17 @@ func updateLanguages() {
 
 	f.WriteString("# Languages\n\n")
 
+	f.WriteString("| Language | Aliases |\n")
+	f.WriteString("| --- | --- |\n")
+
 	for _, l := range lexers.GlobalLexerRegistry.Lexers {
 		cfg := l.Config()
-		f.WriteString(fmt.Sprintf("- `%s`", cfg.Name))
+		f.WriteString(fmt.Sprintf("| `%s` ", cfg.Name))
 
 		if len(cfg.Aliases) > 0 {
 			f.WriteString(
 				fmt.Sprintf(
-					" ( alias: %s )",
+					"| %s |",
 					strings.Join(
 						Map(
 							cfg.Aliases,
@@ -76,6 +79,8 @@ func updateLanguages() {
 					),
 				),
 			)
+		} else {
+			f.WriteString("| |")
 		}
 		f.WriteString("\n")
 	}
