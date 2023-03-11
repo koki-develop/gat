@@ -1,0 +1,16 @@
+name: build
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup go
+        uses: actions/setup-go@v3
+        with:
+          go-version-file: go.mod
+          cache: true
+      - name: build
+        run: go build .
