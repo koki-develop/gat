@@ -1,4 +1,4 @@
-# Formats
+# Output Formats
 
 - [`html`](#html)
 - [`json`](#json)

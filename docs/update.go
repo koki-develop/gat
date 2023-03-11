@@ -37,7 +37,7 @@ func updateFormats() {
 	}
 	defer f.Close()
 
-	f.WriteString("# Formats\n\n")
+	f.WriteString("# Output Formats\n\n")
 
 	for _, format := range formatters.Names() {
 		f.WriteString(fmt.Sprintf("- [`%s`](#%s)\n", format, format))
