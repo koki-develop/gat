@@ -8,6 +8,8 @@
 
 cat alternative written in Go.
 
+![demo](./docs/demo.gif)
+
 - [Installation](#installation)
 - [Usage](#usage)
 - [LICENSE](#license)
