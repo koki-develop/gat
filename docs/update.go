@@ -57,17 +57,17 @@ func updateLanguages() {
 	f := Must(os.Create("docs/languages.md"))
 	defer f.Close()
 
-	f.WriteString("# Languages\n\n")
+	Must(f.WriteString("# Languages\n\n"))
 
-	f.WriteString("| Language | Aliases |\n")
-	f.WriteString("| --- | --- |\n")
+	Must(f.WriteString("| Language | Aliases |\n"))
+	Must(f.WriteString("| --- | --- |\n"))
 
 	for _, l := range lexers.GlobalLexerRegistry.Lexers {
 		cfg := l.Config()
-		f.WriteString(fmt.Sprintf("| `%s` ", cfg.Name))
+		Must(f.WriteString(fmt.Sprintf("| `%s` ", cfg.Name)))
 
 		if len(cfg.Aliases) > 0 {
-			f.WriteString(
+			Must(f.WriteString(
 				fmt.Sprintf(
 					"| %s |",
 					strings.Join(
@@ -78,11 +78,11 @@ func updateLanguages() {
 						", ",
 					),
 				),
-			)
+			))
 		} else {
-			f.WriteString("| |")
+			Must(f.WriteString("| |"))
 		}
-		f.WriteString("\n")
+		Must(f.WriteString("\n"))
 	}
 }
 
@@ -90,15 +90,15 @@ func updateFormats() {
 	f := Must(os.Create("docs/formats.md"))
 	defer f.Close()
 
-	f.WriteString("# Output Formats\n\n")
+	Must(f.WriteString("# Output Formats\n\n"))
 
 	for _, format := range formatters.Names() {
-		f.WriteString(fmt.Sprintf("- [`%s`](#%s)\n", format, format))
+		Must(f.WriteString(fmt.Sprintf("- [`%s`](#%s)\n", format, format)))
 	}
-	f.WriteString("\n")
+	Must(f.WriteString("\n"))
 
 	for _, format := range formatters.Names() {
-		f.WriteString(fmt.Sprintf("## `%s`\n\n", format))
+		Must(f.WriteString(fmt.Sprintf("## `%s`\n\n", format)))
 
 		p := printer.New(&printer.PrinterConfig{
 			Format: format,
@@ -112,16 +112,16 @@ func updateFormats() {
 			Filename: String("main.go"),
 		}))
 
-		f.WriteString(fmt.Sprintf("```%s\n", format))
+		Must(f.WriteString(fmt.Sprintf("```%s\n", format)))
 		if strings.HasPrefix(format, "terminal") {
-			f.WriteString(strings.Trim(strings.ReplaceAll(fmt.Sprintf("%#v", strings.TrimSpace(b.String())), "\\n", "\n"), "\""))
+			Must(f.WriteString(strings.Trim(strings.ReplaceAll(fmt.Sprintf("%#v", strings.TrimSpace(b.String())), "\\n", "\n"), "\"")))
 		} else {
-			f.WriteString(strings.TrimSpace(b.String()))
+			Must(f.WriteString(strings.TrimSpace(b.String())))
 		}
-		f.WriteString("\n")
-		f.WriteString("```\n")
+		Must(f.WriteString("\n"))
+		Must(f.WriteString("```\n"))
 
-		f.WriteString("\n")
+		Must(f.WriteString("\n"))
 	}
 }
 
@@ -129,15 +129,15 @@ func updateThemes() {
 	f := Must(os.Create("docs/themes.md"))
 	defer f.Close()
 
-	f.WriteString("# Highlight Themes\n\n")
+	Must(f.WriteString("# Highlight Themes\n\n"))
 
 	for _, s := range styles.Names() {
-		f.WriteString(fmt.Sprintf("- [`%s`](#%s)\n", s, s))
+		Must(f.WriteString(fmt.Sprintf("- [`%s`](#%s)\n", s, s)))
 	}
-	f.WriteString("\n")
+	Must(f.WriteString("\n"))
 
 	for _, s := range styles.Names() {
-		f.WriteString(fmt.Sprintf("## `%s`\n\n", s))
+		Must(f.WriteString(fmt.Sprintf("## `%s`\n\n", s)))
 
 		p := printer.New(&printer.PrinterConfig{
 			Format: "svg",
@@ -153,8 +153,8 @@ func updateThemes() {
 
 		img := Must(os.Create(fmt.Sprintf("./docs/themes/%s.svg", s)))
 		defer img.Close()
-		img.Write(b.Bytes())
+		Must(img.Write(b.Bytes()))
 
-		f.WriteString(fmt.Sprintf("![%s](./themes/%s.svg)\n\n", s, s))
+		Must(f.WriteString(fmt.Sprintf("![%s](./themes/%s.svg)\n\n", s, s)))
 	}
 }
