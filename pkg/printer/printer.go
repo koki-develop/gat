@@ -9,6 +9,7 @@ import (
 	"github.com/alecthomas/chroma/v2/formatters"
 	"github.com/alecthomas/chroma/v2/lexers"
 	"github.com/alecthomas/chroma/v2/styles"
+	_ "github.com/koki-develop/gat/pkg/formatter"
 )
 
 var (
