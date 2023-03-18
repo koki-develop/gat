@@ -21,7 +21,7 @@ type SVGMinifiedFormatter struct {
 
 func NewSVGMinifiedFormatter() *SVGMinifiedFormatter {
 	m := minify.New()
-	m.AddFunc("image/svg+xml", svg.Minify)
+	m.AddFunc(mimeTypeSVG, svg.Minify)
 
 	return &SVGMinifiedFormatter{
 		svgFormatter: formatters.SVG,
@@ -35,7 +35,7 @@ func (f *SVGMinifiedFormatter) Format(w io.Writer, style *chroma.Style, iterator
 		return err
 	}
 
-	if err := f.m.Minify("image/svg+xml", w, b); err != nil {
+	if err := f.m.Minify(mimeTypeSVG, w, b); err != nil {
 		return err
 	}
 

@@ -23,11 +23,11 @@ type HTMLMinifiedFormatter struct {
 
 func NewHTMLMinifiedFormatter() *HTMLMinifiedFormatter {
 	m := minify.New()
-	m.Add("text/html", &html.Minifier{
+	m.Add(mimeTypeHTML, &html.Minifier{
 		KeepDocumentTags: true,
 		KeepQuotes:       true,
 	})
-	m.AddFunc("text/css", css.Minify)
+	m.AddFunc(mimeTypeCSS, css.Minify)
 
 	return &HTMLMinifiedFormatter{
 		htmlFormatter: htmlformatter.New(htmlformatter.Standalone(true), htmlformatter.WithClasses(true)),
@@ -41,7 +41,7 @@ func (f *HTMLMinifiedFormatter) Format(w io.Writer, style *chroma.Style, iterato
 		return err
 	}
 
-	if err := f.m.Minify("text/html", w, b); err != nil {
+	if err := f.m.Minify(mimeTypeHTML, w, b); err != nil {
 		return err
 	}
 

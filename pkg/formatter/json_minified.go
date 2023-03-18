@@ -21,7 +21,7 @@ type JSONMinifiedFormatter struct {
 
 func NewJSONMinifiedFormatter() *JSONMinifiedFormatter {
 	m := minify.New()
-	m.AddFunc("application/json", json.Minify)
+	m.AddFunc(mimeTypeJSON, json.Minify)
 
 	return &JSONMinifiedFormatter{
 		jsonFormatter: formatters.JSON,
@@ -35,7 +35,7 @@ func (f *JSONMinifiedFormatter) Format(w io.Writer, style *chroma.Style, iterato
 		return err
 	}
 
-	if err := f.m.Minify("application/json", w, b); err != nil {
+	if err := f.m.Minify(mimeTypeJSON, w, b); err != nil {
 		return err
 	}
 
