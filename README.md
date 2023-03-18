@@ -49,19 +49,19 @@ Flags:
   -v, --version         version for gat
 ```
 
-### Language
+### `-l`, `--lang`
 
-`--lang` flag to set the language for syntax highlighting.  
+Explicitly set the language for syntax highlighting.  
 See [languages.md](./docs/languages.md) for valid languages.
 
-### Format
+### `-f`, `--format`
 
-`--format` flag to explicitly set the output format ( default: `terminal256` ).  
+Set the output format ( default: `terminal256` ).  
 See [formats.md](./docs/formats.md) for valid formats.
 
-### Theme
+### `-t`, `--theme`
 
-`--theme` flag to set the highlight theme ( default: `monokai` ).  
+Set the highlight theme ( default: `monokai` ).  
 See [themes.md](./docs/themes.md) for valid thtmes.
 
 ## LICENSE
