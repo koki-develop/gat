@@ -1,9 +1,12 @@
 package printer
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"io"
 	"os"
+	"strings"
 
 	"github.com/alecthomas/chroma/v2"
 	"github.com/alecthomas/chroma/v2/formatters"
@@ -116,4 +119,57 @@ func (p *Printer) Print(ipt *PrintInput) error {
 	}
 
 	return nil
+}
+
+func PrintLangs() {
+	for _, l := range lexers.GlobalLexerRegistry.Lexers {
+		cfg := l.Config()
+		fmt.Print(cfg.Name)
+		if len(cfg.Aliases) > 0 {
+			fmt.Printf(" (%s)", strings.Join(cfg.Aliases, ", "))
+		}
+		fmt.Print("\n")
+	}
+}
+
+func PrintFormats() {
+	for _, f := range formatters.Names() {
+		fmt.Println(f)
+	}
+}
+
+var (
+	example = `package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("hello world")
+}`
+)
+
+func PrintThemes() {
+	for _, t := range styles.Names() {
+		fmt.Printf("\x1b[1m%s\x1b[0m\n\n", t)
+
+		b := new(bytes.Buffer)
+		p := New(&PrinterConfig{
+			Lang:   "go",
+			Format: DefaultFormat,
+			Theme:  t,
+		})
+		if err := p.Print(&PrintInput{
+			In:  strings.NewReader(example),
+			Out: b,
+		}); err != nil {
+			panic(err)
+		}
+
+		sc := bufio.NewScanner(strings.NewReader(b.String()))
+		for sc.Scan() {
+			fmt.Printf("\t%s\n", sc.Text())
+		}
+
+		fmt.Print("\n\n")
+	}
 }

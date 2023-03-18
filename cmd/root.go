@@ -14,6 +14,10 @@ var (
 	lang   string
 	format string
 	theme  string
+
+	listLangs   bool
+	listFormats bool
+	listThemes  bool
 )
 
 var rootCmd = &cobra.Command{
@@ -26,6 +30,18 @@ var rootCmd = &cobra.Command{
 			Format: format,
 			Theme:  theme,
 		})
+
+		switch {
+		case listLangs:
+			printer.PrintLangs()
+			return nil
+		case listFormats:
+			printer.PrintFormats()
+			return nil
+		case listThemes:
+			printer.PrintThemes()
+			return nil
+		}
 
 		if len(args) == 0 {
 			if err := p.Print(&printer.PrintInput{
@@ -70,4 +86,7 @@ func init() {
 	rootCmd.Flags().StringVarP(&lang, "lang", "l", "", "language for syntax highlighting")
 	rootCmd.Flags().StringVarP(&format, "format", "f", printer.DefaultFormat, "output format")
 	rootCmd.Flags().StringVarP(&theme, "theme", "t", printer.DefaultTheme, "highlight theme")
+	rootCmd.Flags().BoolVar(&listLangs, "list-langs", false, "print a list of supported languages for syntax highlighting")
+	rootCmd.Flags().BoolVar(&listFormats, "list-formats", false, "print a list of supported output formats")
+	rootCmd.Flags().BoolVar(&listThemes, "list-themes", false, "print a list of supported themes with preview")
 }
