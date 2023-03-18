@@ -112,7 +112,7 @@ func updateFormats() {
 			Filename: String("main.go"),
 		}))
 
-		Must(f.WriteString(fmt.Sprintf("```%s\n", format)))
+		Must(f.WriteString(fmt.Sprintf("```%s\n", strings.TrimSuffix(format, "-min"))))
 		if strings.HasPrefix(format, "terminal") {
 			Must(f.WriteString(strings.Trim(strings.ReplaceAll(fmt.Sprintf("%#v", strings.TrimSpace(b.String())), "\\n", "\n"), "\"")))
 		} else {
