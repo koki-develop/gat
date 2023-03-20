@@ -76,6 +76,7 @@
 | `Hexdump` | `hexdump` |
 | `HLB` | `hlb` |
 | `HLSL` | `hlsl` |
+| `HolyC` | `holyc` |
 | `Hy` | `hylang` |
 | `Idris` | `idris`, `idr` |
 | `Igor` | `igor`, `igorpro` |
@@ -103,6 +104,7 @@
 | `MorrowindScript` | `morrowind`, `mwscript` |
 | `MySQL` | `mysql`, `mariadb` |
 | `NASM` | `nasm` |
+| `Natural` | `natural` |
 | `Newspeak` | `newspeak` |
 | `Nginx configuration file` | `nginx` |
 | `Nim` | `nim`, `nimrod` |
@@ -193,6 +195,7 @@
 | `Xorg` | `xorg.conf` |
 | `YAML` | `yaml` |
 | `YANG` | `yang` |
+| `Z80 Assembly` | `z80` |
 | `Zed` | `zed` |
 | `Zig` | `zig` |
 | `Caddyfile` | `caddyfile`, `caddy` |
