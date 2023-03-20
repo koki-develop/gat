@@ -1,6 +1,8 @@
 github.com/alecthomas/assert/v2 v2.2.1 h1:XivOgYcduV98QCahG8T5XTezV5bylXe+lBxLG2K2ink=
 github.com/alecthomas/chroma/v2 v2.5.0 h1:CQCdj1BiBV17sD4Bd32b/Bzuiq/EqoNTrnIhyQAZ+Rk=
 github.com/alecthomas/chroma/v2 v2.5.0/go.mod h1:yrkMI9807G1ROx13fhe1v6PN2DDeaR73L3d+1nmYQtw=
+github.com/alecthomas/chroma/v2 v2.6.0 h1:1L4tjWoEqtLbld6XHdK8ewYY51YMLOGRv21dAFHjLnQ=
+github.com/alecthomas/chroma/v2 v2.6.0/go.mod h1:yrkMI9807G1ROx13fhe1v6PN2DDeaR73L3d+1nmYQtw=
 github.com/alecthomas/repr v0.2.0 h1:HAzS41CIzNW5syS8Mf9UwXhNH1J9aix/BvDRf1Ml2Yk=
 github.com/cheekybits/is v0.0.0-20150225183255-68e9c0620927/go.mod h1:h/aW8ynjgkuj+NQRlZcDbAbM1ORAbXjXX77sX7T289U=
 github.com/cpuguy83/go-md2man/v2 v2.0.2/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
