@@ -1,0 +1,28 @@
+name: update docs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v4
+        with:
+          go-version-file: go.mod
+      - run: go run ./docs/update.go
+      - run: |
+          git add .
+          if git diff --staged --exit-code --quiet; then
+            echo "No changes."
+          else
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git commit -m "update docs"
+            git push origin main
+          fi
