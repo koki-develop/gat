@@ -6,6 +6,7 @@ import (
 
 	"github.com/koki-develop/gat/pkg/printer"
 	"github.com/spf13/cobra"
+	"golang.org/x/term"
 )
 
 var (
@@ -33,6 +34,11 @@ var rootCmd = &cobra.Command{
 			Theme:  theme,
 			Pretty: pretty,
 		})
+
+		ist := term.IsTerminal(int(os.Stdout.Fd()))
+		if !ist {
+			p.SetTheme("noop")
+		}
 
 		switch {
 		case listLangs:
