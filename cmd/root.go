@@ -15,6 +15,8 @@ var (
 	format string
 	theme  string
 
+	pretty bool
+
 	listLangs   bool
 	listFormats bool
 	listThemes  bool
@@ -29,6 +31,7 @@ var rootCmd = &cobra.Command{
 			Lang:   lang,
 			Format: format,
 			Theme:  theme,
+			Pretty: pretty,
 		})
 
 		switch {
@@ -86,6 +89,9 @@ func init() {
 	rootCmd.Flags().StringVarP(&lang, "lang", "l", "", "language for syntax highlighting")
 	rootCmd.Flags().StringVarP(&format, "format", "f", printer.DefaultFormat, "output format")
 	rootCmd.Flags().StringVarP(&theme, "theme", "t", printer.DefaultTheme, "highlight theme")
+
+	rootCmd.Flags().BoolVarP(&pretty, "pretty", "p", false, "whether to format a content pretty")
+
 	rootCmd.Flags().BoolVar(&listLangs, "list-langs", false, "print a list of supported languages for syntax highlighting")
 	rootCmd.Flags().BoolVar(&listFormats, "list-formats", false, "print a list of supported output formats")
 	rootCmd.Flags().BoolVar(&listThemes, "list-themes", false, "print a list of supported themes with preview")
