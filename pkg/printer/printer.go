@@ -13,6 +13,7 @@ import (
 	"github.com/alecthomas/chroma/v2/lexers"
 	"github.com/alecthomas/chroma/v2/styles"
 	_ "github.com/koki-develop/gat/pkg/formatter"
+	"github.com/koki-develop/gat/pkg/prettier"
 )
 
 var (
@@ -24,12 +25,16 @@ type Printer struct {
 	lang   string
 	format string
 	theme  string
+
+	pretty bool
 }
 
 type PrinterConfig struct {
 	Lang   string
 	Format string
 	Theme  string
+
+	Pretty bool
 }
 
 func New(cfg *PrinterConfig) *Printer {
@@ -37,6 +42,7 @@ func New(cfg *PrinterConfig) *Printer {
 		lang:   cfg.Lang,
 		format: cfg.Format,
 		theme:  cfg.Theme,
+		pretty: cfg.Pretty,
 	}
 }
 
@@ -96,6 +102,14 @@ func (p *Printer) Print(ipt *PrintInput) error {
 		}
 	}
 	l = chroma.Coalesce(l)
+
+	// pretty
+	if p.pretty {
+		pt := prettier.Get(l.Config().Name)
+		if prettied, err := pt.Pretty(src); err == nil {
+			src = prettied
+		}
+	}
 
 	// get formatter
 	f, ok := formatters.Registry[p.format]
