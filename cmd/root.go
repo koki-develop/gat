@@ -31,6 +31,7 @@ var rootCmd = &cobra.Command{
 			Lang:   lang,
 			Format: format,
 			Theme:  theme,
+			Pretty: pretty,
 		})
 
 		switch {
