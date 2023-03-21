@@ -35,7 +35,6 @@ Download the binary from the [releases page](https://github.com/koki-develop/gat
 ## Usage
 
 ```console
-$ gat --help
 cat alternative written in Go.
 
 Usage:
@@ -48,6 +47,7 @@ Flags:
       --list-formats    print a list of supported output formats
       --list-langs      print a list of supported languages for syntax highlighting
       --list-themes     print a list of supported themes with preview
+  -p, --pretty          whether to format a content pretty
   -t, --theme string    highlight theme (default "monokai")
   -v, --version         version for gat
 ```
@@ -66,6 +66,11 @@ See [formats.md](./docs/formats.md) for valid formats.
 
 Set the highlight theme ( default: `monokai` ).  
 See [themes.md](./docs/themes.md) for valid thtmes.
+
+## `-p`, `--pretty`
+
+Format a content pretty.  
+For unsupported languages, this flag is ignored.
 
 ## LICENSE
 
