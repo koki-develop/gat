@@ -46,6 +46,10 @@ func New(cfg *PrinterConfig) *Printer {
 	}
 }
 
+func (p *Printer) SetFormat(f string) {
+	p.format = f
+}
+
 type PrintFileInput struct {
 	Out      io.Writer
 	Filename string
