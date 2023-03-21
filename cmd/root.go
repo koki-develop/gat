@@ -3,9 +3,11 @@ package cmd
 import (
 	"os"
 	"runtime/debug"
+	"strings"
 
 	"github.com/koki-develop/gat/pkg/printer"
 	"github.com/spf13/cobra"
+	"golang.org/x/term"
 )
 
 var (
@@ -33,6 +35,13 @@ var rootCmd = &cobra.Command{
 			Theme:  theme,
 			Pretty: pretty,
 		})
+
+		if strings.HasPrefix(format, "terminal") {
+			ist := term.IsTerminal(int(os.Stdout.Fd()))
+			if !ist {
+				p.SetTheme("noop")
+			}
+		}
 
 		switch {
 		case listLangs:

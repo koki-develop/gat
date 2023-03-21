@@ -35,6 +35,7 @@
 - [`monokailight`](#monokailight)
 - [`murphy`](#murphy)
 - [`native`](#native)
+- [`noop`](#noop)
 - [`nord`](#nord)
 - [`onedark`](#onedark)
 - [`onesenterprise`](#onesenterprise)
@@ -200,6 +201,10 @@
 ## `native`
 
 ![native](./themes/native.svg)
+
+## `noop`
+
+![noop](./themes/noop.svg)
 
 ## `nord`
 
