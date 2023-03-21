@@ -46,8 +46,8 @@ func New(cfg *PrinterConfig) *Printer {
 	}
 }
 
-func (p *Printer) SetFormat(f string) {
-	p.format = f
+func (p *Printer) SetTheme(t string) {
+	p.theme = t
 }
 
 type PrintFileInput struct {
