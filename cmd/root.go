@@ -3,6 +3,7 @@ package cmd
 import (
 	"os"
 	"runtime/debug"
+	"strings"
 
 	"github.com/koki-develop/gat/pkg/printer"
 	"github.com/spf13/cobra"
@@ -35,9 +36,11 @@ var rootCmd = &cobra.Command{
 			Pretty: pretty,
 		})
 
-		ist := term.IsTerminal(int(os.Stdout.Fd()))
-		if !ist {
-			p.SetTheme("noop")
+		if strings.HasPrefix(format, "terminal") {
+			ist := term.IsTerminal(int(os.Stdout.Fd()))
+			if !ist {
+				p.SetTheme("noop")
+			}
 		}
 
 		switch {
