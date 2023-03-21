@@ -14,6 +14,7 @@ import (
 	"github.com/alecthomas/chroma/v2/styles"
 	_ "github.com/koki-develop/gat/pkg/formatter"
 	"github.com/koki-develop/gat/pkg/prettier"
+	_ "github.com/koki-develop/gat/pkg/style"
 )
 
 var (
@@ -44,6 +45,10 @@ func New(cfg *PrinterConfig) *Printer {
 		theme:  cfg.Theme,
 		pretty: cfg.Pretty,
 	}
+}
+
+func (p *Printer) SetTheme(t string) {
+	p.theme = t
 }
 
 type PrintFileInput struct {
