@@ -35,6 +35,7 @@ Download the binary from the [releases page](https://github.com/koki-develop/gat
 ## Usage
 
 ```console
+$ gat --help
 cat alternative written in Go.
 
 Usage:
