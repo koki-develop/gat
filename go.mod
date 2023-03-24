@@ -3,7 +3,7 @@ module github.com/koki-develop/gat
 go 1.20
 
 require (
-	github.com/alecthomas/chroma/v2 v2.6.0
+	github.com/alecthomas/chroma/v2 v2.7.0
 	github.com/client9/csstool v0.2.2
 	github.com/spf13/cobra v1.6.1
 	github.com/tdewolff/minify/v2 v2.12.5
