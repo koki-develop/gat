@@ -1,0 +1,27 @@
+name: update demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-demo:
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v4
+        with:
+          go-version-file: go.mod
+      - uses: charmbracelet/vhs-action@v1
+        with:
+          path: ./tapes/demo.tape
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: update docs
+          body: ${{ github.sha }}
+          branch: docs/update
+          branch-suffix: short-commit-hash
