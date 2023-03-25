@@ -73,6 +73,22 @@ See [themes.md](./docs/themes.md) for valid thtmes.
 Format a content pretty.  
 For unsupported languages, this flag is ignored.
 
+## `-c`, `--force-color`
+
+`gat` disables colored output when piped to another program.  
+Settings the `--force-color` forces colored output to be enabled.  
+This is useful, for example, when used in combination with the `less -R` command.
+
+![](/docs/gess.gif)
+
+It is also useful to declare the following function to allow `gat` to be used with a pager.
+
+```sh
+function gess() {
+  gat --force-color $@ | less -R
+}
+```
+
 ## LICENSE
 
 [MIT](./LICENSE)
