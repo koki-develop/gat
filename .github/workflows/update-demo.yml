@@ -2,6 +2,9 @@ name: update demo
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - automate-update-gif # TODO: remove
 
 jobs:
   update-demo:
