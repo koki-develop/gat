@@ -14,10 +14,16 @@ jobs:
       - uses: actions/setup-go@v4
         with:
           go-version-file: go.mod
+
       - uses: charmbracelet/vhs-action@v1
         with:
           path: ./tapes/demo.tape
           token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: charmbracelet/vhs-action@v1
+        with:
+          path: ./tapes/gess.tape
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
