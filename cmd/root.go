@@ -22,6 +22,8 @@ var (
 	listLangs   bool
 	listFormats bool
 	listThemes  bool
+
+	forceColor bool
 )
 
 var rootCmd = &cobra.Command{
@@ -38,7 +40,7 @@ var rootCmd = &cobra.Command{
 
 		if strings.HasPrefix(format, "terminal") {
 			ist := term.IsTerminal(int(os.Stdout.Fd()))
-			if !ist {
+			if !ist && !forceColor {
 				p.SetTheme("noop")
 			}
 		}
@@ -98,6 +100,7 @@ func init() {
 	rootCmd.Flags().StringVarP(&lang, "lang", "l", "", "language for syntax highlighting")
 	rootCmd.Flags().StringVarP(&format, "format", "f", printer.DefaultFormat, "output format")
 	rootCmd.Flags().StringVarP(&theme, "theme", "t", printer.DefaultTheme, "highlight theme")
+	rootCmd.Flags().BoolVarP(&forceColor, "force-color", "c", false, "force colored output")
 
 	rootCmd.Flags().BoolVarP(&pretty, "pretty", "p", false, "whether to format a content pretty")
 
