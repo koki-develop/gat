@@ -85,7 +85,7 @@ It is also useful to declare the following function to allow `gat` to be used wi
 
 ```sh
 function gess() {
-  gat --force-color $@ | less -R
+  gat --force-color "$@" | less -R
 }
 ```
 
