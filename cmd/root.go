@@ -107,4 +107,5 @@ func init() {
 	rootCmd.Flags().BoolVar(&listLangs, "list-langs", false, "print a list of supported languages for syntax highlighting")
 	rootCmd.Flags().BoolVar(&listFormats, "list-formats", false, "print a list of supported output formats")
 	rootCmd.Flags().BoolVar(&listThemes, "list-themes", false, "print a list of supported themes with preview")
+	rootCmd.MarkFlagsMutuallyExclusive("list-langs", "list-formats", "list-themes")
 }
