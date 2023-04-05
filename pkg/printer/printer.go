@@ -7,7 +7,6 @@ import (
 	"io"
 	"os"
         "strings"
-	"strings"
 
 	"github.com/alecthomas/chroma/v2"
 	"github.com/alecthomas/chroma/v2/formatters"
