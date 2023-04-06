@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"io"
 	"os"
-        "strings"
+	"strings"
 
 	"github.com/alecthomas/chroma/v2"
 	"github.com/alecthomas/chroma/v2/formatters"
@@ -82,13 +82,12 @@ type PrintInput struct {
 
 func (p *Printer) Print(ipt *PrintInput) error {
 	// read source
-	// b, err := io.ReadAll(ipt.In)
-	strB := new(strings.Builder)
-        _,err := io.Copy(strB, ipt.In)
-        if err != nil {
-                return err
-        }
-        src := strB.String()
+	b := new(strings.Builder)
+	if _, err := io.Copy(b, ipt.In); err != nil {
+		return err
+	}
+	src := b.String()
+
 	// get lexer
 	var l chroma.Lexer
 	if p.lang == "" {
