@@ -82,11 +82,11 @@ type PrintInput struct {
 
 func (p *Printer) Print(ipt *PrintInput) error {
 	// read source
-	b, err := io.ReadAll(ipt.In)
-	if err != nil {
+	var b strings.Builder
+	if _, err := io.Copy(&b, ipt.In); err != nil {
 		return err
 	}
-	src := string(b)
+	src := b.String()
 
 	// get lexer
 	var l chroma.Lexer
