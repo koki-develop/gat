@@ -8,6 +8,8 @@ github.com/bmatcuk/doublestar/v4 v4.6.0 h1:HTuxyug8GyFbRkrffIpzNCSK4luc0TY3wzXvz
 github.com/bmatcuk/doublestar/v4 v4.6.0/go.mod h1:xBQ8jztBU6kakFMg+8WGxn0c6z1fTSPVIjEY1Wr7jzc=
 github.com/braydonk/yaml v0.5.0 h1:j1SlSSD9JLRKgkmFb66hsDH4D0YFlLOLXSXDwNH9/LU=
 github.com/braydonk/yaml v0.5.0/go.mod h1:hcm3h581tudlirk8XEUPDBAimBPbmnL0Y45hCRl47N4=
+github.com/braydonk/yaml v0.7.0 h1:ySkqO7r0MGoCNhiRJqE0Xe9yhINMyvOAB3nFjgyJn2k=
+github.com/braydonk/yaml v0.7.0/go.mod h1:hcm3h581tudlirk8XEUPDBAimBPbmnL0Y45hCRl47N4=
 github.com/cheekybits/is v0.0.0-20150225183255-68e9c0620927/go.mod h1:h/aW8ynjgkuj+NQRlZcDbAbM1ORAbXjXX77sX7T289U=
 github.com/client9/csstool v0.2.2 h1:TBRqhAul1HXYwMXzQ4j86TSOr50D6JqKAwj9nbro+3Y=
 github.com/client9/csstool v0.2.2/go.mod h1:gOROmZEK98JLAUl/Ru4QxZaSKkr6kVH3J0xeDJrnPJY=
@@ -21,6 +23,8 @@ github.com/google/go-cmp v0.5.9 h1:O2Tfq5qg4qc4AmwVlvv0oLiVAGB7enBSJ2x2DqQFi38=
 github.com/google/go-cmp v0.5.9/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
 github.com/google/yamlfmt v0.8.0 h1:dBg32wkhlrafj/4krsX6pMzX3iMxxQSTpfIwtJaWhlc=
 github.com/google/yamlfmt v0.8.0/go.mod h1:RFCBBZqvmDikvLFUvC4XMM1zmeNZUhIoZN7EKc8lqGA=
+github.com/google/yamlfmt v0.9.0 h1:spfe6s8BvtplRZ2kDB61PYmqKWEz1vy9GsNg3ltDYvA=
+github.com/google/yamlfmt v0.9.0/go.mod h1:jW0ice5/S1EBCHhIV9rkGVfUjyCXD1cTlddkKwI8TKo=
 github.com/hexops/gotextdiff v1.0.3 h1:gitA9+qJrrTCsiCl7+kh75nPqQt1cx4ZkudSTLoUqJM=
 github.com/inconshreveable/mousetrap v1.0.0/go.mod h1:PxqpIevigyE2G7u3NXJIT2ANytuPF1OarO4DADm73n8=
 github.com/inconshreveable/mousetrap v1.0.1 h1:U3uMjPSQEBMNp1lFxmllqCPM6P5u/Xq7Pgzkat/bFNc=
