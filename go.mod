@@ -9,7 +9,7 @@ require (
 	github.com/spf13/cobra v1.7.0
 	github.com/tdewolff/minify/v2 v2.12.5
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
-	golang.org/x/term v0.6.0
+	golang.org/x/term v0.7.0
 )
 
 require (
@@ -24,5 +24,5 @@ require (
 	github.com/tdewolff/parse v2.3.3+incompatible // indirect
 	github.com/tdewolff/parse/v2 v2.6.5 // indirect
 	golang.org/x/net v0.8.0 // indirect
-	golang.org/x/sys v0.6.0 // indirect
+	golang.org/x/sys v0.7.0 // indirect
 )
