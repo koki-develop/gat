@@ -19,7 +19,7 @@ cat alternative written in Go.
 ### Homebrew
 
 ```console
-$ brew install koki-develop/tap/gat
+$ brew install gat
 ```
 
 ### `go install`
