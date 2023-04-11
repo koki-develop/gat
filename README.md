@@ -42,6 +42,7 @@ Usage:
   gat [file]... [flags]
 
 Flags:
+  -c, --force-color     force colored output
   -f, --format string   output format (default "terminal256")
   -h, --help            help for gat
   -l, --lang string     language for syntax highlighting
