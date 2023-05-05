@@ -22,6 +22,12 @@ cat alternative written in Go.
 $ brew install gat
 ```
 
+### Homebrew Tap
+
+```console
+$ brew install koki-develop/tap/gat
+```
+
 ### `go install`
 
 ```console
