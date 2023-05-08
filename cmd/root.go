@@ -5,7 +5,7 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"github.com/koki-develop/gat/pkg/printer"
+	"github.com/koki-develop/gat/internal/printer"
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
 )

@@ -12,9 +12,9 @@ import (
 	"github.com/alecthomas/chroma/v2/formatters"
 	"github.com/alecthomas/chroma/v2/lexers"
 	"github.com/alecthomas/chroma/v2/styles"
-	_ "github.com/koki-develop/gat/pkg/formatter"
-	"github.com/koki-develop/gat/pkg/prettier"
-	_ "github.com/koki-develop/gat/pkg/style"
+	_ "github.com/koki-develop/gat/internal/formatter"
+	"github.com/koki-develop/gat/internal/prettier"
+	_ "github.com/koki-develop/gat/internal/style"
 )
 
 var (
