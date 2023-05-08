@@ -58,18 +58,17 @@ var rootCmd = &cobra.Command{
 		}
 
 		if len(args) == 0 {
-			if err := p.Print(&printer.PrintInput{
-				In:  os.Stdin,
-				Out: os.Stdout,
-			}); err != nil {
+			if err := p.Print(os.Stdin, os.Stdout); err != nil {
 				return err
 			}
 		} else {
 			for _, filename := range args {
-				if err := p.PrintFile(&printer.PrintFileInput{
-					Out:      os.Stdout,
-					Filename: filename,
-				}); err != nil {
+				f, err := os.Open(filename)
+				if err != nil {
+					return err
+				}
+				defer f.Close()
+				if err := p.Print(f, os.Stdout, printer.WithFilename(filename)); err != nil {
 					return err
 				}
 			}

@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"fmt"
 	"io"
-	"os"
 	"strings"
 
 	"github.com/alecthomas/chroma/v2"
@@ -51,39 +50,21 @@ func (p *Printer) SetTheme(t string) {
 	p.theme = t
 }
 
-type PrintFileInput struct {
-	Out      io.Writer
-	Filename string
-}
-
-func (p *Printer) PrintFile(ipt *PrintFileInput) error {
-	f, err := os.Open(ipt.Filename)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
-	if err := p.Print(&PrintInput{
-		In:       f,
-		Out:      ipt.Out,
-		Filename: &ipt.Filename,
-	}); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 type PrintInput struct {
 	In       io.Reader
 	Out      io.Writer
 	Filename *string
 }
 
-func (p *Printer) Print(ipt *PrintInput) error {
+func (p *Printer) Print(in io.Reader, out io.Writer, opts ...Option) error {
+	opt := &option{}
+	for _, o := range opts {
+		o(opt)
+	}
+
 	// read source
 	b := new(strings.Builder)
-	if _, err := io.Copy(b, ipt.In); err != nil {
+	if _, err := io.Copy(b, in); err != nil {
 		return err
 	}
 	src := b.String()
@@ -91,8 +72,8 @@ func (p *Printer) Print(ipt *PrintInput) error {
 	// get lexer
 	var l chroma.Lexer
 	if p.lang == "" {
-		if ipt.Filename != nil {
-			l = lexers.Match(*ipt.Filename)
+		if opt.filename != nil {
+			l = lexers.Match(*opt.filename)
 		}
 		if l == nil {
 			l = lexers.Analyse(src)
@@ -133,7 +114,7 @@ func (p *Printer) Print(ipt *PrintInput) error {
 	if err != nil {
 		return err
 	}
-	if err := f.Format(ipt.Out, s, it); err != nil {
+	if err := f.Format(out, s, it); err != nil {
 		return err
 	}
 
@@ -177,10 +158,7 @@ func PrintThemes() {
 			Format: DefaultFormat,
 			Theme:  t,
 		})
-		if err := p.Print(&PrintInput{
-			In:  strings.NewReader(example),
-			Out: b,
-		}); err != nil {
+		if err := p.Print(strings.NewReader(example), b); err != nil {
 			panic(err)
 		}
 

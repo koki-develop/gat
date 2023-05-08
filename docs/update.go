@@ -106,11 +106,7 @@ func updateFormats() {
 		})
 
 		b := new(bytes.Buffer)
-		OrPanic(p.Print(&printer.PrintInput{
-			In:       strings.NewReader(src),
-			Out:      b,
-			Filename: String("main.go"),
-		}))
+		OrPanic(p.Print(strings.NewReader(src), b, printer.WithFilename("main.go")))
 
 		Must(f.WriteString(fmt.Sprintf("```%s\n", strings.TrimSuffix(format, "-min"))))
 		if strings.HasPrefix(format, "terminal") {
@@ -145,11 +141,7 @@ func updateThemes() {
 		})
 
 		b := new(bytes.Buffer)
-		OrPanic(p.Print(&printer.PrintInput{
-			In:       strings.NewReader(src),
-			Out:      b,
-			Filename: String("main.go"),
-		}))
+		OrPanic(p.Print(strings.NewReader(src), b, printer.WithFilename("main.go")))
 
 		img := Must(os.Create(fmt.Sprintf("./docs/themes/%s.svg", s)))
 		defer img.Close()
