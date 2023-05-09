@@ -9,12 +9,12 @@ import (
 
 func TestFallbackPrettier_Pretty(t *testing.T) {
 	tests := []struct {
-		content string
+		src     string
 		want    string
 		wantErr bool
 	}{
 		{
-			content: "CONTENT",
+			src:     "CONTENT",
 			want:    "CONTENT",
 			wantErr: false,
 		},
@@ -22,7 +22,7 @@ func TestFallbackPrettier_Pretty(t *testing.T) {
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("#%d", i), func(t *testing.T) {
 			f := NewFallbackPrettier()
-			got, err := f.Pretty(tt.content)
+			got, err := f.Pretty(tt.src)
 
 			assert.Equal(t, tt.want, got)
 			if tt.wantErr {

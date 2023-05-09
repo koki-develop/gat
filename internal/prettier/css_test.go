@@ -9,12 +9,12 @@ import (
 
 func TestCSSPrettier_Pretty(t *testing.T) {
 	tests := []struct {
-		css     string
+		src     string
 		want    string
 		wantErr bool
 	}{
 		{
-			css: `body{background-color:#fff;color:#000;}`,
+			src: `body{background-color:#fff;color:#000;}`,
 			want: `body {
   background-color: #fff;
   color: #000;
@@ -26,7 +26,7 @@ func TestCSSPrettier_Pretty(t *testing.T) {
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("#%d", i), func(t *testing.T) {
 			p := NewCSSPrettier()
-			got, err := p.Pretty(tt.css)
+			got, err := p.Pretty(tt.src)
 
 			assert.Equal(t, tt.want, got)
 			if tt.wantErr {
