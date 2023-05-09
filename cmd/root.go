@@ -31,20 +31,6 @@ var rootCmd = &cobra.Command{
 	Short: "cat alternative written in Go",
 	Long:  "cat alternative written in Go.",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		p := printer.New(&printer.PrinterConfig{
-			Lang:   flagLang,
-			Format: flagFormat,
-			Theme:  flagTheme,
-			Pretty: flagPretty,
-		})
-
-		if strings.HasPrefix(flagFormat, "terminal") {
-			ist := term.IsTerminal(int(os.Stdout.Fd()))
-			if !ist && !flagForceColor {
-				p.SetTheme("noop")
-			}
-		}
-
 		switch {
 		case flagListLangs:
 			printer.PrintLangs()
@@ -56,6 +42,20 @@ var rootCmd = &cobra.Command{
 			printer.PrintThemes()
 			return nil
 		}
+
+		if strings.HasPrefix(flagFormat, "terminal") {
+			ist := term.IsTerminal(int(os.Stdout.Fd()))
+			if !ist && !flagForceColor {
+				flagTheme = "noop"
+			}
+		}
+
+		p := printer.New(&printer.PrinterConfig{
+			Lang:   flagLang,
+			Format: flagFormat,
+			Theme:  flagTheme,
+			Pretty: flagPretty,
+		})
 
 		if len(args) == 0 {
 			if err := p.Print(os.Stdin, os.Stdout); err != nil {
