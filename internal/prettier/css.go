@@ -11,8 +11,7 @@ var (
 	CSS = Register("CSS", NewCSSPrettier())
 )
 
-type CSSPrettier struct {
-}
+type CSSPrettier struct{}
 
 func NewCSSPrettier() *CSSPrettier {
 	return &CSSPrettier{}
@@ -20,6 +19,7 @@ func NewCSSPrettier() *CSSPrettier {
 
 func (p *CSSPrettier) Pretty(c string) (string, error) {
 	f := csstool.NewCSSFormat(2, false, nil)
+	f.AlwaysSemicolon = true
 
 	b := new(bytes.Buffer)
 	if err := f.Format(strings.NewReader(c), b); err != nil {
