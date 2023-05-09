@@ -13,17 +13,17 @@ import (
 var (
 	version string
 
-	lang   string
-	format string
-	theme  string
+	flagLang   string
+	flagFormat string
+	flagTheme  string
 
-	pretty bool
+	flagPretty bool
 
-	listLangs   bool
-	listFormats bool
-	listThemes  bool
+	flagListLangs   bool
+	flagListFormats bool
+	flagListThemes  bool
 
-	forceColor bool
+	flagForceColor bool
 )
 
 var rootCmd = &cobra.Command{
@@ -32,27 +32,27 @@ var rootCmd = &cobra.Command{
 	Long:  "cat alternative written in Go.",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		p := printer.New(&printer.PrinterConfig{
-			Lang:   lang,
-			Format: format,
-			Theme:  theme,
-			Pretty: pretty,
+			Lang:   flagLang,
+			Format: flagFormat,
+			Theme:  flagTheme,
+			Pretty: flagPretty,
 		})
 
-		if strings.HasPrefix(format, "terminal") {
+		if strings.HasPrefix(flagFormat, "terminal") {
 			ist := term.IsTerminal(int(os.Stdout.Fd()))
-			if !ist && !forceColor {
+			if !ist && !flagForceColor {
 				p.SetTheme("noop")
 			}
 		}
 
 		switch {
-		case listLangs:
+		case flagListLangs:
 			printer.PrintLangs()
 			return nil
-		case listFormats:
+		case flagListFormats:
 			printer.PrintFormats()
 			return nil
-		case listThemes:
+		case flagListThemes:
 			printer.PrintThemes()
 			return nil
 		}
@@ -96,15 +96,15 @@ func init() {
 	rootCmd.Version = version
 
 	// flags
-	rootCmd.Flags().StringVarP(&lang, "lang", "l", "", "language for syntax highlighting")
-	rootCmd.Flags().StringVarP(&format, "format", "f", printer.DefaultFormat, "output format")
-	rootCmd.Flags().StringVarP(&theme, "theme", "t", printer.DefaultTheme, "highlight theme")
-	rootCmd.Flags().BoolVarP(&forceColor, "force-color", "c", false, "force colored output")
+	rootCmd.Flags().StringVarP(&flagLang, "lang", "l", "", "language for syntax highlighting")
+	rootCmd.Flags().StringVarP(&flagFormat, "format", "f", printer.DefaultFormat, "output format")
+	rootCmd.Flags().StringVarP(&flagTheme, "theme", "t", printer.DefaultTheme, "highlight theme")
+	rootCmd.Flags().BoolVarP(&flagForceColor, "force-color", "c", false, "force colored output")
 
-	rootCmd.Flags().BoolVarP(&pretty, "pretty", "p", false, "whether to format a content pretty")
+	rootCmd.Flags().BoolVarP(&flagPretty, "pretty", "p", false, "whether to format a content pretty")
 
-	rootCmd.Flags().BoolVar(&listLangs, "list-langs", false, "print a list of supported languages for syntax highlighting")
-	rootCmd.Flags().BoolVar(&listFormats, "list-formats", false, "print a list of supported output formats")
-	rootCmd.Flags().BoolVar(&listThemes, "list-themes", false, "print a list of supported themes with preview")
+	rootCmd.Flags().BoolVar(&flagListLangs, "list-langs", false, "print a list of supported languages for syntax highlighting")
+	rootCmd.Flags().BoolVar(&flagListFormats, "list-formats", false, "print a list of supported output formats")
+	rootCmd.Flags().BoolVar(&flagListThemes, "list-themes", false, "print a list of supported themes with preview")
 	rootCmd.MarkFlagsMutuallyExclusive("list-langs", "list-formats", "list-themes")
 }
