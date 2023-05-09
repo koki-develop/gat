@@ -12,6 +12,7 @@ jobs:
         with:
           go-version-file: go.mod
       - run: go build .
+      - run: go test ./...
 
   lint:
     runs-on: ubuntu-latest
