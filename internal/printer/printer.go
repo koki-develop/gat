@@ -50,12 +50,6 @@ func (p *Printer) SetTheme(t string) {
 	p.theme = t
 }
 
-type PrintInput struct {
-	In       io.Reader
-	Out      io.Writer
-	Filename *string
-}
-
 func (p *Printer) Print(in io.Reader, out io.Writer, opts ...Option) error {
 	opt := &option{}
 	for _, o := range opts {
