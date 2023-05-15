@@ -28,6 +28,15 @@ $ brew install gat
 $ brew install koki-develop/tap/gat
 ```
 
+### Arch Linux(AUR)
+```console
+$ yay -S gat # Latest version
+
+$ yay -S gat-git # Git version
+
+$ yay -S gat-bin # Binary version from Releases
+```
+
 ### `go install`
 
 ```console
