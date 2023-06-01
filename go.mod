@@ -7,7 +7,7 @@ require (
 	github.com/client9/csstool v0.2.2
 	github.com/google/yamlfmt v0.9.0
 	github.com/spf13/cobra v1.7.0
-	github.com/stretchr/testify v1.8.2
+	github.com/stretchr/testify v1.8.4
 	github.com/tdewolff/minify/v2 v2.12.5
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
 	golang.org/x/term v0.8.0
