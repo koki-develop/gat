@@ -4,7 +4,12 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
+	"image"
+	_ "image/gif"
+	_ "image/jpeg"
+	_ "image/png"
 	"io"
+	"net/http"
 	"strings"
 
 	"github.com/alecthomas/chroma/v2"
@@ -14,6 +19,7 @@ import (
 	_ "github.com/koki-develop/gat/internal/formatter"
 	"github.com/koki-develop/gat/internal/prettier"
 	_ "github.com/koki-develop/gat/internal/style"
+	"github.com/mattn/go-sixel"
 )
 
 var (
@@ -57,10 +63,23 @@ func (p *Printer) Print(in io.Reader, out io.Writer, opts ...Option) error {
 	}
 
 	// read source
-	b := new(strings.Builder)
+	b := new(bytes.Buffer)
 	if _, err := io.Copy(b, in); err != nil {
 		return err
 	}
+
+	// print image
+	contentType := http.DetectContentType(b.Bytes())
+	if strings.HasPrefix(contentType, "image/") {
+		img, _, err := image.Decode(b)
+		if err == nil {
+			if err := sixel.NewEncoder(out).Encode(img); err != nil {
+				return err
+			}
+			return nil
+		}
+	}
+
 	src := b.String()
 
 	// get lexer

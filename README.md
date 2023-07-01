@@ -96,6 +96,18 @@ function gess() {
 }
 ```
 
+## Print Image
+
+If your terminal supports Sixel, you can print images.
+
+![](./docs/image.png)
+
+Supported image formats include:
+
+- JPEG
+- PNG
+- GIF (animation not supported)
+
 ## LICENSE
 
 [MIT](./LICENSE)

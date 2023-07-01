@@ -6,6 +6,7 @@ require (
 	github.com/alecthomas/chroma/v2 v2.7.0
 	github.com/client9/csstool v0.2.2
 	github.com/google/yamlfmt v0.9.0
+	github.com/mattn/go-sixel v0.0.5
 	github.com/spf13/cobra v1.7.0
 	github.com/stretchr/testify v1.8.4
 	github.com/tdewolff/minify/v2 v2.12.7
@@ -23,6 +24,7 @@ require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/soniakeys/quant v1.0.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tdewolff/parse v2.3.3+incompatible // indirect
 	github.com/tdewolff/parse/v2 v2.6.6 // indirect
