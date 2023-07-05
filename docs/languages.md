@@ -13,8 +13,11 @@
 | `ApacheConf` | `apacheconf`, `aconf`, `apache` |
 | `APL` | `apl` |
 | `AppleScript` | `applescript` |
+| `ArangoDB AQL` | `aql` |
 | `Arduino` | `arduino` |
 | `ArmAsm` | `armasm` |
+| `AutoHotkey` | `autohotkey`, `ahk` |
+| `AutoIt` | `autoit` |
 | `Awk` | `awk`, `gawk`, `mawk`, `nawk` |
 | `Ballerina` | `ballerina` |
 | `Bash` | `bash`, `sh`, `ksh`, `zsh`, `shell` |
@@ -82,6 +85,7 @@
 | `Igor` | `igor`, `igorpro` |
 | `INI` | `ini`, `cfg`, `dosini` |
 | `Io` | `io` |
+| `ISCdhcpd` | `iscdhcpd` |
 | `J` | `j` |
 | `Java` | `java` |
 | `JavaScript` | `js`, `javascript` |
@@ -153,6 +157,7 @@
 | `SCSS` | `scss` |
 | `Sed` | `sed`, `gsed`, `ssed` |
 | `Sieve` | `sieve` |
+| `Smali` | `smali` |
 | `Smalltalk` | `smalltalk`, `squeak`, `st` |
 | `Snobol` | `snobol` |
 | `Solidity` | `sol`, `solidity` |
@@ -166,6 +171,7 @@
 | `SYSTEMD` | `systemd` |
 | `systemverilog` | `systemverilog`, `sv` |
 | `TableGen` | `tablegen` |
+| `Tal` | `tal`, `uxntal` |
 | `TASM` | `tasm` |
 | `Tcl` | `tcl` |
 | `Tcsh` | `tcsh`, `csh` |
@@ -190,6 +196,7 @@
 | `VHS` | `vhs`, `tape`, `cassette` |
 | `vue` | `vue`, `vuejs` |
 | `WDTE` | |
+| `WebGPU Shading Language` | `wgsl` |
 | `Whiley` | `whiley` |
 | `XML` | `xml` |
 | `Xorg` | `xorg.conf` |
