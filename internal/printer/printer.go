@@ -3,6 +3,7 @@ package printer
 import (
 	"bufio"
 	"bytes"
+	"compress/gzip"
 	"fmt"
 	"image"
 	_ "image/gif"
@@ -80,7 +81,22 @@ func (p *Printer) Print(in io.Reader, out io.Writer, opts ...Option) error {
 		}
 	}
 
-	src := b.String()
+	var src string
+	if contentType == "application/x-gzip" {
+		r, err := gzip.NewReader(b)
+		if err != nil {
+			return err
+		}
+		defer r.Close()
+
+		b := new(bytes.Buffer)
+		if _, err := io.Copy(b, r); err != nil {
+			return err
+		}
+		src = b.String()
+	} else {
+		src = b.String()
+	}
 
 	// get lexer
 	var l chroma.Lexer
