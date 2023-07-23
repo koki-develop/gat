@@ -15,11 +15,11 @@ jobs:
         with:
           go-version-file: go.mod
 
-      - uses: charmbracelet/vhs-action@v1
+      - uses: charmbracelet/vhs-action@v2
         with:
           path: ./tapes/demo.tape
           token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: charmbracelet/vhs-action@v1
+      - uses: charmbracelet/vhs-action@v2
         with:
           path: ./tapes/gess.tape
           token: ${{ secrets.GITHUB_TOKEN }}
