@@ -1,14 +1,26 @@
-# gat
+<p align="center">
+<img src="./assets/logo_light.svg#gh-light-mode-only" >
+<img src="./assets/logo_dark.svg#gh-dark-mode-only" >
+</p>
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/koki-develop/gat)](https://github.com/koki-develop/gat/releases/latest)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/koki-develop/gat/ci.yml?logo=github)](https://github.com/koki-develop/gat/actions/workflows/ci.yml)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/koki-develop/gat?style=flat&logo=codeclimate)](https://codeclimate.com/github/koki-develop/gat/maintainability)
-[![Go Report Card](https://goreportcard.com/badge/github.com/koki-develop/gat)](https://goreportcard.com/report/github.com/koki-develop/gat)
-[![LICENSE](https://img.shields.io/github/license/koki-develop/gat)](./LICENSE)
-
+<p align="center">
 cat alternative written in Go.
+</p>
 
-![demo](./docs/demo.gif)
+<p align="center">
+<a href="https://github.com/koki-develop/gat/releases/latest"><img src="https://img.shields.io/github/v/release/koki-develop/gat" alt="GitHub release (latest by date)"></a>
+<a href="https://github.com/koki-develop/gat/releases/latest"><img alt="GitHub all releases" src="https://img.shields.io/github/downloads/koki-develop/gat/total?style=flat"></a>
+<a href="https://github.com/koki-develop/gat/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/koki-develop/gat/ci.yml?logo=github" alt="GitHub Workflow Status"></a>
+<a href="https://codeclimate.com/github/koki-develop/gat/maintainability"><img src="https://img.shields.io/codeclimate/maintainability/koki-develop/gat?style=flat&amp;logo=codeclimate" alt="Maintainability"></a>
+<a href="https://goreportcard.com/report/github.com/koki-develop/gat"><img src="https://goreportcard.com/badge/github.com/koki-develop/gat" alt="Go Report Card"></a>
+<a href="./LICENSE"><img src="https://img.shields.io/github/license/koki-develop/gat" alt="LICENSE"></a>
+</p>
+
+<p align="center">
+<img src="./docs/demo.gif" >
+</p>
+
+## Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
