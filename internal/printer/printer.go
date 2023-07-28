@@ -11,6 +11,7 @@ import (
 	_ "image/png"
 	"io"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/alecthomas/chroma/v2"
@@ -24,9 +25,17 @@ import (
 )
 
 var (
-	DefaultFormat = "terminal256"
-	DefaultTheme  = "monokai"
+	DefaultFormat = envOrDefault("GAT_FORMAT", "terminal256")
+	DefaultTheme  = envOrDefault("GAT_THEME", "monokai")
 )
+
+func envOrDefault(name, def string) string {
+	v := os.Getenv(name)
+	if v == "" {
+		return def
+	}
+	return v
+}
 
 type Printer struct {
 	lang   string
