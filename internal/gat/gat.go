@@ -1,0 +1,177 @@
+package gat
+
+import (
+	"bytes"
+	"compress/gzip"
+	"fmt"
+	"image"
+	_ "image/gif"
+	_ "image/jpeg"
+	_ "image/png"
+	"io"
+	"net/http"
+	"strings"
+
+	"github.com/alecthomas/chroma/v2"
+	"github.com/koki-develop/gat/internal/formatters"
+	"github.com/koki-develop/gat/internal/lexers"
+	"github.com/koki-develop/gat/internal/prettier"
+	"github.com/koki-develop/gat/internal/styles"
+	"github.com/mattn/go-sixel"
+)
+
+type Config struct {
+	Language string
+	Format   string
+	Theme    string
+}
+
+type Gat struct {
+	lexer     chroma.Lexer
+	formatter chroma.Formatter
+	style     *chroma.Style
+}
+
+func New(cfg *Config) (*Gat, error) {
+	g := &Gat{}
+
+	// lexer
+	if cfg.Language != "" {
+		l, err := lexers.Get(lexers.WithFilename(cfg.Language))
+		if err != nil {
+			return nil, err
+		}
+		g.lexer = l
+	}
+
+	// formatter
+	f, ok := formatters.Get(cfg.Format)
+	if !ok {
+		return nil, fmt.Errorf("unknown format: %s", cfg.Format)
+	}
+	g.formatter = f
+
+	// style
+	s, ok := styles.Get(cfg.Theme)
+	if !ok {
+		return nil, fmt.Errorf("unknown theme: %s", cfg.Theme)
+	}
+	g.style = s
+
+	return g, nil
+}
+
+type printOption struct {
+	Pretty   bool
+	Filename string
+}
+
+type PrintOption func(*printOption)
+
+func WithPretty(p bool) PrintOption {
+	return func(o *printOption) {
+		o.Pretty = p
+	}
+}
+
+func WithFilename(name string) PrintOption {
+	return func(o *printOption) {
+		o.Filename = name
+	}
+}
+
+func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
+	// parse options
+	opt := &printOption{}
+	for _, o := range opts {
+		o(opt)
+	}
+
+	// read w
+	buf := new(bytes.Buffer)
+	if _, err := io.Copy(buf, r); err != nil {
+		return err
+	}
+
+	// detect content type
+	contentType := http.DetectContentType(buf.Bytes())
+
+	// print image
+	if strings.HasPrefix(contentType, "image/") {
+		return g.printImage(w, buf)
+	}
+
+	// read source
+	src, err := g.readSource(buf, contentType)
+	if err != nil {
+		return err
+	}
+
+	// analyse lexer
+	if g.lexer == nil {
+		l, err := lexers.Get(lexers.WithFilename(opt.Filename), lexers.WithSource(src))
+		if err != nil {
+			return err
+		}
+		g.lexer = l
+	}
+
+	// pretty code
+	if opt.Pretty {
+		p := prettier.Get(g.lexer.Config().Name)
+		if p != nil {
+			src, err = p.Pretty(src)
+			if err != nil {
+				return err
+			}
+		}
+	}
+
+	// print
+	it, err := g.lexer.Tokenise(nil, src)
+	if err != nil {
+		return err
+	}
+	if err := g.formatter.Format(w, g.style, it); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (*Gat) printImage(w io.Writer, r io.Reader) error {
+	img, _, err := image.Decode(r)
+	if err != nil {
+		return err
+	}
+
+	if err := sixel.NewEncoder(w).Encode(img); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (g *Gat) readSource(buf *bytes.Buffer, contentType string) (string, error) {
+	switch contentType {
+	case "application/x-gzip":
+		return g.readGzip(buf)
+	default:
+		return buf.String(), nil
+	}
+}
+
+func (*Gat) readGzip(r io.Reader) (string, error) {
+	buf := new(bytes.Buffer)
+	gz, err := gzip.NewReader(r)
+	if err != nil {
+		return "", err
+	}
+	defer gz.Close()
+
+	if _, err := io.Copy(buf, gz); err != nil {
+		return "", err
+	}
+
+	return buf.String(), nil
+}
