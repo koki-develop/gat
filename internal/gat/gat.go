@@ -179,6 +179,7 @@ func (*Gat) readGzip(r io.Reader) (string, error) {
 
 func PrintLanguages(w io.Writer) error {
 	tw := tabwriter.NewWriter(w, 0, 0, 1, ' ', 0)
+
 	if _, err := tw.Write([]byte("NAME\tALIASES\n")); err != nil {
 		return err
 	}
@@ -189,5 +190,22 @@ func PrintLanguages(w io.Writer) error {
 			return err
 		}
 	}
+
+	return tw.Flush()
+}
+
+func PrintFormats(w io.Writer) error {
+	tw := tabwriter.NewWriter(w, 0, 0, 1, ' ', 0)
+
+	if _, err := tw.Write([]byte("NAME\n")); err != nil {
+		return err
+	}
+
+	for _, f := range formatters.List() {
+		if _, err := tw.Write([]byte(fmt.Sprintf("%s\n", f))); err != nil {
+			return err
+		}
+	}
+
 	return tw.Flush()
 }
