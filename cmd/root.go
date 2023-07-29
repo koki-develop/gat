@@ -5,7 +5,7 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"github.com/koki-develop/gat/internal/printer"
+	"github.com/koki-develop/gat/internal/gat"
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
 )
@@ -33,14 +33,11 @@ var rootCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		switch {
 		case flagListLangs:
-			printer.PrintLangs()
-			return nil
+			return gat.PrintLanguages(os.Stdout)
 		case flagListFormats:
-			printer.PrintFormats()
-			return nil
+			return gat.PrintFormats(os.Stdout)
 		case flagListThemes:
-			printer.PrintThemes()
-			return nil
+			return gat.PrintThemes(os.Stdout)
 		}
 
 		if strings.HasPrefix(flagFormat, "terminal") {
@@ -50,27 +47,27 @@ var rootCmd = &cobra.Command{
 			}
 		}
 
-		p := printer.New(&printer.PrinterConfig{
-			Lang:   flagLang,
-			Format: flagFormat,
-			Theme:  flagTheme,
-			Pretty: flagPretty,
+		g, err := gat.New(&gat.Config{
+			Language: flagLang,
+			Format:   flagFormat,
+			Theme:    flagTheme,
 		})
+		if err != nil {
+			return err
+		}
 
 		if len(args) == 0 {
-			if err := p.Print(os.Stdin, os.Stdout); err != nil {
+			return g.Print(os.Stdout, os.Stdin, gat.WithPretty(flagPretty))
+		}
+
+		for _, filename := range args {
+			f, err := os.Open(filename)
+			if err != nil {
 				return err
 			}
-		} else {
-			for _, filename := range args {
-				f, err := os.Open(filename)
-				if err != nil {
-					return err
-				}
-				defer f.Close()
-				if err := p.Print(f, os.Stdout, printer.WithFilename(filename)); err != nil {
-					return err
-				}
+			defer f.Close()
+			if err := g.Print(os.Stdout, f, gat.WithPretty(flagPretty), gat.WithFilename(filename)); err != nil {
+				return err
 			}
 		}
 
@@ -97,8 +94,8 @@ func init() {
 
 	// flags
 	rootCmd.Flags().StringVarP(&flagLang, "lang", "l", "", "language for syntax highlighting")
-	rootCmd.Flags().StringVarP(&flagFormat, "format", "f", printer.DefaultFormat, "output format")
-	rootCmd.Flags().StringVarP(&flagTheme, "theme", "t", printer.DefaultTheme, "highlight theme")
+	rootCmd.Flags().StringVarP(&flagFormat, "format", "f", "terminal256", "output format")
+	rootCmd.Flags().StringVarP(&flagTheme, "theme", "t", "monokai", "highlight theme")
 	rootCmd.Flags().BoolVarP(&flagForceColor, "force-color", "c", false, "force colored output")
 
 	rootCmd.Flags().BoolVarP(&flagPretty, "pretty", "p", false, "whether to format a content pretty")
