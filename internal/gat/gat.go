@@ -120,8 +120,8 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 
 	// pretty code
 	if opt.Pretty {
-		p := prettier.Get(g.lexer.Config().Name)
-		if p != nil {
+		p, ok := prettier.Get(g.lexer.Config().Name)
+		if ok {
 			src, err = p.Pretty(src)
 			if err != nil {
 				return err

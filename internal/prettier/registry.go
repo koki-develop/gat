@@ -7,10 +7,7 @@ func Register(name string, p Prettier) Prettier {
 	return p
 }
 
-func Get(name string) Prettier {
+func Get(name string) (Prettier, bool) {
 	p, ok := Registry[name]
-	if !ok {
-		return nil
-	}
-	return p
+	return p, ok
 }
