@@ -10,7 +10,7 @@ func Register(name string, p Prettier) Prettier {
 func Get(name string) Prettier {
 	p, ok := Registry[name]
 	if !ok {
-		return NewFallbackPrettier()
+		return nil
 	}
 	return p
 }
