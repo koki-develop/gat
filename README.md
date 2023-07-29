@@ -80,12 +80,14 @@ See [languages.md](./docs/languages.md) for valid languages.
 ### `-f`, `--format`
 
 Set the output format ( default: `terminal256` ).  
+Alternatively, it can be set using the `GAT_FORMAT` environment variable.
 See [formats.md](./docs/formats.md) for valid formats.
 
 ### `-t`, `--theme`
 
 Set the highlight theme ( default: `monokai` ).  
-See [themes.md](./docs/themes.md) for valid thtmes.
+Alternatively, it can be set using the `GAT_THEME` environment variable.
+See [themes.md](./docs/themes.md) for valid themes.
 
 ## `-p`, `--pretty`
 
