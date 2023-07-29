@@ -1,4 +1,4 @@
-package style
+package styles
 
 import (
 	"embed"
@@ -31,4 +31,9 @@ func init() {
 		styles.Register(style)
 		_ = r.Close()
 	}
+}
+
+func Get(name string) (*chroma.Style, bool) {
+	s, ok := styles.Registry[name]
+	return s, ok
 }
