@@ -6,10 +6,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/alecthomas/chroma/v2/formatters"
-	"github.com/alecthomas/chroma/v2/lexers"
-	"github.com/alecthomas/chroma/v2/styles"
-	"github.com/koki-develop/gat/internal/printer"
+	"github.com/koki-develop/gat/internal/formatters"
+	"github.com/koki-develop/gat/internal/gat"
+	"github.com/koki-develop/gat/internal/lexers"
+	"github.com/koki-develop/gat/internal/styles"
 )
 
 var (
@@ -62,7 +62,7 @@ func updateLanguages() {
 	Must(f.WriteString("| Language | Aliases |\n"))
 	Must(f.WriteString("| --- | --- |\n"))
 
-	for _, l := range lexers.GlobalLexerRegistry.Lexers {
+	for _, l := range lexers.List() {
 		cfg := l.Config()
 		Must(f.WriteString(fmt.Sprintf("| `%s` ", cfg.Name)))
 
@@ -92,21 +92,22 @@ func updateFormats() {
 
 	Must(f.WriteString("# Output Formats\n\n"))
 
-	for _, format := range formatters.Names() {
+	for _, format := range formatters.List() {
 		Must(f.WriteString(fmt.Sprintf("- [`%s`](#%s)\n", format, format)))
 	}
 	Must(f.WriteString("\n"))
 
-	for _, format := range formatters.Names() {
+	for _, format := range formatters.List() {
 		Must(f.WriteString(fmt.Sprintf("## `%s`\n\n", format)))
 
-		p := printer.New(&printer.PrinterConfig{
-			Format: format,
-			Theme:  printer.DefaultTheme,
-		})
+		g := Must(gat.New(&gat.Config{
+			Format:   format,
+			Theme:    "monokai",
+			Language: "go",
+		}))
 
 		b := new(bytes.Buffer)
-		OrPanic(p.Print(strings.NewReader(src), b, printer.WithFilename("main.go")))
+		OrPanic(g.Print(b, strings.NewReader(src)))
 
 		Must(f.WriteString(fmt.Sprintf("```%s\n", strings.TrimSuffix(format, "-min"))))
 		if strings.HasPrefix(format, "terminal") {
@@ -127,21 +128,22 @@ func updateThemes() {
 
 	Must(f.WriteString("# Highlight Themes\n\n"))
 
-	for _, s := range styles.Names() {
+	for _, s := range styles.List() {
 		Must(f.WriteString(fmt.Sprintf("- [`%s`](#%s)\n", s, s)))
 	}
 	Must(f.WriteString("\n"))
 
-	for _, s := range styles.Names() {
+	for _, s := range styles.List() {
 		Must(f.WriteString(fmt.Sprintf("## `%s`\n\n", s)))
 
-		p := printer.New(&printer.PrinterConfig{
-			Format: "svg",
-			Theme:  s,
-		})
+		g := Must(gat.New(&gat.Config{
+			Format:   "svg",
+			Theme:    s,
+			Language: "go",
+		}))
 
 		b := new(bytes.Buffer)
-		OrPanic(p.Print(strings.NewReader(src), b, printer.WithFilename("main.go")))
+		OrPanic(g.Print(b, strings.NewReader(src)))
 
 		img := Must(os.Create(fmt.Sprintf("./docs/themes/%s.svg", s)))
 		defer img.Close()
