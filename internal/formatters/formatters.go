@@ -6,6 +6,10 @@ import (
 )
 
 func Get(name string) (chroma.Formatter, bool) {
-	l, ok := formatters.Registry[name]
-	return l, ok
+	f, ok := formatters.Registry[name]
+	return f, ok
+}
+
+func List() []string {
+	return formatters.Names()
 }

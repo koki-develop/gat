@@ -37,3 +37,7 @@ func Get(name string) (*chroma.Style, bool) {
 	s, ok := styles.Registry[name]
 	return s, ok
 }
+
+func List() []string {
+	return styles.Names()
+}

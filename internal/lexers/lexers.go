@@ -60,3 +60,7 @@ func Get(opts ...Option) (chroma.Lexer, error) {
 	}
 	return chroma.Coalesce(l), nil
 }
+
+func List() []chroma.Lexer {
+	return lexers.GlobalLexerRegistry.Lexers
+}
