@@ -89,12 +89,12 @@ Set the highlight theme ( default: `monokai` ).
 Alternatively, it can be set using the `GAT_THEME` environment variable.
 See [themes.md](./docs/themes.md) for valid themes.
 
-## `-p`, `--pretty`
+### `-p`, `--pretty`
 
 Format a content pretty.  
 For unsupported languages, this flag is ignored.
 
-## `-c`, `--force-color`
+### `-c`, `--force-color`
 
 `gat` disables colored output when piped to another program.  
 Settings the `--force-color` forces colored output to be enabled.  
@@ -110,7 +110,7 @@ function gess() {
 }
 ```
 
-## Print Image
+### Print Image
 
 If your terminal supports Sixel, you can print images.
 
