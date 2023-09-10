@@ -24,6 +24,9 @@ var (
 	// --force-color
 	flagForceColor bool
 
+	// --force-binary
+	flagForceBinary bool
+
 	// --pretty
 	flagPretty bool
 
@@ -42,6 +45,7 @@ func init() {
 	rootCmd.Flags().StringVarP(&flagFormat, "format", "f", flagFormatDefault, "output format")
 	rootCmd.Flags().StringVarP(&flagTheme, "theme", "t", flagThemeDefault, "highlight theme")
 	rootCmd.Flags().BoolVarP(&flagForceColor, "force-color", "c", false, "force colored output")
+	rootCmd.Flags().BoolVarP(&flagForceBinary, "force-binary", "b", false, "force binary output")
 
 	rootCmd.Flags().BoolVarP(&flagPretty, "pretty", "p", false, "whether to format a content pretty")
 

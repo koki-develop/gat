@@ -23,19 +23,23 @@ import (
 )
 
 type Config struct {
-	Language string
-	Format   string
-	Theme    string
+	Language    string
+	Format      string
+	Theme       string
+	ForceBinary bool
 }
 
 type Gat struct {
-	lexer     chroma.Lexer
-	formatter chroma.Formatter
-	style     *chroma.Style
+	lexer       chroma.Lexer
+	formatter   chroma.Formatter
+	style       *chroma.Style
+	forceBinary bool
 }
 
 func New(cfg *Config) (*Gat, error) {
-	g := &Gat{}
+	g := &Gat{
+		forceBinary: cfg.ForceBinary,
+	}
 
 	// lexer
 	if cfg.Language != "" {
@@ -99,14 +103,40 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 	contentType := http.DetectContentType(buf.Bytes())
 
 	// print image
-	if strings.HasPrefix(contentType, "image/") {
-		return g.printImage(w, buf)
+	if strings.HasPrefix(contentType, "image/") && !g.forceBinary {
+		if err := g.printImage(w, buf); err == nil {
+			return nil
+		}
 	}
 
 	// read source
-	src, err := g.readSource(buf, contentType)
-	if err != nil {
-		return err
+	var src string
+	switch contentType {
+	case "application/x-gzip":
+		s, err := g.readGzip(buf)
+		if err != nil {
+			return err
+		}
+		src = s
+	default:
+		isBin, err := isBinary(buf.Bytes())
+		if err != nil {
+			return err
+		}
+		if isBin {
+			if g.forceBinary {
+				if _, err := buf.WriteTo(w); err != nil {
+					return err
+				}
+			} else {
+				if _, err := w.Write([]byte("+----------------------------------------------------------------------------+\n| NOTE: This is a binary file. To force output, use the --force-binary flag. |\n+----------------------------------------------------------------------------+\n")); err != nil {
+					return err
+				}
+			}
+			return nil
+		}
+
+		src = buf.String()
 	}
 
 	// analyse lexer
@@ -122,10 +152,11 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 	if opt.Pretty {
 		p, ok := prettier.Get(g.lexer.Config().Name)
 		if ok {
-			src, err = p.Pretty(src)
+			s, err := p.Pretty(src)
 			if err != nil {
 				return err
 			}
+			src = s
 		}
 	}
 
@@ -154,15 +185,6 @@ func (*Gat) printImage(w io.Writer, r io.Reader) error {
 	return nil
 }
 
-func (g *Gat) readSource(buf *bytes.Buffer, contentType string) (string, error) {
-	switch contentType {
-	case "application/x-gzip":
-		return g.readGzip(buf)
-	default:
-		return buf.String(), nil
-	}
-}
-
 func (*Gat) readGzip(r io.Reader) (string, error) {
 	buf := new(bytes.Buffer)
 	gz, err := gzip.NewReader(r)
@@ -176,6 +198,13 @@ func (*Gat) readGzip(r io.Reader) (string, error) {
 	}
 
 	return buf.String(), nil
+}
+
+func isBinary(data []byte) (bool, error) {
+	if len(data) < 1024 {
+		return bytes.IndexByte(data, 0) != -1, nil
+	}
+	return bytes.IndexByte(data[:1024], 0) != -1, nil
 }
 
 func PrintLanguages(w io.Writer) error {
