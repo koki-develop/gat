@@ -119,11 +119,7 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 		}
 		src = s
 	default:
-		isBin, err := isBinary(buf.Bytes())
-		if err != nil {
-			return err
-		}
-		if isBin {
+		if isBinary(buf.Bytes()) {
 			if g.forceBinary {
 				if _, err := buf.WriteTo(w); err != nil {
 					return err
@@ -200,11 +196,11 @@ func (*Gat) readGzip(r io.Reader) (string, error) {
 	return buf.String(), nil
 }
 
-func isBinary(data []byte) (bool, error) {
+func isBinary(data []byte) bool {
 	if len(data) < 1024 {
-		return bytes.IndexByte(data, 0) != -1, nil
+		return bytes.IndexByte(data, 0) != -1
 	}
-	return bytes.IndexByte(data[:1024], 0) != -1, nil
+	return bytes.IndexByte(data[:1024], 0) != -1
 }
 
 func PrintLanguages(w io.Writer) error {
