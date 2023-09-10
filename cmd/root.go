@@ -25,15 +25,19 @@ var rootCmd = &cobra.Command{
 
 		if strings.HasPrefix(flagFormat, "terminal") {
 			ist := term.IsTerminal(int(os.Stdout.Fd()))
-			if !ist && !flagForceColor {
-				flagTheme = "noop"
+			if !ist {
+				if !flagForceColor {
+					flagTheme = "noop"
+				}
+				flagForceBinary = true
 			}
 		}
 
 		g, err := gat.New(&gat.Config{
-			Language: flagLang,
-			Format:   flagFormat,
-			Theme:    flagTheme,
+			Language:    flagLang,
+			Format:      flagFormat,
+			Theme:       flagTheme,
+			ForceBinary: flagForceBinary,
 		})
 		if err != nil {
 			return err
