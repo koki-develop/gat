@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/alecthomas/chroma/v2 v2.8.0
 	github.com/client9/csstool v0.2.2
-	github.com/google/yamlfmt v0.9.0
+	github.com/google/yamlfmt v0.10.0
 	github.com/mattn/go-sixel v0.0.5
 	github.com/spf13/cobra v1.7.0
 	github.com/stretchr/testify v1.8.4
