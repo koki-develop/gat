@@ -21,7 +21,7 @@
 | `Awk` | `awk`, `gawk`, `mawk`, `nawk` |
 | `Ballerina` | `ballerina` |
 | `Bash` | `bash`, `sh`, `ksh`, `zsh`, `shell` |
-| `BashSession` | `bash-session`, `console`, `shell-session` |
+| `Bash Session` | `bash-session`, `console`, `shell-session` |
 | `Batchfile` | `bat`, `batch`, `dosbatch`, `winbatch` |
 | `BibTeX` | `bib`, `bibtex` |
 | `Bicep` | `bicep` |
@@ -29,21 +29,24 @@
 | `BNF` | `bnf` |
 | `BQN` | `bqn` |
 | `Brainfuck` | `brainfuck`, `bf` |
+| `C#` | `csharp`, `c#` |
 | `C++` | `cpp`, `c++` |
 | `C` | `c` |
 | `Cap'n Proto` | `capnp` |
+| `Cassandra CQL` | `cassandra`, `cql` |
 | `Ceylon` | `ceylon` |
 | `CFEngine3` | `cfengine3`, `cf3` |
 | `cfstatement` | `cfs` |
 | `ChaiScript` | `chai`, `chaiscript` |
-| `Clojure` | `clojure`, `clj` |
+| `Chapel` | `chapel`, `chpl` |
+| `Cheetah` | `cheetah`, `spitfire` |
+| `Clojure` | `clojure`, `clj`, `edn` |
 | `CMake` | `cmake` |
 | `COBOL` | `cobol` |
 | `CoffeeScript` | `coffee-script`, `coffeescript`, `coffee` |
 | `Common Lisp` | `common-lisp`, `cl`, `lisp` |
 | `Coq` | `coq` |
 | `Crystal` | `cr`, `crystal` |
-| `C#` | `csharp`, `c#` |
 | `CSS` | `css` |
 | `Cython` | `cython`, `pyx`, `pyrex` |
 | `D` | `d` |
@@ -51,6 +54,7 @@
 | `Diff` | `diff`, `udiff` |
 | `Django/Jinja` | `django`, `jinja` |
 | `dns` | `zone`, `bind` |
+| `Docker` | `docker`, `dockerfile` |
 | `DTD` | `dtd` |
 | `Dylan` | `dylan` |
 | `EBNF` | `ebnf` |
@@ -63,13 +67,15 @@
 | `Fish` | `fish`, `fishshell` |
 | `Forth` | `forth` |
 | `Fortran` | `fortran`, `f90` |
+| `FortranFixed` | `fortranfixed` |
 | `FSharp` | `fsharp` |
 | `GAS` | `gas`, `asm` |
 | `GDScript` | `gdscript`, `gd` |
+| `GDScript3` | `gdscript3`, `gd3` |
 | `Gherkin` | `cucumber`, `Cucumber`, `gherkin`, `Gherkin` |
 | `GLSL` | `glsl` |
 | `Gnuplot` | `gnuplot` |
-| `Go HTML Template` | `go-html-template` |
+| `Go Template` | `go-template` |
 | `GraphQL` | `graphql`, `graphqls`, `gql` |
 | `Groff` | `groff`, `nroff`, `man` |
 | `Groovy` | `groovy` |
@@ -80,6 +86,7 @@
 | `HLB` | `hlb` |
 | `HLSL` | `hlsl` |
 | `HolyC` | `holyc` |
+| `HTML` | `html` |
 | `Hy` | `hylang` |
 | `Idris` | `idris`, `idr` |
 | `Igor` | `igor`, `igorpro` |
@@ -96,6 +103,9 @@
 | `Lighttpd configuration file` | `lighty`, `lighttpd` |
 | `LLVM` | `llvm` |
 | `Lua` | `lua` |
+| `Makefile` | `make`, `makefile`, `mf`, `bsdmake` |
+| `Mako` | `mako` |
+| `Mason` | `mason` |
 | `Mathematica` | `mathematica`, `mma`, `nb` |
 | `Matlab` | `matlab` |
 | `mcfunction` | `mcfunction` |
@@ -106,6 +116,7 @@
 | `Modula-2` | `modula2`, `m2` |
 | `MonkeyC` | `monkeyc` |
 | `MorrowindScript` | `morrowind`, `mwscript` |
+| `Myghty` | `myghty` |
 | `MySQL` | `mysql`, `mariadb` |
 | `NASM` | `nasm` |
 | `Natural` | `natural` |
@@ -116,16 +127,21 @@
 | `Objective-C` | `objective-c`, `objectivec`, `obj-c`, `objc` |
 | `OCaml` | `ocaml` |
 | `Octave` | `octave` |
+| `Odin` | `odin` |
 | `OnesEnterprise` | `ones`, `onesenterprise`, `1S`, `1S:Enterprise` |
+| `OpenEdge ABL` | `openedge`, `abl`, `progress`, `openedgeabl` |
 | `OpenSCAD` | `openscad` |
+| `Org Mode` | `org`, `orgmode` |
 | `PacmanConf` | `pacmanconf` |
 | `Perl` | `perl`, `pl` |
 | `PHP` | `php`, `php3`, `php4`, `php5` |
 | `Pig` | `pig` |
 | `PkgConfig` | `pkgconfig` |
 | `PL/pgSQL` | `plpgsql` |
+| `plaintext` | `text`, `plain`, `no-highlight` |
 | `Plutus Core` | `plutus-core`, `plc` |
 | `Pony` | `pony` |
+| `PostgreSQL SQL dialect` | `postgresql`, `postgres` |
 | `PostScript` | `postscript`, `postscr` |
 | `POVRay` | `pov` |
 | `PowerQuery` | `powerquery`, `pq` |
@@ -159,8 +175,10 @@
 | `Sieve` | `sieve` |
 | `Smali` | `smali` |
 | `Smalltalk` | `smalltalk`, `squeak`, `st` |
+| `Smarty` | `smarty` |
 | `Snobol` | `snobol` |
 | `Solidity` | `sol`, `solidity` |
+| `SourcePawn` | `sp` |
 | `SPARQL` | `sparql` |
 | `SQL` | `sql` |
 | `SquidConf` | `squidconf`, `squid.conf`, `squid` |
@@ -187,13 +205,17 @@
 | `Turtle` | `turtle` |
 | `Twig` | `twig` |
 | `TypeScript` | `ts`, `tsx`, `typescript` |
+| `TypoScript` | `typoscript` |
 | `TypoScriptCssData` | `typoscriptcssdata` |
 | `TypoScriptHtmlData` | `typoscripthtmldata` |
+| `V` | `v`, `vlang` |
+| `V shell` | `vsh`, `vshell` |
 | `Vala` | `vala`, `vapi` |
 | `VB.net` | `vb.net`, `vbnet` |
 | `verilog` | `verilog`, `v` |
 | `VHDL` | `vhdl` |
 | `VHS` | `vhs`, `tape`, `cassette` |
+| `VimL` | `vim` |
 | `vue` | `vue`, `vuejs` |
 | `WDTE` | |
 | `WebGPU Shading Language` | `wgsl` |
@@ -207,37 +229,16 @@
 | `Zig` | `zig` |
 | `Caddyfile` | `caddyfile`, `caddy` |
 | `Caddyfile Directives` | `caddyfile-directives`, `caddyfile-d`, `caddy-d` |
-| `Chapel` | `chapel`, `chpl` |
-| `Cheetah` | `cheetah`, `spitfire` |
-| `Common Lisp` | `common-lisp`, `cl`, `lisp` |
-| `Cassandra CQL` | `cassandra`, `cql` |
-| `Docker` | `docker`, `dockerfile` |
-| `EmacsLisp` | `emacs`, `elisp`, `emacs-lisp` |
-| `FortranFixed` | `fortranfixed` |
 | `Genshi Text` | `genshitext` |
 | `Genshi HTML` | `html+genshi`, `html+kid` |
 | `Genshi` | `genshi`, `kid`, `xml+genshi`, `xml+kid` |
+| `Go HTML Template` | `go-html-template` |
 | `Go Text Template` | `go-text-template` |
 | `Go` | `go`, `golang` |
-| `HTML` | `html` |
-| `Go HTML Template` | `go-html-template` |
 | `Haxe` | `hx`, `haxe`, `hxsl` |
 | `HTTP` | `http` |
-| `Makefile` | `make`, `makefile`, `mf`, `bsdmake` |
-| `Mako` | `mako` |
 | `markdown` | `md`, `mkd` |
-| `Mason` | `mason` |
-| `Myghty` | `myghty` |
-| `OpenEdge ABL` | `openedge`, `abl`, `progress`, `openedgeabl` |
-| `Org Mode` | `org`, `orgmode` |
 | `PHTML` | `phtml` |
-| `plaintext` | `text`, `plain`, `no-highlight` |
-| `PostgreSQL SQL dialect` | `postgresql`, `postgres` |
 | `Raku` | `perl6`, `pl6`, `raku` |
 | `reStructuredText` | `rst`, `rest`, `restructuredtext` |
-| `Smarty` | `smarty` |
 | `Svelte` | `svelte` |
-| `TypoScript` | `typoscript` |
-| `V` | `v`, `vlang` |
-| `V shell` | `vsh`, `vshell` |
-| `VimL` | `vim` |

@@ -9,13 +9,13 @@
 	font-style: normal;
 }
 </style><rect width="100%" height="100%" fill="#eff1f5"/>
-<g font-family="Liberation Mono" font-size="14px" fill="#fe640b">
-<text x="0" y="1.200000em" xml:space="preserve"><tspan fill="#8839ef">package</tspan>&#160;<tspan fill="#7287fd">main</tspan>
+<g font-family="Liberation Mono" font-size="14px" fill="#4c4f69">
+<text x="0" y="1.200000em" xml:space="preserve"><tspan fill="#179299">package</tspan>&#160;main
 </text><text x="0" y="2.400000em" xml:space="preserve">
-</text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#8839ef">import</tspan>&#160;<tspan fill="#40a02b">&quot;fmt&quot;</tspan>
+</text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#179299">import</tspan>&#160;<tspan fill="#40a02b">&quot;fmt&quot;</tspan>
 </text><text x="0" y="4.800000em" xml:space="preserve">
-</text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#8839ef">func</tspan>&#160;<tspan fill="#04a5e5">main</tspan><tspan fill="#4c4f69">()</tspan>&#160;<tspan fill="#4c4f69">{</tspan>
-</text><text x="0" y="7.200000em" xml:space="preserve">&#160;&#160;&#160;&#160;<tspan fill="#7287fd">fmt</tspan><tspan fill="#4c4f69">.</tspan><tspan fill="#04a5e5">Println</tspan><tspan fill="#4c4f69">(</tspan><tspan fill="#40a02b">&quot;hello&#160;world&quot;</tspan><tspan fill="#4c4f69">)</tspan>
-</text><text x="0" y="8.400000em" xml:space="preserve"><tspan fill="#4c4f69">}</tspan></text>
+</text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#d20f39">func</tspan>&#160;<tspan fill="#1e66f5">main</tspan>()&#160;{
+</text><text x="0" y="7.200000em" xml:space="preserve">&#160;&#160;&#160;&#160;fmt.<tspan fill="#1e66f5">Println</tspan>(<tspan fill="#40a02b">&quot;hello&#160;world&quot;</tspan>)
+</text><text x="0" y="8.400000em" xml:space="preserve">}</text>
 </g>
 </svg>
