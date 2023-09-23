@@ -30,14 +30,16 @@ var rootCmd = &cobra.Command{
 					flagTheme = "noop"
 				}
 				flagForceBinary = true
+				flagRenderMarkdown = false
 			}
 		}
 
 		g, err := gat.New(&gat.Config{
-			Language:    flagLang,
-			Format:      flagFormat,
-			Theme:       flagTheme,
-			ForceBinary: flagForceBinary,
+			Language:       flagLang,
+			Format:         flagFormat,
+			Theme:          flagTheme,
+			RenderMarkdown: flagRenderMarkdown,
+			ForceBinary:    flagForceBinary,
 		})
 		if err != nil {
 			return err

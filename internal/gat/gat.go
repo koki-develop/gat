@@ -15,6 +15,7 @@ import (
 	"text/tabwriter"
 
 	"github.com/alecthomas/chroma/v2"
+	"github.com/charmbracelet/glamour"
 	"github.com/koki-develop/gat/internal/formatters"
 	"github.com/koki-develop/gat/internal/lexers"
 	"github.com/koki-develop/gat/internal/prettier"
@@ -23,22 +24,25 @@ import (
 )
 
 type Config struct {
-	Language    string
-	Format      string
-	Theme       string
-	ForceBinary bool
+	Language       string
+	Format         string
+	Theme          string
+	RenderMarkdown bool
+	ForceBinary    bool
 }
 
 type Gat struct {
-	lexer       chroma.Lexer
-	formatter   chroma.Formatter
-	style       *chroma.Style
-	forceBinary bool
+	lexer          chroma.Lexer
+	formatter      chroma.Formatter
+	style          *chroma.Style
+	renderMarkdown bool
+	forceBinary    bool
 }
 
 func New(cfg *Config) (*Gat, error) {
 	g := &Gat{
-		forceBinary: cfg.ForceBinary,
+		renderMarkdown: cfg.RenderMarkdown,
+		forceBinary:    cfg.ForceBinary,
 	}
 
 	// lexer
@@ -142,6 +146,17 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 			return err
 		}
 		g.lexer = l
+	}
+
+	if g.renderMarkdown && g.lexer.Config().Name == "markdown" {
+		s, err := glamour.Render(src, "auto")
+		if err != nil {
+			return err
+		}
+		if _, err := w.Write([]byte(s)); err != nil {
+			return err
+		}
+		return nil
 	}
 
 	// pretty code
