@@ -60,16 +60,18 @@ Usage:
   gat [file]... [flags]
 
 Flags:
-  -c, --force-color     force colored output
-  -f, --format string   output format (default "terminal256")
-  -h, --help            help for gat
-  -l, --lang string     language for syntax highlighting
-      --list-formats    print a list of supported output formats
-      --list-langs      print a list of supported languages for syntax highlighting
-      --list-themes     print a list of supported themes with preview
-  -p, --pretty          whether to format a content pretty
-  -t, --theme string    highlight theme (default "monokai")
-  -v, --version         version for gat
+  -b, --force-binary      force binary output
+  -c, --force-color       force colored output
+  -f, --format string     output format (default "terminal256")
+  -h, --help              help for gat
+  -l, --lang string       language for syntax highlighting
+      --list-formats      print a list of supported output formats
+      --list-langs        print a list of supported languages for syntax highlighting
+      --list-themes       print a list of supported themes with preview
+  -p, --pretty            whether to format a content pretty
+  -M, --render-markdown   render markdown
+  -t, --theme string      highlight theme (default "monokai")
+  -v, --version           version for gat
 ```
 
 ### `-l`, `--lang`
