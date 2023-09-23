@@ -149,7 +149,16 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 	}
 
 	if g.renderMarkdown && g.lexer.Config().Name == "markdown" {
-		s, err := glamour.Render(src, "auto")
+		r, err := glamour.NewTermRenderer(
+			glamour.WithAutoStyle(),
+			glamour.WithWordWrap(-1),
+		)
+		if err != nil {
+			return err
+		}
+		defer r.Close()
+
+		s, err := r.Render(src)
 		if err != nil {
 			return err
 		}
