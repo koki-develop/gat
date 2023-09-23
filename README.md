@@ -94,6 +94,12 @@ See [themes.md](./docs/themes.md) for valid themes.
 Format a content pretty.  
 For unsupported languages, this flag is ignored.
 
+### `-M`, `--render-markdown`
+
+Render markdown documents.  
+
+![](./docs/markdown.png)
+
 ### `-c`, `--force-color`
 
 `gat` disables colored output when piped to another program.  
