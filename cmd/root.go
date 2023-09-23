@@ -30,7 +30,6 @@ var rootCmd = &cobra.Command{
 					flagTheme = "noop"
 				}
 				flagForceBinary = true
-				flagRenderMarkdown = false
 			}
 		}
 
