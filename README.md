@@ -40,6 +40,14 @@ $ brew install gat
 $ brew install koki-develop/tap/gat
 ```
 
+### MacPorts
+
+```console
+$ sudo port install gat
+```
+
+More info [here](https://ports.macports.org/port/gat/).
+
 ### `go install`
 
 ```console
