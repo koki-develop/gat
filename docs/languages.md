@@ -48,6 +48,7 @@
 | `Coq` | `coq` |
 | `Crystal` | `cr`, `crystal` |
 | `CSS` | `css` |
+| `CUE` | `cue` |
 | `Cython` | `cython`, `pyx`, `pyrex` |
 | `D` | `d` |
 | `Dart` | `dart` |
@@ -150,6 +151,7 @@
 | `PromQL` | `promql` |
 | `properties` | `java-properties` |
 | `Protocol Buffer` | `protobuf`, `proto` |
+| `PRQL` | `prql` |
 | `PSL` | `psl` |
 | `Puppet` | `puppet` |
 | `Python` | `python`, `py`, `sage`, `python3`, `py3` |
@@ -208,6 +210,7 @@
 | `TypoScript` | `typoscript` |
 | `TypoScriptCssData` | `typoscriptcssdata` |
 | `TypoScriptHtmlData` | `typoscripthtmldata` |
+| `ucode` | |
 | `V` | `v`, `vlang` |
 | `V shell` | `vsh`, `vshell` |
 | `Vala` | `vala`, `vapi` |
