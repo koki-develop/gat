@@ -7,7 +7,9 @@
 | `ActionScript` | `as`, `actionscript` |
 | `ActionScript 3` | `as3`, `actionscript3` |
 | `Ada` | `ada`, `ada95`, `ada2005` |
+| `Agda` | `agda` |
 | `AL` | `al` |
+| `Alloy` | `alloy` |
 | `Angular2` | `ng2` |
 | `ANTLR` | `antlr` |
 | `ApacheConf` | `apacheconf`, `aconf`, `apache` |
@@ -52,6 +54,7 @@
 | `Cython` | `cython`, `pyx`, `pyrex` |
 | `D` | `d` |
 | `Dart` | `dart` |
+| `Dax` | `dax` |
 | `Diff` | `diff`, `udiff` |
 | `Django/Jinja` | `django`, `jinja` |
 | `dns` | `zone`, `bind` |
@@ -81,6 +84,7 @@
 | `Groff` | `groff`, `nroff`, `man` |
 | `Groovy` | `groovy` |
 | `Handlebars` | `handlebars`, `hbs` |
+| `Hare` | `hare` |
 | `Haskell` | `haskell`, `hs` |
 | `HCL` | `hcl` |
 | `Hexdump` | `hexdump` |
@@ -126,6 +130,7 @@
 | `Nim` | `nim`, `nimrod` |
 | `Nix` | `nixos`, `nix` |
 | `Objective-C` | `objective-c`, `objectivec`, `obj-c`, `objc` |
+| `ObjectPascal` | `objectpascal` |
 | `OCaml` | `ocaml` |
 | `Octave` | `octave` |
 | `Odin` | `odin` |
