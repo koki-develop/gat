@@ -76,6 +76,8 @@ github.com/stretchr/testify v1.8.4 h1:CcVxjf3Q8PM0mHUKJCdn+eZZtm5yQwehR5yeSVQQcU
 github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
 github.com/tdewolff/minify/v2 v2.20.10 h1:iz9IkdRqD2pyneib/AvTas23RRG5TnuUFNcNVKmL/jU=
 github.com/tdewolff/minify/v2 v2.20.10/go.mod h1:xSJ9fXIfyuEMex88JT4jl8GvXnl/RzWNdqD96AqKlX0=
+github.com/tdewolff/minify/v2 v2.20.12 h1:ie5+91QGUUeEDbLkexhx2tlI9BQgwwnfY+/Qdj4BlQ4=
+github.com/tdewolff/minify/v2 v2.20.12/go.mod h1:8ktdncc9Rh41MkTX2KYaicHT9+VnpvIDjCyIVsr/nN8=
 github.com/tdewolff/parse v2.3.3+incompatible h1:q6OSjvHtvBucLb34z24OH1xl5wGdw1mI9Vd38Qj9evs=
 github.com/tdewolff/parse v2.3.3+incompatible/go.mod h1:8oBwCsVmUkgHO8M5iCzSIDtpzXOT0WXX9cWhz+bIzJQ=
 github.com/tdewolff/parse/v2 v2.7.7 h1:V+50eFDH7Piw4IBwH8D8FtYeYbZp3T4SCtIvmBSIMyc=
