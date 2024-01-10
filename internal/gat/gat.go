@@ -97,18 +97,18 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 		o(opt)
 	}
 
-	// read w
-	buf := new(bytes.Buffer)
-	if _, err := io.Copy(buf, r); err != nil {
+	br := bufio.NewReader(r)
+	head, err := br.Peek(1024)
+	if err != nil && err != io.EOF {
 		return err
 	}
 
 	// detect content type
-	contentType := http.DetectContentType(buf.Bytes())
+	contentType := http.DetectContentType(head)
 
 	// print image
 	if strings.HasPrefix(contentType, "image/") && !g.forceBinary {
-		if err := g.printImage(w, buf); err == nil {
+		if err := g.printImage(w, br); err == nil {
 			return nil
 		}
 	}
@@ -117,15 +117,15 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 	var src string
 	switch contentType {
 	case "application/x-gzip":
-		s, err := g.readGzip(buf)
+		s, err := g.readGzip(br)
 		if err != nil {
 			return err
 		}
 		src = s
 	default:
-		if isBinary(buf.Bytes()) {
+		if isBinary(head) {
 			if g.forceBinary {
-				if _, err := buf.WriteTo(w); err != nil {
+				if _, err := br.WriteTo(w); err != nil {
 					return err
 				}
 			} else {
@@ -136,6 +136,10 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 			return nil
 		}
 
+		buf := new(bytes.Buffer)
+		if _, err := io.Copy(buf, br); err != nil {
+			return err
+		}
 		src = buf.String()
 	}
 
