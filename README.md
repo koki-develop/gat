@@ -130,6 +130,12 @@ Supported image formats include:
 - PNG
 - GIF (animation not supported)
 
+## :coffee: Buy me a coffee
+
+If you like this project, please consider buying me a coffee.
+
+<a href="https://www.buymeacoffee.com/koki.sato"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="217px" height="60px"></a>
+
 ## LICENSE
 
 [MIT](./LICENSE)
