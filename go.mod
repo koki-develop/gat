@@ -6,7 +6,7 @@ require (
 	github.com/alecthomas/chroma/v2 v2.12.0
 	github.com/charmbracelet/glamour v0.6.0
 	github.com/client9/csstool v0.2.2
-	github.com/google/yamlfmt v0.10.0
+	github.com/google/yamlfmt v0.11.0
 	github.com/mattn/go-sixel v0.0.5
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.8.4
@@ -37,6 +37,7 @@ require (
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
+	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 // indirect
 	github.com/soniakeys/quant v1.0.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tdewolff/parse v2.3.3+incompatible // indirect
