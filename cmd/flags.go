@@ -30,6 +30,9 @@ var (
 	// --force-binary
 	flagForceBinary bool
 
+	// --no-resize
+	flagNoResize bool
+
 	// --pretty
 	flagPretty bool
 
@@ -50,6 +53,7 @@ func init() {
 	rootCmd.Flags().BoolVarP(&flagRenderMarkdown, "render-markdown", "M", false, "render markdown")
 	rootCmd.Flags().BoolVarP(&flagForceColor, "force-color", "c", false, "force colored output")
 	rootCmd.Flags().BoolVarP(&flagForceBinary, "force-binary", "b", false, "force binary output")
+	rootCmd.Flags().BoolVar(&flagNoResize, "no-resize", false, "do not resize images")
 
 	rootCmd.Flags().BoolVarP(&flagPretty, "pretty", "p", false, "whether to format a content pretty")
 

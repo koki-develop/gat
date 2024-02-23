@@ -30,6 +30,7 @@ type Config struct {
 	Theme          string
 	RenderMarkdown bool
 	ForceBinary    bool
+	NoResize       bool
 }
 
 type Gat struct {
@@ -38,12 +39,14 @@ type Gat struct {
 	style          *chroma.Style
 	renderMarkdown bool
 	forceBinary    bool
+	noResize       bool
 }
 
 func New(cfg *Config) (*Gat, error) {
 	g := &Gat{
 		renderMarkdown: cfg.RenderMarkdown,
 		forceBinary:    cfg.ForceBinary,
+		noResize:       cfg.NoResize,
 	}
 
 	// lexer
@@ -197,7 +200,7 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 	return nil
 }
 
-func (*Gat) printImage(w io.Writer, r io.Reader) error {
+func (g *Gat) printImage(w io.Writer, r io.Reader) error {
 	maxEdge := 1800
 
 	img, _, err := image.Decode(r)
@@ -206,7 +209,7 @@ func (*Gat) printImage(w io.Writer, r io.Reader) error {
 	}
 	imgWidth, imgHeight := img.Bounds().Dx(), img.Bounds().Dy()
 
-	if imgWidth <= maxEdge && imgHeight <= maxEdge {
+	if g.noResize || (imgWidth <= maxEdge && imgHeight <= maxEdge) {
 		if err := sixel.NewEncoder(w).Encode(img); err != nil {
 			return err
 		}
