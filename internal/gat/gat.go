@@ -21,6 +21,7 @@ import (
 	"github.com/koki-develop/gat/internal/prettier"
 	"github.com/koki-develop/gat/internal/styles"
 	"github.com/mattn/go-sixel"
+	"golang.org/x/image/draw"
 )
 
 type Config struct {
@@ -197,13 +198,32 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 }
 
 func (*Gat) printImage(w io.Writer, r io.Reader) error {
+	maxEdge := 1800
+
 	img, _, err := image.Decode(r)
 	if err != nil {
 		return err
 	}
+	imgWidth, imgHeight := img.Bounds().Dx(), img.Bounds().Dy()
 
-	if err := sixel.NewEncoder(w).Encode(img); err != nil {
-		return err
+	if imgWidth <= maxEdge && imgHeight <= maxEdge {
+		if err := sixel.NewEncoder(w).Encode(img); err != nil {
+			return err
+		}
+	} else {
+		var dstWidth, dstHeight int
+		aspectRatio := float64(imgHeight) / float64(imgWidth)
+		if imgWidth > imgHeight {
+			dstWidth, dstHeight = maxEdge, int(float64(maxEdge)*aspectRatio)
+		} else {
+			dstWidth, dstHeight = int(float64(maxEdge)/aspectRatio), maxEdge
+		}
+
+		dst := image.NewRGBA(image.Rect(0, 0, dstWidth, dstHeight))
+		draw.ApproxBiLinear.Scale(dst, dst.Bounds(), img, img.Bounds(), draw.Src, nil)
+		if err := sixel.NewEncoder(w).Encode(dst); err != nil {
+			return err
+		}
 	}
 
 	return nil
