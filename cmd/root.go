@@ -30,6 +30,7 @@ var rootCmd = &cobra.Command{
 					flagTheme = "noop"
 				}
 				flagForceBinary = true
+				flagNoResize = true
 			}
 		}
 
@@ -39,6 +40,7 @@ var rootCmd = &cobra.Command{
 			Theme:          flagTheme,
 			RenderMarkdown: flagRenderMarkdown,
 			ForceBinary:    flagForceBinary,
+			NoResize:       flagNoResize,
 		})
 		if err != nil {
 			return err

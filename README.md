@@ -68,6 +68,7 @@ Flags:
       --list-formats      print a list of supported output formats
       --list-langs        print a list of supported languages for syntax highlighting
       --list-themes       print a list of supported themes with preview
+      --no-resize         do not resize images
   -p, --pretty            whether to format a content pretty
   -M, --render-markdown   render markdown
   -t, --theme string      highlight theme (default "monokai")
