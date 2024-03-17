@@ -55,6 +55,7 @@
 | `D` | `d` |
 | `Dart` | `dart` |
 | `Dax` | `dax` |
+| `Desktop file` | `desktop`, `desktop_entry` |
 | `Diff` | `diff`, `udiff` |
 | `Django/Jinja` | `django`, `jinja` |
 | `dns` | `zone`, `bind` |
@@ -111,6 +112,7 @@
 | `Makefile` | `make`, `makefile`, `mf`, `bsdmake` |
 | `Mako` | `mako` |
 | `Mason` | `mason` |
+| `Materialize SQL dialect` | `materialize`, `mzsql` |
 | `Mathematica` | `mathematica`, `mma`, `nb` |
 | `Matlab` | `matlab` |
 | `mcfunction` | `mcfunction` |
@@ -125,6 +127,7 @@
 | `MySQL` | `mysql`, `mariadb` |
 | `NASM` | `nasm` |
 | `Natural` | `natural` |
+| `NDISASM` | `ndisasm` |
 | `Newspeak` | `newspeak` |
 | `Nginx configuration file` | `nginx` |
 | `Nim` | `nim`, `nimrod` |
@@ -153,6 +156,7 @@
 | `PowerQuery` | `powerquery`, `pq` |
 | `PowerShell` | `powershell`, `posh`, `ps1`, `psm1`, `psd1`, `pwsh` |
 | `Prolog` | `prolog` |
+| `Promela` | `promela` |
 | `PromQL` | `promql` |
 | `properties` | `java-properties` |
 | `Protocol Buffer` | `protobuf`, `proto` |
@@ -169,7 +173,9 @@
 | `react` | `jsx`, `react` |
 | `ReasonML` | `reason`, `reasonml` |
 | `reg` | `registry` |
+| `Rego` | `rego` |
 | `Rexx` | `rexx`, `arexx` |
+| `RPMSpec` | `spec` |
 | `Ruby` | `rb`, `ruby`, `duby` |
 | `Rust` | `rust`, `rs` |
 | `SAS` | `sas` |

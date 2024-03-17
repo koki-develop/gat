@@ -81,7 +81,7 @@
 /* GenericInserted */ .chroma .gi { color: #a6e22e }
 /* GenericStrong */ .chroma .gs { font-weight: bold }
 /* GenericSubheading */ .chroma .gu { color: #75715e }
-body { color: #f8f8f2; background-color: #272822;; }
+body { color:#f8f8f2;background-color:#272822;; }
 </style><body class="bg">
 <pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
 </span></span><span class="line"><span class="cl">
