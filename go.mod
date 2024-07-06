@@ -6,7 +6,7 @@ require (
 	github.com/alecthomas/chroma/v2 v2.13.0
 	github.com/charmbracelet/glamour v0.6.0
 	github.com/client9/csstool v0.2.2
-	github.com/google/yamlfmt v0.11.0
+	github.com/google/yamlfmt v0.13.0
 	github.com/mattn/go-sixel v0.0.5
 	github.com/spf13/cobra v1.8.0
 	github.com/stretchr/testify v1.9.0
