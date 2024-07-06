@@ -78,6 +78,7 @@
 | `GDScript` | `gdscript`, `gd` |
 | `GDScript3` | `gdscript3`, `gd3` |
 | `Gherkin` | `cucumber`, `Cucumber`, `gherkin`, `Gherkin` |
+| `Gleam` | `gleam>` |
 | `GLSL` | `glsl` |
 | `Gnuplot` | `gnuplot` |
 | `Go Template` | `go-template` |

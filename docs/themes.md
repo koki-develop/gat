@@ -54,6 +54,10 @@
 - [`solarized-light`](#solarized-light)
 - [`swapoff`](#swapoff)
 - [`tango`](#tango)
+- [`tokyonight-day`](#tokyonight-day)
+- [`tokyonight-moon`](#tokyonight-moon)
+- [`tokyonight-night`](#tokyonight-night)
+- [`tokyonight-storm`](#tokyonight-storm)
 - [`trac`](#trac)
 - [`vim`](#vim)
 - [`vs`](#vs)
@@ -277,6 +281,22 @@
 ## `tango`
 
 ![tango](./themes/tango.svg)
+
+## `tokyonight-day`
+
+![tokyonight-day](./themes/tokyonight-day.svg)
+
+## `tokyonight-moon`
+
+![tokyonight-moon](./themes/tokyonight-moon.svg)
+
+## `tokyonight-night`
+
+![tokyonight-night](./themes/tokyonight-night.svg)
+
+## `tokyonight-storm`
+
+![tokyonight-storm](./themes/tokyonight-storm.svg)
 
 ## `trac`
 
