@@ -257,10 +257,6 @@ func isBinary(data []byte) bool {
 func PrintLanguages(w io.Writer) error {
 	tw := tabwriter.NewWriter(w, 0, 0, 1, ' ', 0)
 
-	if _, err := tw.Write([]byte("NAME\tALIASES\n")); err != nil {
-		return err
-	}
-
 	for _, l := range lexers.List() {
 		cfg := l.Config()
 		if _, err := tw.Write([]byte(fmt.Sprintf("%s\t%s\n", cfg.Name, strings.Join(cfg.Aliases, ", ")))); err != nil {
@@ -271,20 +267,10 @@ func PrintLanguages(w io.Writer) error {
 	return tw.Flush()
 }
 
-func PrintFormats(w io.Writer) error {
-	tw := tabwriter.NewWriter(w, 0, 0, 1, ' ', 0)
-
-	if _, err := tw.Write([]byte("NAME\n")); err != nil {
-		return err
-	}
-
+func PrintFormats(w io.Writer) {
 	for _, f := range formatters.List() {
-		if _, err := tw.Write([]byte(fmt.Sprintf("%s\n", f))); err != nil {
-			return err
-		}
+		fmt.Fprintln(w, f)
 	}
-
-	return tw.Flush()
 }
 
 func PrintThemes(w io.Writer, withColor bool) error {

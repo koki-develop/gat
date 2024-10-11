@@ -20,7 +20,8 @@ var rootCmd = &cobra.Command{
 		case flagListLangs:
 			return gat.PrintLanguages(os.Stdout)
 		case flagListFormats:
-			return gat.PrintFormats(os.Stdout)
+			gat.PrintFormats(os.Stdout)
+			return nil
 		case flagListThemes:
 			return gat.PrintThemes(os.Stdout, ist)
 		}
