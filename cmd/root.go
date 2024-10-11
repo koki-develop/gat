@@ -14,17 +14,18 @@ var rootCmd = &cobra.Command{
 	Short: "cat alternative written in Go",
 	Long:  "cat alternative written in Go.",
 	RunE: func(cmd *cobra.Command, args []string) error {
+		ist := term.IsTerminal(int(os.Stdout.Fd()))
+
 		switch {
 		case flagListLangs:
 			return gat.PrintLanguages(os.Stdout)
 		case flagListFormats:
 			return gat.PrintFormats(os.Stdout)
 		case flagListThemes:
-			return gat.PrintThemes(os.Stdout)
+			return gat.PrintThemes(os.Stdout, ist)
 		}
 
 		if strings.HasPrefix(flagFormat, "terminal") {
-			ist := term.IsTerminal(int(os.Stdout.Fd()))
 			if !ist {
 				if !flagForceColor {
 					flagTheme = "noop"

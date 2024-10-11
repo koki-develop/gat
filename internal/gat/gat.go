@@ -287,8 +287,9 @@ func PrintFormats(w io.Writer) error {
 	return tw.Flush()
 }
 
-func PrintThemes(w io.Writer) error {
-	src := `package main
+func PrintThemes(w io.Writer, withColor bool) error {
+	if withColor {
+		src := `package main
 
 import "fmt"
 
@@ -296,33 +297,38 @@ func main() {
 	fmt.Println("hello world")
 }`
 
-	for _, t := range styles.List() {
-		fmt.Fprintf(w, "\x1b[1m%s\x1b[0m\n\n", t)
+		for _, t := range styles.List() {
+			fmt.Fprintf(w, "\x1b[1m%s\x1b[0m\n\n", t)
 
-		g, err := New(&Config{
-			Language: "go",
-			Theme:    t,
-			Format:   "terminal256",
-		})
-		if err != nil {
-			return err
-		}
+			g, err := New(&Config{
+				Language: "go",
+				Theme:    t,
+				Format:   "terminal256",
+			})
+			if err != nil {
+				return err
+			}
 
-		buf := new(bytes.Buffer)
-		if err := g.Print(buf, strings.NewReader(src)); err != nil {
-			return err
-		}
+			buf := new(bytes.Buffer)
+			if err := g.Print(buf, strings.NewReader(src)); err != nil {
+				return err
+			}
 
-		// indent source
-		sc := bufio.NewScanner(buf)
-		for sc.Scan() {
-			if _, err := fmt.Fprintf(w, "\t%s\n", sc.Text()); err != nil {
+			// indent source
+			sc := bufio.NewScanner(buf)
+			for sc.Scan() {
+				if _, err := fmt.Fprintf(w, "\t%s\n", sc.Text()); err != nil {
+					return err
+				}
+			}
+
+			if _, err := fmt.Fprintln(w); err != nil {
 				return err
 			}
 		}
-
-		if _, err := fmt.Fprintln(w); err != nil {
-			return err
+	} else {
+		for _, t := range styles.List() {
+			fmt.Fprintln(w, t)
 		}
 	}
 
