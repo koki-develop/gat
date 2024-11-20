@@ -35,6 +35,8 @@ github.com/google/yamlfmt v0.11.0 h1:s/RgLlW0ic6ROOE9XH3e3piHs1VJAHLezbuHlh0LtFU
 github.com/google/yamlfmt v0.11.0/go.mod h1:uFHKnFl/RKZCifw87KJaNY+ovZAaLcw3vQqS2ut7u4s=
 github.com/google/yamlfmt v0.13.0 h1:OS8cjQNhRhEP437e1axMgZiwrYu60mWLtvb4/jtQCtE=
 github.com/google/yamlfmt v0.13.0/go.mod h1:y8JNH/2TqTaCSUjk/zhn0lYlibMvS0R+pbVUDo8oz9o=
+github.com/google/yamlfmt v0.14.0 h1:30Hm8+VfNqMhWfbkjqkHMyo1zzbxMFM6+2oz7Cey1BQ=
+github.com/google/yamlfmt v0.14.0/go.mod h1:KnrVZqRVSE3HUpaI9FfoaxYA71izVleMWPYX8s1S0KM=
 github.com/gorilla/css v1.0.0 h1:BQqNyPTi50JCFMTw/b67hByjMVXZRwGha6wxVGkeihY=
 github.com/gorilla/css v1.0.0/go.mod h1:Dn721qIggHpt4+EFCcTLTU/vk5ySda2ReITrtgBl60c=
 github.com/hexops/gotextdiff v1.0.3 h1:gitA9+qJrrTCsiCl7+kh75nPqQt1cx4ZkudSTLoUqJM=
