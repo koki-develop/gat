@@ -13,7 +13,7 @@ require (
 	github.com/tdewolff/minify/v2 v2.21.1
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
 	golang.org/x/image v0.18.0
-	golang.org/x/term v0.12.0
+	golang.org/x/term v0.27.0
 )
 
 require (
@@ -46,6 +46,6 @@ require (
 	github.com/yuin/goldmark v1.5.2 // indirect
 	github.com/yuin/goldmark-emoji v1.0.1 // indirect
 	golang.org/x/net v0.8.0 // indirect
-	golang.org/x/sys v0.25.0 // indirect
+	golang.org/x/sys v0.28.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
