@@ -92,12 +92,16 @@ github.com/tdewolff/minify/v2 v2.20.12 h1:ie5+91QGUUeEDbLkexhx2tlI9BQgwwnfY+/Qdj
 github.com/tdewolff/minify/v2 v2.20.12/go.mod h1:8ktdncc9Rh41MkTX2KYaicHT9+VnpvIDjCyIVsr/nN8=
 github.com/tdewolff/minify/v2 v2.21.1 h1:AAf5iltw6+KlUvjRNPAPrANIXl3XEJNBBzuZom5iCAM=
 github.com/tdewolff/minify/v2 v2.21.1/go.mod h1:PoqFH8ugcuTUvKqVM9vOqXw4msxvuhL/DTmV5ZXhSCI=
+github.com/tdewolff/minify/v2 v2.21.2 h1:VfTvmGVtBYhMTlUAeHtXM7XOsW0JT/6uMwUPPqgUs9k=
+github.com/tdewolff/minify/v2 v2.21.2/go.mod h1:Olje3eHdBnrMjINKffDsil/3NV98Iv7MhWf7556WQVg=
 github.com/tdewolff/parse v2.3.3+incompatible h1:q6OSjvHtvBucLb34z24OH1xl5wGdw1mI9Vd38Qj9evs=
 github.com/tdewolff/parse v2.3.3+incompatible/go.mod h1:8oBwCsVmUkgHO8M5iCzSIDtpzXOT0WXX9cWhz+bIzJQ=
 github.com/tdewolff/parse/v2 v2.7.7 h1:V+50eFDH7Piw4IBwH8D8FtYeYbZp3T4SCtIvmBSIMyc=
 github.com/tdewolff/parse/v2 v2.7.7/go.mod h1:3FbJWZp3XT9OWVN3Hmfp0p/a08v4h8J9W1aghka0soA=
 github.com/tdewolff/parse/v2 v2.7.18 h1:uSqjEMT2lwCj5oifBHDcWU2kN1pbLrRENgFWDJa57eI=
 github.com/tdewolff/parse/v2 v2.7.18/go.mod h1:3FbJWZp3XT9OWVN3Hmfp0p/a08v4h8J9W1aghka0soA=
+github.com/tdewolff/parse/v2 v2.7.19 h1:7Ljh26yj+gdLFEq/7q9LT4SYyKtwQX4ocNrj45UCePg=
+github.com/tdewolff/parse/v2 v2.7.19/go.mod h1:3FbJWZp3XT9OWVN3Hmfp0p/a08v4h8J9W1aghka0soA=
 github.com/tdewolff/test v1.0.0/go.mod h1:DiQUlutnqlEvdvhSn2LPGy4TFwRauAaYDsL+683RNX4=
 github.com/tdewolff/test v1.0.11-0.20231101010635-f1265d231d52/go.mod h1:6DAvZliBAAnD7rhVgwaM7DE5/d9NMOAJ09SqYqeK4QE=
 github.com/tdewolff/test v1.0.11-0.20240106005702-7de5f7df4739 h1:IkjBCtQOOjIn03u/dMQK9g+Iw9ewps4mCl1nB8Sscbo=
