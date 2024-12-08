@@ -11,18 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: go.mod
+      - uses: ./.github/actions/setup
 
-      - uses: charmbracelet/vhs-action@v2
-        with:
-          path: ./tapes/demo.tape
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: charmbracelet/vhs-action@v2
-        with:
-          path: ./tapes/gess.tape
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - run: vhs < ./tapes/demo.tape
+      - run: vhs < ./tapes/gess.tape
 
       - uses: peter-evans/create-pull-request@v7
         with:
