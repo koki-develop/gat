@@ -4,13 +4,19 @@ on:
   push:
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: go test ./...
+
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup
-      - run: go build .
-      - run: go test ./...
+      - run: goreleaser release --snapshot --clean
 
   lint:
     runs-on: ubuntu-latest
