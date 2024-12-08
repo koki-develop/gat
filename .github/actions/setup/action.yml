@@ -1,0 +1,10 @@
+name: Setup
+description: ""
+
+runs:
+  using: composite
+  steps:
+    - uses: aquaproj/aqua-installer@v3.1.0
+      with:
+        aqua_version: v2.38.4
+    - uses: actions/checkout@v4

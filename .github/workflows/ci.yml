@@ -8,9 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: aquaproj/aqua-installer@v3.1.0
-        with:
-          aqua_version: v2.38.4
+      - uses: ./.github/actions/setup
       - run: go build .
       - run: go test ./...
 
@@ -18,8 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: aquaproj/aqua-installer@v3.1.0
-        with:
-          aqua_version: v2.38.4
+      - uses: ./.github/actions/setup
       - name: lint
         run: golangci-lint run --verbose ./...
