@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: aquaproj/aqua-installer@v3.1.0
         with:
-          go-version-file: go.mod
+          aqua_version: v2.38.4
       - run: go build .
       - run: go test ./...
 
@@ -18,7 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
+      - uses: aquaproj/aqua-installer@v3.1.0
         with:
-          go-version-file: go.mod
-      - uses: golangci/golangci-lint-action@v6
+          aqua_version: v2.38.4
+      - name: lint
+        run: golangci-lint run --verbose ./...
