@@ -12,9 +12,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: go.mod
+      - uses: ./.github/actions/setup
+
       - run: go run ./docs/update.go
       - run: |
           git add .
