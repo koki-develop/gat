@@ -17,7 +17,6 @@ require (
 )
 
 require (
-	github.com/RageCage64/multilinediff v0.2.0 // indirect
 	github.com/alecthomas/chroma v0.10.0 // indirect
 	github.com/aymanbagabas/go-osc52 v1.0.3 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
