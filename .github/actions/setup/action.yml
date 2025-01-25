@@ -6,5 +6,5 @@ runs:
   steps:
     - uses: aquaproj/aqua-installer@v3.1.0
       with:
-        aqua_version: v2.40.0
+        aqua_version: v2.42.2
     - uses: actions/checkout@v4
