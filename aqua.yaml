@@ -4,5 +4,5 @@ registries:
 packages:
 - name: golangci/golangci-lint@v1.63.4
 - name: golang/go@go1.23.5
-- name: charmbracelet/vhs@v0.8.0
+- name: charmbracelet/vhs@v0.9.0
 - name: goreleaser/goreleaser@v2.5.0
