@@ -18,6 +18,7 @@
 - [`doom-one2`](#doom-one2)
 - [`dracula`](#dracula)
 - [`emacs`](#emacs)
+- [`evergarden`](#evergarden)
 - [`friendly`](#friendly)
 - [`fruity`](#fruity)
 - [`github`](#github)
@@ -37,6 +38,7 @@
 - [`native`](#native)
 - [`noop`](#noop)
 - [`nord`](#nord)
+- [`nordic`](#nordic)
 - [`onedark`](#onedark)
 - [`onesenterprise`](#onesenterprise)
 - [`paraiso-dark`](#paraiso-dark)
@@ -138,6 +140,10 @@
 
 ![emacs](./themes/emacs.svg)
 
+## `evergarden`
+
+![evergarden](./themes/evergarden.svg)
+
 ## `friendly`
 
 ![friendly](./themes/friendly.svg)
@@ -213,6 +219,10 @@
 ## `nord`
 
 ![nord](./themes/nord.svg)
+
+## `nordic`
+
+![nordic](./themes/nordic.svg)
 
 ## `onedark`
 

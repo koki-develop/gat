@@ -194,61 +194,61 @@ font-style: normal;
 ## `terminal`
 
 ```terminal
-\x1b[1m\x1b[31mpackage\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[33mmain\x1b[0m\x1b[1m\x1b[37m
-
-\x1b[0m\x1b[1m\x1b[31mimport\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[37m\"fmt\"\x1b[0m\x1b[1m\x1b[37m
-
-\x1b[0m\x1b[1m\x1b[36mfunc\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[33mmain\x1b[0m\x1b[1m\x1b[37m()\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[37m{\x1b[0m\x1b[1m\x1b[37m
-\t\x1b[0m\x1b[1m\x1b[33mfmt\x1b[0m\x1b[1m\x1b[37m.\x1b[0m\x1b[1m\x1b[33mPrintln\x1b[0m\x1b[1m\x1b[37m(\x1b[0m\x1b[37m\"hello world\"\x1b[0m\x1b[1m\x1b[37m)\x1b[0m\x1b[1m\x1b[37m
-\x1b[0m\x1b[1m\x1b[37m}\x1b[0m
+\x1b[1m\x1b[31mpackage\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[33mmain\x1b[0m\x1b[1m\x1b[37m\x1b[0m
+\x1b[1m\x1b[37m\x1b[0m
+\x1b[1m\x1b[31mimport\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[37m\"fmt\"\x1b[0m\x1b[1m\x1b[37m\x1b[0m
+\x1b[1m\x1b[37m\x1b[0m
+\x1b[1m\x1b[36mfunc\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[33mmain\x1b[0m\x1b[1m\x1b[37m()\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[37m{\x1b[0m\x1b[1m\x1b[37m\x1b[0m
+\x1b[1m\x1b[37m\t\x1b[0m\x1b[1m\x1b[33mfmt\x1b[0m\x1b[1m\x1b[37m.\x1b[0m\x1b[1m\x1b[33mPrintln\x1b[0m\x1b[1m\x1b[37m(\x1b[0m\x1b[37m\"hello world\"\x1b[0m\x1b[1m\x1b[37m)\x1b[0m\x1b[1m\x1b[37m\x1b[0m
+\x1b[1m\x1b[37m}\x1b[0m
 ```
 
 ## `terminal16`
 
 ```terminal16
-\x1b[91mpackage\x1b[0m\x1b[97m \x1b[0m\x1b[93mmain\x1b[0m\x1b[97m
-
-\x1b[0m\x1b[91mimport\x1b[0m\x1b[97m \x1b[0m\x1b[37m\"fmt\"\x1b[0m\x1b[97m
-
-\x1b[0m\x1b[96mfunc\x1b[0m\x1b[97m \x1b[0m\x1b[93mmain\x1b[0m\x1b[97m()\x1b[0m\x1b[97m \x1b[0m\x1b[97m{\x1b[0m\x1b[97m
-\t\x1b[0m\x1b[93mfmt\x1b[0m\x1b[97m.\x1b[0m\x1b[93mPrintln\x1b[0m\x1b[97m(\x1b[0m\x1b[37m\"hello world\"\x1b[0m\x1b[97m)\x1b[0m\x1b[97m
-\x1b[0m\x1b[97m}\x1b[0m
+\x1b[91mpackage\x1b[0m\x1b[97m \x1b[0m\x1b[93mmain\x1b[0m\x1b[97m\x1b[0m
+\x1b[97m\x1b[0m
+\x1b[91mimport\x1b[0m\x1b[97m \x1b[0m\x1b[37m\"fmt\"\x1b[0m\x1b[97m\x1b[0m
+\x1b[97m\x1b[0m
+\x1b[96mfunc\x1b[0m\x1b[97m \x1b[0m\x1b[93mmain\x1b[0m\x1b[97m()\x1b[0m\x1b[97m \x1b[0m\x1b[97m{\x1b[0m\x1b[97m\x1b[0m
+\x1b[97m\t\x1b[0m\x1b[93mfmt\x1b[0m\x1b[97m.\x1b[0m\x1b[93mPrintln\x1b[0m\x1b[97m(\x1b[0m\x1b[37m\"hello world\"\x1b[0m\x1b[97m)\x1b[0m\x1b[97m\x1b[0m
+\x1b[97m}\x1b[0m
 ```
 
 ## `terminal16m`
 
 ```terminal16m
-\x1b[38;2;249;38;114mpackage\x1b[0m\x1b[38;2;248;248;242m \x1b[0m\x1b[38;2;166;226;46mmain\x1b[0m\x1b[38;2;248;248;242m
-
-\x1b[0m\x1b[38;2;249;38;114mimport\x1b[0m\x1b[38;2;248;248;242m \x1b[0m\x1b[38;2;230;219;116m\"fmt\"\x1b[0m\x1b[38;2;248;248;242m
-
-\x1b[0m\x1b[38;2;102;217;239mfunc\x1b[0m\x1b[38;2;248;248;242m \x1b[0m\x1b[38;2;166;226;46mmain\x1b[0m\x1b[38;2;248;248;242m()\x1b[0m\x1b[38;2;248;248;242m \x1b[0m\x1b[38;2;248;248;242m{\x1b[0m\x1b[38;2;248;248;242m
-\t\x1b[0m\x1b[38;2;166;226;46mfmt\x1b[0m\x1b[38;2;248;248;242m.\x1b[0m\x1b[38;2;166;226;46mPrintln\x1b[0m\x1b[38;2;248;248;242m(\x1b[0m\x1b[38;2;230;219;116m\"hello world\"\x1b[0m\x1b[38;2;248;248;242m)\x1b[0m\x1b[38;2;248;248;242m
-\x1b[0m\x1b[38;2;248;248;242m}\x1b[0m
+\x1b[38;2;249;38;114mpackage\x1b[0m\x1b[38;2;248;248;242m \x1b[0m\x1b[38;2;166;226;46mmain\x1b[0m\x1b[38;2;248;248;242m\x1b[0m
+\x1b[38;2;248;248;242m\x1b[0m
+\x1b[38;2;249;38;114mimport\x1b[0m\x1b[38;2;248;248;242m \x1b[0m\x1b[38;2;230;219;116m\"fmt\"\x1b[0m\x1b[38;2;248;248;242m\x1b[0m
+\x1b[38;2;248;248;242m\x1b[0m
+\x1b[38;2;102;217;239mfunc\x1b[0m\x1b[38;2;248;248;242m \x1b[0m\x1b[38;2;166;226;46mmain\x1b[0m\x1b[38;2;248;248;242m()\x1b[0m\x1b[38;2;248;248;242m \x1b[0m\x1b[38;2;248;248;242m{\x1b[0m\x1b[38;2;248;248;242m\x1b[0m
+\x1b[38;2;248;248;242m\t\x1b[0m\x1b[38;2;166;226;46mfmt\x1b[0m\x1b[38;2;248;248;242m.\x1b[0m\x1b[38;2;166;226;46mPrintln\x1b[0m\x1b[38;2;248;248;242m(\x1b[0m\x1b[38;2;230;219;116m\"hello world\"\x1b[0m\x1b[38;2;248;248;242m)\x1b[0m\x1b[38;2;248;248;242m\x1b[0m
+\x1b[38;2;248;248;242m}\x1b[0m
 ```
 
 ## `terminal256`
 
 ```terminal256
-\x1b[38;5;197mpackage\x1b[0m\x1b[38;5;231m \x1b[0m\x1b[38;5;148mmain\x1b[0m\x1b[38;5;231m
-
-\x1b[0m\x1b[38;5;197mimport\x1b[0m\x1b[38;5;231m \x1b[0m\x1b[38;5;186m\"fmt\"\x1b[0m\x1b[38;5;231m
-
-\x1b[0m\x1b[38;5;81mfunc\x1b[0m\x1b[38;5;231m \x1b[0m\x1b[38;5;148mmain\x1b[0m\x1b[38;5;231m()\x1b[0m\x1b[38;5;231m \x1b[0m\x1b[38;5;231m{\x1b[0m\x1b[38;5;231m
-\t\x1b[0m\x1b[38;5;148mfmt\x1b[0m\x1b[38;5;231m.\x1b[0m\x1b[38;5;148mPrintln\x1b[0m\x1b[38;5;231m(\x1b[0m\x1b[38;5;186m\"hello world\"\x1b[0m\x1b[38;5;231m)\x1b[0m\x1b[38;5;231m
-\x1b[0m\x1b[38;5;231m}\x1b[0m
+\x1b[38;5;197mpackage\x1b[0m\x1b[38;5;231m \x1b[0m\x1b[38;5;148mmain\x1b[0m\x1b[38;5;231m\x1b[0m
+\x1b[38;5;231m\x1b[0m
+\x1b[38;5;197mimport\x1b[0m\x1b[38;5;231m \x1b[0m\x1b[38;5;186m\"fmt\"\x1b[0m\x1b[38;5;231m\x1b[0m
+\x1b[38;5;231m\x1b[0m
+\x1b[38;5;81mfunc\x1b[0m\x1b[38;5;231m \x1b[0m\x1b[38;5;148mmain\x1b[0m\x1b[38;5;231m()\x1b[0m\x1b[38;5;231m \x1b[0m\x1b[38;5;231m{\x1b[0m\x1b[38;5;231m\x1b[0m
+\x1b[38;5;231m\t\x1b[0m\x1b[38;5;148mfmt\x1b[0m\x1b[38;5;231m.\x1b[0m\x1b[38;5;148mPrintln\x1b[0m\x1b[38;5;231m(\x1b[0m\x1b[38;5;186m\"hello world\"\x1b[0m\x1b[38;5;231m)\x1b[0m\x1b[38;5;231m\x1b[0m
+\x1b[38;5;231m}\x1b[0m
 ```
 
 ## `terminal8`
 
 ```terminal8
-\x1b[1m\x1b[31mpackage\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[33mmain\x1b[0m\x1b[1m\x1b[37m
-
-\x1b[0m\x1b[1m\x1b[31mimport\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[37m\"fmt\"\x1b[0m\x1b[1m\x1b[37m
-
-\x1b[0m\x1b[1m\x1b[36mfunc\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[33mmain\x1b[0m\x1b[1m\x1b[37m()\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[37m{\x1b[0m\x1b[1m\x1b[37m
-\t\x1b[0m\x1b[1m\x1b[33mfmt\x1b[0m\x1b[1m\x1b[37m.\x1b[0m\x1b[1m\x1b[33mPrintln\x1b[0m\x1b[1m\x1b[37m(\x1b[0m\x1b[37m\"hello world\"\x1b[0m\x1b[1m\x1b[37m)\x1b[0m\x1b[1m\x1b[37m
-\x1b[0m\x1b[1m\x1b[37m}\x1b[0m
+\x1b[1m\x1b[31mpackage\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[33mmain\x1b[0m\x1b[1m\x1b[37m\x1b[0m
+\x1b[1m\x1b[37m\x1b[0m
+\x1b[1m\x1b[31mimport\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[37m\"fmt\"\x1b[0m\x1b[1m\x1b[37m\x1b[0m
+\x1b[1m\x1b[37m\x1b[0m
+\x1b[1m\x1b[36mfunc\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[33mmain\x1b[0m\x1b[1m\x1b[37m()\x1b[0m\x1b[1m\x1b[37m \x1b[0m\x1b[1m\x1b[37m{\x1b[0m\x1b[1m\x1b[37m\x1b[0m
+\x1b[1m\x1b[37m\t\x1b[0m\x1b[1m\x1b[33mfmt\x1b[0m\x1b[1m\x1b[37m.\x1b[0m\x1b[1m\x1b[33mPrintln\x1b[0m\x1b[1m\x1b[37m(\x1b[0m\x1b[37m\"hello world\"\x1b[0m\x1b[1m\x1b[37m)\x1b[0m\x1b[1m\x1b[37m\x1b[0m
+\x1b[1m\x1b[37m}\x1b[0m
 ```
 
 ## `tokens`

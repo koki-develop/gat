@@ -18,6 +18,7 @@
 | `ArangoDB AQL` | `aql` |
 | `Arduino` | `arduino` |
 | `ArmAsm` | `armasm` |
+| `ATL` | `atl` |
 | `AutoHotkey` | `autohotkey`, `ahk` |
 | `AutoIt` | `autoit` |
 | `Awk` | `awk`, `gawk`, `mawk`, `nawk` |
@@ -25,6 +26,7 @@
 | `Bash` | `bash`, `sh`, `ksh`, `zsh`, `shell` |
 | `Bash Session` | `bash-session`, `console`, `shell-session` |
 | `Batchfile` | `bat`, `batch`, `dosbatch`, `winbatch` |
+| `Beef` | `beef` |
 | `BibTeX` | `bib`, `bibtex` |
 | `Bicep` | `bicep` |
 | `BlitzBasic` | `blitzbasic`, `b3d`, `bplus` |
@@ -50,6 +52,7 @@
 | `Coq` | `coq` |
 | `Crystal` | `cr`, `crystal` |
 | `CSS` | `css` |
+| `CSV` | `csv` |
 | `CUE` | `cue` |
 | `Cython` | `cython`, `pyx`, `pyrex` |
 | `D` | `d` |
@@ -78,7 +81,7 @@
 | `GDScript` | `gdscript`, `gd` |
 | `GDScript3` | `gdscript3`, `gd3` |
 | `Gherkin` | `cucumber`, `Cucumber`, `gherkin`, `Gherkin` |
-| `Gleam` | `gleam>` |
+| `Gleam` | `gleam` |
 | `GLSL` | `glsl` |
 | `Gnuplot` | `gnuplot` |
 | `Go Template` | `go-template` |
@@ -104,6 +107,8 @@
 | `Java` | `java` |
 | `JavaScript` | `js`, `javascript` |
 | `JSON` | `json` |
+| `JSONata` | `jsonata` |
+| `Jsonnet` | `jsonnet` |
 | `Julia` | `julia`, `jl` |
 | `Jungle` | `jungle` |
 | `Kotlin` | `kotlin` |
@@ -116,7 +121,7 @@
 | `Materialize SQL dialect` | `materialize`, `mzsql` |
 | `Mathematica` | `mathematica`, `mma`, `nb` |
 | `Matlab` | `matlab` |
-| `mcfunction` | `mcfunction` |
+| `MCFunction` | `mcfunction`, `mcf` |
 | `Meson` | `meson`, `meson.build` |
 | `Metal` | `metal` |
 | `MiniZinc` | `minizinc`, `MZN`, `mzn` |
@@ -133,6 +138,7 @@
 | `Nginx configuration file` | `nginx` |
 | `Nim` | `nim`, `nimrod` |
 | `Nix` | `nixos`, `nix` |
+| `NSIS` | `nsis`, `nsi`, `nsh` |
 | `Objective-C` | `objective-c`, `objectivec`, `obj-c`, `objc` |
 | `ObjectPascal` | `objectpascal` |
 | `OCaml` | `ocaml` |
@@ -190,6 +196,7 @@
 | `Smali` | `smali` |
 | `Smalltalk` | `smalltalk`, `squeak`, `st` |
 | `Smarty` | `smarty` |
+| `SNBT` | `snbt` |
 | `Snobol` | `snobol` |
 | `Solidity` | `sol`, `solidity` |
 | `SourcePawn` | `sp` |
@@ -222,6 +229,7 @@
 | `TypoScript` | `typoscript` |
 | `TypoScriptCssData` | `typoscriptcssdata` |
 | `TypoScriptHtmlData` | `typoscripthtmldata` |
+| `Typst` | `typst` |
 | `ucode` | |
 | `V` | `v`, `vlang` |
 | `V shell` | `vsh`, `vshell` |
@@ -234,6 +242,7 @@
 | `vue` | `vue`, `vuejs` |
 | `WDTE` | |
 | `WebGPU Shading Language` | `wgsl` |
+| `WebVTT` | `vtt` |
 | `Whiley` | `whiley` |
 | `XML` | `xml` |
 | `Xorg` | `xorg.conf` |
