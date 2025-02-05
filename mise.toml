@@ -3,4 +3,4 @@ go = "1.23.5"
 
 "go:github.com/golangci/golangci-lint/cmd/golangci-lint" = "1.63.4"
 "go:github.com/charmbracelet/vhs" = "0.8.0"
-"go:github.com/goreleaser/goreleaser/v2" = "2.5.0"
+"go:github.com/goreleaser/goreleaser/v2" = "2.6.1"
