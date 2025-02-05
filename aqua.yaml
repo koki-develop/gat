@@ -1,8 +1,0 @@
-registries:
-- type: standard
-  ref: v4.302.1 # renovate: depName=aquaproj/aqua-registry
-packages:
-- name: golangci/golangci-lint@v1.63.4
-- name: golang/go@go1.23.5
-- name: charmbracelet/vhs@v0.8.0
-- name: goreleaser/goreleaser@v2.5.0
