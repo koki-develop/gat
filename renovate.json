@@ -1,4 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>koki-develop/renovate-config"]
+  "extends": [
+    "github>koki-develop/renovate-config",
+    "github>koki-develop/renovate-config:mise"
+  ]
 }
