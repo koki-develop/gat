@@ -10,7 +10,7 @@ require (
 	github.com/mattn/go-sixel v0.0.5
 	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.10.0
-	github.com/tdewolff/minify/v2 v2.21.2
+	github.com/tdewolff/minify/v2 v2.21.3
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
 	golang.org/x/image v0.23.0
 	golang.org/x/term v0.27.0
