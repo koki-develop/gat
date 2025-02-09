@@ -28,6 +28,18 @@ jobs:
         with:
           level: ${{ inputs.level }}
 
+      - name: Create release
+        env:
+          CURRENT_VERSION: ${{ steps.bump.outputs.current-version }}
+          NEW_VERSION: ${{ steps.bump.outputs.new-version }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${NEW_VERSION}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --title "${NEW_VERSION}" \
+            --generate-notes \
+            --notes-start-tag "${CURRENT_VERSION}"
+
       - name: release
         run: goreleaser release --clean
         env:
