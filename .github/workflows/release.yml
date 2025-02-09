@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
       - uses: ./.github/actions/setup
 
-      - uses: koki-develop/bump-semver-action@v1
+      - uses: koki-develop/bump-semver-action@37efab70624e3ec4b7cbc42315db8c2cb1843a11 # v1.0.0
         id: bump
         with:
           level: ${{ inputs.level }}
