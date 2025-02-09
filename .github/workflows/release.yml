@@ -46,3 +46,4 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           TAP_GITHUB_TOKEN: ${{ secrets.TAP_GITHUB_TOKEN }}
           GORELEASER_CURRENT_TAG: ${{ steps.bump.outputs.new-version }}
+          GORELEASER_PREVIOUS_TAG: ${{ steps.bump.outputs.current-version }}
