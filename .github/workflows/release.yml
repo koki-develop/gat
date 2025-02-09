@@ -1,9 +1,16 @@
 name: release
 
 on:
-  push:
-    tags:
-      - "v*"
+  workflow_dispatch:
+    inputs:
+      level:
+        required: true
+        type: choice
+        default: patch
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
   release:
@@ -15,8 +22,15 @@ jobs:
         with:
           fetch-depth: 0
       - uses: ./.github/actions/setup
+
+      - uses: koki-develop/bump-semver-action@v1
+        id: bump
+        with:
+          level: ${{ inputs.level }}
+
       - name: release
         run: goreleaser release --clean
         env:
           GITHUB_TOKEN: ${{ github.token }}
           TAP_GITHUB_TOKEN: ${{ secrets.TAP_GITHUB_TOKEN }}
+          GORELEASER_CURRENT_TAG: ${{ steps.bump.outputs.new-version }}
