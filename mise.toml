@@ -1,5 +1,5 @@
 [tools]
-go = "1.23.6"
+go = "1.24.0"
 
 "go:github.com/golangci/golangci-lint/cmd/golangci-lint" = "1.63.4"
 "go:github.com/charmbracelet/vhs" = "0.9.0"
