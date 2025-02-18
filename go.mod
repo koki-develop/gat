@@ -8,7 +8,7 @@ require (
 	github.com/client9/csstool v0.2.2
 	github.com/google/yamlfmt v0.16.0
 	github.com/mattn/go-sixel v0.0.5
-	github.com/spf13/cobra v1.8.1
+	github.com/spf13/cobra v1.9.0
 	github.com/stretchr/testify v1.10.0
 	github.com/tdewolff/minify/v2 v2.21.3
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
@@ -39,7 +39,7 @@ require (
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 // indirect
 	github.com/soniakeys/quant v1.0.0 // indirect
-	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/spf13/pflag v1.0.6 // indirect
 	github.com/tdewolff/parse v2.3.3+incompatible // indirect
 	github.com/tdewolff/parse/v2 v2.7.19 // indirect
 	github.com/yuin/goldmark v1.7.4 // indirect
