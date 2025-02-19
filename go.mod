@@ -8,7 +8,7 @@ require (
 	github.com/client9/csstool v0.2.2
 	github.com/google/yamlfmt v0.16.0
 	github.com/mattn/go-sixel v0.0.5
-	github.com/spf13/cobra v1.9.0
+	github.com/spf13/cobra v1.9.1
 	github.com/stretchr/testify v1.10.0
 	github.com/tdewolff/minify/v2 v2.21.3
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
