@@ -229,6 +229,10 @@ func (g *Gat) printImage(w io.Writer, r io.Reader) error {
 		}
 	}
 
+	if _, err := w.Write([]byte{'\n'}); err != nil {
+		return err
+	}
+
 	return nil
 }
 
