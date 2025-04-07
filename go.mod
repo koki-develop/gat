@@ -12,7 +12,7 @@ require (
 	github.com/mattn/go-sixel v0.0.5
 	github.com/spf13/cobra v1.9.1
 	github.com/stretchr/testify v1.10.0
-	github.com/tdewolff/minify/v2 v2.21.3
+	github.com/tdewolff/minify/v2 v2.23.1
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
 	golang.org/x/image v0.25.0
 	golang.org/x/term v0.29.0
@@ -43,7 +43,7 @@ require (
 	github.com/soniakeys/quant v1.0.0 // indirect
 	github.com/spf13/pflag v1.0.6 // indirect
 	github.com/tdewolff/parse v2.3.3+incompatible // indirect
-	github.com/tdewolff/parse/v2 v2.7.19 // indirect
+	github.com/tdewolff/parse/v2 v2.7.23 // indirect
 	github.com/yuin/goldmark v1.7.4 // indirect
 	github.com/yuin/goldmark-emoji v1.0.3 // indirect
 	golang.org/x/net v0.33.0 // indirect
