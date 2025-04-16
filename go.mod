@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.24.2
 
 require (
-	github.com/alecthomas/chroma/v2 v2.15.0
+	github.com/alecthomas/chroma/v2 v2.16.0
 	github.com/charmbracelet/glamour v0.8.0
 	github.com/client9/csstool v0.2.2
 	github.com/google/yamlfmt v0.16.0
@@ -26,7 +26,7 @@ require (
 	github.com/charmbracelet/lipgloss v0.12.1 // indirect
 	github.com/charmbracelet/x/ansi v0.1.4 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/dlclark/regexp2 v1.11.4 // indirect
+	github.com/dlclark/regexp2 v1.11.5 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/gorilla/css v1.0.1 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
