@@ -104,6 +104,7 @@
 | `Io` | `io` |
 | `ISCdhcpd` | `iscdhcpd` |
 | `J` | `j` |
+| `Janet` | `janet` |
 | `Java` | `java` |
 | `JavaScript` | `js`, `javascript` |
 | `JSON` | `json` |
@@ -114,7 +115,7 @@
 | `Kotlin` | `kotlin` |
 | `Lighttpd configuration file` | `lighty`, `lighttpd` |
 | `LLVM` | `llvm` |
-| `Lua` | `lua` |
+| `Lua` | `lua`, `luau` |
 | `Makefile` | `make`, `makefile`, `mf`, `bsdmake` |
 | `Mako` | `mako` |
 | `Mason` | `mason` |
@@ -127,6 +128,7 @@
 | `MiniZinc` | `minizinc`, `MZN`, `mzn` |
 | `MLIR` | `mlir` |
 | `Modula-2` | `modula2`, `m2` |
+| `Mojo` | `mojo`, `🔥` |
 | `MonkeyC` | `monkeyc` |
 | `MorrowindScript` | `morrowind`, `mwscript` |
 | `Myghty` | `myghty` |
@@ -216,7 +218,7 @@
 | `Tcsh` | `tcsh`, `csh` |
 | `Termcap` | `termcap` |
 | `Terminfo` | `terminfo` |
-| `Terraform` | `terraform`, `tf` |
+| `Terraform` | `terraform`, `tf`, `hcl` |
 | `TeX` | `tex`, `latex` |
 | `Thrift` | `thrift` |
 | `TOML` | `toml` |
