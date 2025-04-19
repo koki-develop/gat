@@ -18,14 +18,22 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: ./.github/actions/setup
 
-      - run: go run ./docs/update.go
-      - run: |
+      - name: Update docs
+        id: update-docs
+        run: |
+          go run ./docs/update.go
           git add .
           if git diff --staged --exit-code --quiet; then
             echo "No changes."
           else
-            git config user.name github-actions
-            git config user.email github-actions@github.com
-            git commit -m "update docs"
-            git push origin main
+            echo "Changes detected."
+            echo "diff=true" >> "${GITHUB_OUTPUT}"
           fi
+      - uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
+        if: ${{ steps.update-docs.outputs.diff == 'true' }}
+        with:
+          token: ${{ github.token }}
+          title: "chore: Update docs"
+          body: ${{ github.sha }}
+          branch: docs/update
+          branch-suffix: short-commit-hash
