@@ -9,8 +9,9 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: write # for create a release
+      pull-requests: write # for open a pull request
+      issues: write # for create labels
     outputs:
       should-release: ${{ steps.release-please.outputs.release_created }}
     steps:
