@@ -1,10 +1,17 @@
-name: ci
+name: CI
+run-name: CI (${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.sha }})
+
+permissions: {}
 
 on:
+  pull_request:
   push:
 
 jobs:
   test:
+    timeout-minutes: 10
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -12,6 +19,9 @@ jobs:
       - run: go test ./...
 
   build:
+    timeout-minutes: 10
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -20,6 +30,9 @@ jobs:
       - run: goreleaser release --snapshot --clean
 
   lint:
+    timeout-minutes: 10
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
