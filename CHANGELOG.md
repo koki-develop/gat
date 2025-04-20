@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.22.3](https://github.com/koki-develop/gat/compare/v0.22.2...v0.22.3) (2025-04-20)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/charmbracelet/glamour to v0.10.0 ([#127](https://github.com/koki-develop/gat/issues/127)) ([4bba5f5](https://github.com/koki-develop/gat/commit/4bba5f5da244aad66ed99dc8c18d4d73434ad631))
+
 ## [0.22.2](https://github.com/koki-develop/gat/compare/v0.22.1...v0.22.2) (2025-04-19)
 
 
