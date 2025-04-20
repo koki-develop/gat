@@ -1,4 +1,6 @@
-name: release-please
+name: Release Please
+
+permissions: {}
 
 on:
   push:
@@ -11,6 +13,7 @@ concurrency:
 
 jobs:
   release-please:
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     permissions:
       contents: write # for create a release
@@ -27,6 +30,7 @@ jobs:
 
   release:
     if: ${{ needs.release-please.outputs.should-release == 'true' }}
+    timeout-minutes: 10
     needs: release-please
     runs-on: ubuntu-latest
     permissions:
