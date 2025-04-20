@@ -257,12 +257,6 @@ func isBinary(data []byte) bool {
 	return bytes.IndexByte(data[:1024], 0) != -1
 }
 
-func PrintFormats(w io.Writer) {
-	for _, f := range formatters.List() {
-		fmt.Fprintln(w, f)
-	}
-}
-
 func PrintThemes(w io.Writer, withColor bool) error {
 	if withColor {
 		src := `package main
