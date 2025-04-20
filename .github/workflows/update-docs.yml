@@ -1,4 +1,6 @@
-name: update docs
+name: Update docs
+
+permissions: {}
 
 on:
   push:
@@ -11,6 +13,7 @@ concurrency:
 
 jobs:
   update-docs:
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     permissions:
       contents: write

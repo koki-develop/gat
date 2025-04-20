@@ -1,10 +1,13 @@
-name: update demo
+name: Update demo
+
+permissions: {}
 
 on:
   workflow_dispatch:
 
 jobs:
   update-demo:
+    timeout-minutes: 10
     permissions:
       contents: write
       pull-requests: write
