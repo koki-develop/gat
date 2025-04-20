@@ -21,8 +21,8 @@ DDD d, ddd
 `
 
 	buf := new(bytes.Buffer)
-	if err := printLanguages(buf, langs); err != nil {
-		t.Fatal(err)
-	}
+	err := printLanguages(buf, langs)
+
+	assert.NoError(t, err)
 	assert.Equal(t, want, buf.String())
 }
