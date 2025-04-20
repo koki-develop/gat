@@ -1,5 +1,5 @@
 name: Setup
-description: ""
+description: Setup the environment for the runner
 
 runs:
   using: composite
