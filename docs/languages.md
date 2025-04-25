@@ -113,6 +113,7 @@
 | `Julia` | `julia`, `jl` |
 | `Jungle` | `jungle` |
 | `Kotlin` | `kotlin` |
+| `Lean4` | `lean4`, `lean` |
 | `Lighttpd configuration file` | `lighty`, `lighttpd` |
 | `LLVM` | `llvm` |
 | `Lua` | `lua`, `luau` |
