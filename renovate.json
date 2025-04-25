@@ -3,5 +3,12 @@
   "extends": [
     "github>koki-develop/renovate-config",
     "github>koki-develop/renovate-config:mise"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["github.com/alecthomas/chroma/v2"],
+      "matchUpdateTypes": ["minor", "major"],
+      "semanticCommitType": "feat"
+    }
   ]
 }
