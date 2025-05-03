@@ -22,7 +22,7 @@ func printLanguages(w io.Writer, langs []Language) error {
 	tw := tabwriter.NewWriter(w, 0, 0, 1, ' ', 0)
 
 	for _, l := range langs {
-		if _, err := tw.Write([]byte(fmt.Sprintf("%s\t%s\n", l.Name, strings.Join(l.Aliases, ", ")))); err != nil {
+		if _, err := fmt.Fprintf(tw, "%s\t%s\n", l.Name, strings.Join(l.Aliases, ", ")); err != nil {
 			return err
 		}
 	}
