@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      - uses: koki-develop/github-actions-lint/actionlint@cd40a2834e54895146e4a73ae17dcc37944ffb0f # v1.1.0
+      - uses: koki-develop/github-actions-lint/actionlint@5850357e9cfc5c09e198e6c1ca6333dd6581a7f7 # v1.1.1
 
   ghalint:
     timeout-minutes: 5
@@ -37,7 +37,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      - uses: koki-develop/github-actions-lint/ghalint@cd40a2834e54895146e4a73ae17dcc37944ffb0f # v1.1.0
+      - uses: koki-develop/github-actions-lint/ghalint@5850357e9cfc5c09e198e6c1ca6333dd6581a7f7 # v1.1.1
         with:
           action-path: ./.github/actions/**/action.yml
 
@@ -50,7 +50,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-      - uses: koki-develop/github-actions-lint/zizmor@cd40a2834e54895146e4a73ae17dcc37944ffb0f # v1.1.0
+      - uses: koki-develop/github-actions-lint/zizmor@5850357e9cfc5c09e198e6c1ca6333dd6581a7f7 # v1.1.1
         with:
           github-token: ${{ github.token }}
           persona: auditor
