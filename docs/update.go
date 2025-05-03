@@ -55,7 +55,7 @@ func Map[T, I any](ts []T, f func(t T) I) []I {
 
 func updateLanguages() {
 	f := Must(os.Create("docs/languages.md"))
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	Must(f.WriteString("# Languages\n\n"))
 
@@ -64,19 +64,18 @@ func updateLanguages() {
 
 	for _, l := range lexers.List() {
 		cfg := l.Config()
-		Must(f.WriteString(fmt.Sprintf("| `%s` ", cfg.Name)))
+		Must(fmt.Fprintf(f, "| `%s` ", cfg.Name))
 
 		if len(cfg.Aliases) > 0 {
-			Must(f.WriteString(
-				fmt.Sprintf(
-					"| %s |",
-					strings.Join(
-						Map(
-							cfg.Aliases,
-							func(a string) string { return fmt.Sprintf("`%s`", a) },
-						),
-						", ",
+			Must(fmt.Fprintf(
+				f,
+				"| %s |",
+				strings.Join(
+					Map(
+						cfg.Aliases,
+						func(a string) string { return fmt.Sprintf("`%s`", a) },
 					),
+					", ",
 				),
 			))
 		} else {
@@ -88,17 +87,17 @@ func updateLanguages() {
 
 func updateFormats() {
 	f := Must(os.Create("docs/formats.md"))
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	Must(f.WriteString("# Output Formats\n\n"))
 
 	for _, format := range formatters.List() {
-		Must(f.WriteString(fmt.Sprintf("- [`%s`](#%s)\n", format, format)))
+		Must(fmt.Fprintf(f, "- [`%s`](#%s)\n", format, format))
 	}
 	Must(f.WriteString("\n"))
 
 	for _, format := range formatters.List() {
-		Must(f.WriteString(fmt.Sprintf("## `%s`\n\n", format)))
+		Must(fmt.Fprintf(f, "## `%s`\n\n", format))
 
 		g := Must(gat.New(&gat.Config{
 			Format:   format,
@@ -109,7 +108,7 @@ func updateFormats() {
 		b := new(bytes.Buffer)
 		OrPanic(g.Print(b, strings.NewReader(src)))
 
-		Must(f.WriteString(fmt.Sprintf("```%s\n", strings.TrimSuffix(format, "-min"))))
+		Must(fmt.Fprintf(f, "```%s\n", strings.TrimSuffix(format, "-min")))
 		if strings.HasPrefix(format, "terminal") {
 			Must(f.WriteString(strings.Trim(strings.ReplaceAll(fmt.Sprintf("%#v", strings.TrimSpace(b.String())), "\\n", "\n"), "\"")))
 		} else {
@@ -124,17 +123,17 @@ func updateFormats() {
 
 func updateThemes() {
 	f := Must(os.Create("docs/themes.md"))
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	Must(f.WriteString("# Highlight Themes\n\n"))
 
 	for _, s := range styles.List() {
-		Must(f.WriteString(fmt.Sprintf("- [`%s`](#%s)\n", s, s)))
+		Must(fmt.Fprintf(f, "- [`%s`](#%s)\n", s, s))
 	}
 	Must(f.WriteString("\n"))
 
 	for _, s := range styles.List() {
-		Must(f.WriteString(fmt.Sprintf("## `%s`\n\n", s)))
+		Must(fmt.Fprintf(f, "## `%s`\n\n", s))
 
 		g := Must(gat.New(&gat.Config{
 			Format:   "svg",
@@ -146,9 +145,9 @@ func updateThemes() {
 		OrPanic(g.Print(b, strings.NewReader(src)))
 
 		img := Must(os.Create(fmt.Sprintf("./docs/themes/%s.svg", s)))
-		defer img.Close()
+		defer func() { _ = img.Close() }()
 		Must(img.Write(b.Bytes()))
 
-		Must(f.WriteString(fmt.Sprintf("![%s](./themes/%s.svg)\n\n", s, s)))
+		Must(fmt.Fprintf(f, "![%s](./themes/%s.svg)\n\n", s, s))
 	}
 }

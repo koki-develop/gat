@@ -163,7 +163,7 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 		if err != nil {
 			return err
 		}
-		defer r.Close()
+		defer func() { _ = r.Close() }()
 
 		s, err := r.Render(src)
 		if err != nil {
@@ -241,7 +241,7 @@ func (*Gat) readGzip(r io.Reader) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	defer gz.Close()
+	defer func() { _ = gz.Close() }()
 
 	if _, err := io.Copy(buf, gz); err != nil {
 		return "", err
@@ -268,7 +268,9 @@ func main() {
 }`
 
 		for _, t := range styles.List() {
-			fmt.Fprintf(w, "\x1b[1m%s\x1b[0m\n\n", t)
+			if _, err := fmt.Fprintf(w, "\x1b[1m%s\x1b[0m\n\n", t); err != nil {
+				return err
+			}
 
 			g, err := New(&Config{
 				Language: "go",
@@ -298,7 +300,9 @@ func main() {
 		}
 	} else {
 		for _, t := range styles.List() {
-			fmt.Fprintln(w, t)
+			if _, err := fmt.Fprintln(w, t); err != nil {
+				return err
+			}
 		}
 	}
 
