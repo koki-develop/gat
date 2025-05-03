@@ -42,4 +42,3 @@ jobs:
           title: "chore: Update docs"
           body: ${{ github.sha }}
           branch: docs/update
-          branch-suffix: short-commit-hash
