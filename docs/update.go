@@ -55,7 +55,7 @@ func Map[T, I any](ts []T, f func(t T) I) []I {
 
 func updateLanguages() {
 	f := Must(os.Create("docs/languages.md"))
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	Must(f.WriteString("# Languages\n\n"))
 
@@ -88,7 +88,7 @@ func updateLanguages() {
 
 func updateFormats() {
 	f := Must(os.Create("docs/formats.md"))
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	Must(f.WriteString("# Output Formats\n\n"))
 
@@ -124,7 +124,7 @@ func updateFormats() {
 
 func updateThemes() {
 	f := Must(os.Create("docs/themes.md"))
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 
 	Must(f.WriteString("# Highlight Themes\n\n"))
 
@@ -146,7 +146,7 @@ func updateThemes() {
 		OrPanic(g.Print(b, strings.NewReader(src)))
 
 		img := Must(os.Create(fmt.Sprintf("./docs/themes/%s.svg", s)))
-		defer img.Close()
+		defer func() { _ = img.Close() }()
 		Must(img.Write(b.Bytes()))
 
 		Must(f.WriteString(fmt.Sprintf("![%s](./themes/%s.svg)\n\n", s, s)))

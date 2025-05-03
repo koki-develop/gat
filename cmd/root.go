@@ -56,7 +56,7 @@ var rootCmd = &cobra.Command{
 			if err != nil {
 				return err
 			}
-			defer f.Close()
+			defer func() { _ = f.Close() }()
 			if err := g.Print(os.Stdout, f, gat.WithPretty(flagPretty), gat.WithFilename(filename)); err != nil {
 				return err
 			}
