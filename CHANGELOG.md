@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.23.1](https://github.com/koki-develop/gat/compare/v0.23.0...v0.23.1) (2025-05-03)
+
+
+### Bug Fixes
+
+* Bump golang.org/x/net from 0.33.0 to 0.38.0 ([#135](https://github.com/koki-develop/gat/issues/135)) ([10db835](https://github.com/koki-develop/gat/commit/10db8353fbc2a6f4d4881c2c9955b25a2f80e936))
+* **deps:** update module github.com/alecthomas/chroma/v2 to v2.17.2 ([#150](https://github.com/koki-develop/gat/issues/150)) ([13981c5](https://github.com/koki-develop/gat/commit/13981c573995f35a03cae0acb5a2f1032f50c2ec))
+* **deps:** update module github.com/tdewolff/minify/v2 to v2.23.3 ([#148](https://github.com/koki-develop/gat/issues/148)) ([f38420a](https://github.com/koki-develop/gat/commit/f38420a522e8870c43400003d56bd8a75ddd776f))
+
 ## [0.23.0](https://github.com/koki-develop/gat/compare/v0.22.3...v0.23.0) (2025-04-25)
 
 
