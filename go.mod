@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.24.2
 
 require (
-	github.com/alecthomas/chroma/v2 v2.17.0
+	github.com/alecthomas/chroma/v2 v2.17.2
 	github.com/charmbracelet/glamour v0.10.0
 	github.com/client9/csstool v0.2.2
 	github.com/google/yamlfmt v0.16.0
