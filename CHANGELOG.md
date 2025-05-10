@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.23.2](https://github.com/koki-develop/gat/compare/v0.23.1...v0.23.2) (2025-05-10)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/tdewolff/minify/v2 to v2.23.5 ([#161](https://github.com/koki-develop/gat/issues/161)) ([3234023](https://github.com/koki-develop/gat/commit/3234023adb9a77ca734ff3196645a256a99310bb))
+* **deps:** update module golang.org/x/image to v0.27.0 ([#159](https://github.com/koki-develop/gat/issues/159)) ([2a0b861](https://github.com/koki-develop/gat/commit/2a0b861cb9efcb28cbab78570429238da4c55cfa))
+* **deps:** update module golang.org/x/term to v0.32.0 ([#157](https://github.com/koki-develop/gat/issues/157)) ([f41652f](https://github.com/koki-develop/gat/commit/f41652f7ae40d6e470d58a850fde7e4bd95dba8a))
+
 ## [0.23.1](https://github.com/koki-develop/gat/compare/v0.23.0...v0.23.1) (2025-05-03)
 
 
