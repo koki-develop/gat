@@ -185,6 +185,7 @@
 | `reg` | `registry` |
 | `Rego` | `rego` |
 | `Rexx` | `rexx`, `arexx` |
+| `RPGLE` | `SQLRPGLE`, `RPG IV` |
 | `RPMSpec` | `spec` |
 | `Ruby` | `rb`, `ruby`, `duby` |
 | `Rust` | `rust`, `rs` |
