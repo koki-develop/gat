@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.24.0](https://github.com/koki-develop/gat/compare/v0.23.2...v0.24.0) (2025-05-19)
+
+
+### Features
+
+* **deps:** update module github.com/alecthomas/chroma/v2 to v2.18.0 ([#164](https://github.com/koki-develop/gat/issues/164)) ([6b6ad62](https://github.com/koki-develop/gat/commit/6b6ad627f980af9e74e8a3954a39b9043297fb1e))
+
 ## [0.23.2](https://github.com/koki-develop/gat/compare/v0.23.1...v0.23.2) (2025-05-10)
 
 
