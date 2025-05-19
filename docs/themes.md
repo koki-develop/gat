@@ -1,5 +1,6 @@
 # Highlight Themes
 
+- [`RPGLE`](#RPGLE)
 - [`abap`](#abap)
 - [`algol`](#algol)
 - [`algol_nu`](#algol_nu)
@@ -67,6 +68,10 @@
 - [`witchhazel`](#witchhazel)
 - [`xcode`](#xcode)
 - [`xcode-dark`](#xcode-dark)
+
+## `RPGLE`
+
+![RPGLE](./themes/RPGLE.svg)
 
 ## `abap`
 
