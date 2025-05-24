@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.24.1](https://github.com/koki-develop/gat/compare/v0.24.0...v0.24.1) (2025-05-24)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/tdewolff/minify/v2 to v2.23.8 ([#168](https://github.com/koki-develop/gat/issues/168)) ([a2319a8](https://github.com/koki-develop/gat/commit/a2319a85d6757f3a02e8218d073bac0f48dcccd9))
+
 ## [0.24.0](https://github.com/koki-develop/gat/compare/v0.23.2...v0.24.0) (2025-05-19)
 
 
