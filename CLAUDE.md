@@ -88,7 +88,7 @@ go run . [file]...               # Run from source
 ## Tool Configuration
 
 The project uses:
-- **mise.toml**: Tool version management (Go 1.24.3, golangci-lint, vhs, goreleaser)
+- **mise**: Tool version management (Go 1.24.3, golangci-lint, vhs, goreleaser)
 - **goreleaser**: Cross-platform building and release automation
 - **GitHub Actions**: CI with test/build/lint jobs
 
