@@ -9,6 +9,17 @@ import (
 	"golang.org/x/term"
 )
 
+// processFile handles opening, processing, and closing a single file with proper defer scope
+func processFile(g *gat.Gat, filename string, opts ...gat.PrintOption) error {
+	f, err := os.Open(filename)
+	if err != nil {
+		return err
+	}
+	defer func() { _ = f.Close() }()
+
+	return g.Print(os.Stdout, f, opts...)
+}
+
 var rootCmd = &cobra.Command{
 	Use:   "gat [file]...",
 	Short: "cat alternative written in Go",
@@ -52,13 +63,7 @@ var rootCmd = &cobra.Command{
 		}
 
 		for _, filename := range args {
-			f, err := os.Open(filename)
-			if err != nil {
-				return err
-			}
-			err = g.Print(os.Stdout, f, gat.WithPretty(flagPretty), gat.WithFilename(filename))
-			_ = f.Close()
-			if err != nil {
+			if err := processFile(g, filename, gat.WithPretty(flagPretty), gat.WithFilename(filename)); err != nil {
 				return err
 			}
 		}
