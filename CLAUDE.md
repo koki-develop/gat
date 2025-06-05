@@ -102,35 +102,7 @@ The project uses:
 
 ### 🚨 Critical Issues (Fix Immediately)
 
-#### 1. Resource Leak in File Handling
-**File**: `cmd/root.go:54-63`
-**Issue**: Files are deferred to close at function end, not loop iteration end
-```go
-for _, filename := range args {
-    f, err := os.Open(filename)
-    if err != nil {
-        return err
-    }
-    defer func() { _ = f.Close() }() // BUG: All files close at function end
-    // ...
-}
-```
-**Fix**: Close files immediately after processing each one:
-```go
-for _, filename := range args {
-    f, err := os.Open(filename)
-    if err != nil {
-        return err
-    }
-    err = g.Print(os.Stdout, f, gat.WithPretty(flagPretty), gat.WithFilename(filename))
-    f.Close() // Close immediately
-    if err != nil {
-        return err
-    }
-}
-```
-
-#### 2. Extremely Low Test Coverage (4.7%)
+#### Extremely Low Test Coverage (4.7%)
 **Missing Coverage**:
 - Core functionality (`internal/gat/gat.go`)
 - CLI layer (`cmd/`)
@@ -142,7 +114,7 @@ for _, filename := range args {
 - Error injection tests for file I/O operations
 - Tests for different image formats and sizes
 
-#### 3. Memory Safety Issues
+#### Memory Safety Issues
 **File**: `internal/gat/gat.go:142-146, 202-236`
 **Issues**:
 - No size limits when loading files/images into memory
@@ -156,7 +128,7 @@ for _, filename := range args {
 
 ### ⚠️ High Priority Issues
 
-#### 4. Silent Error Suppression
+#### Silent Error Suppression
 **Files**: `cmd/root.go:59`, `internal/gat/gat.go:166, 244`
 ```go
 defer func() { _ = f.Close() }() // Ignoring close errors
@@ -170,7 +142,7 @@ defer func() {
 }()
 ```
 
-#### 5. Performance Bottlenecks
+#### Performance Bottlenecks
 **String Concatenation**: `internal/gat/gat.go:142-146`
 ```go
 buf := new(bytes.Buffer)
@@ -186,7 +158,7 @@ src = buf.String() // Unnecessary copy
 - No memory pool for frequent image operations
 - Loads entire image into memory before size checking
 
-#### 6. Hard-coded Magic Values
+#### Hard-coded Magic Values
 **File**: `internal/gat/gat.go:103-135`
 - Binary message string is hard-coded and very long (line 135)
 - Magic number 1024 for peek size and binary detection (lines 104, 254-257)
@@ -203,7 +175,7 @@ const (
 
 ### 🔧 Medium Priority Issues
 
-#### 7. Global State in Prettier Registry
+#### Global State in Prettier Registry
 **File**: `internal/prettier/registry.go:3`
 ```go
 var Registry = map[string]Prettier{} // Global mutable state
@@ -219,11 +191,11 @@ func NewRegistry() *Registry {
 }
 ```
 
-#### 8. Tight Coupling
+#### Tight Coupling
 **File**: `internal/gat/gat.go:44-75`
 The `New()` function directly couples to multiple internal packages, making it hard to test in isolation.
 
-#### 9. Security Concerns
+#### Security Concerns
 **Dependency Vulnerabilities**:
 - Several dependencies at v0.x versions
 - `github.com/yosssi/gohtml` (last updated 2020)
@@ -234,7 +206,7 @@ The `New()` function directly couples to multiple internal packages, making it h
 - Could cause OOM with very large files
 - No timeout for file operations
 
-#### 10. Documentation Issues
+#### Documentation Issues
 **Missing Godoc Comments**:
 - `type Config struct` - no documentation for fields
 - `func New()` - no documentation for error conditions
@@ -245,7 +217,7 @@ The `New()` function directly couples to multiple internal packages, making it h
 - Image processing pipeline
 - Error handling strategy
 
-#### 11. Dependency Management
+#### Dependency Management
 **Outdated Dependencies**:
 - `github.com/alecthomas/chroma/v2` v2.17.2 → v2.18.0
 - `github.com/bmatcuk/doublestar/v4` v4.7.1 → v4.8.1
@@ -256,7 +228,7 @@ The `New()` function directly couples to multiple internal packages, making it h
 ### 📈 Action Plan
 
 #### Phase 1 (Week 1) - Critical Fixes
-- [ ] Fix file handle leak in `cmd/root.go:54-63`
+- [x] ~~Fix file handle leak in `cmd/root.go:54-63`~~ **COMPLETED**
 - [ ] Add basic integration tests to achieve >50% coverage
 - [ ] Add size limits for file and image processing
 - [ ] Fix error handling - don't silently ignore errors
