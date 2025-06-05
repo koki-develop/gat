@@ -61,13 +61,13 @@ go run . [file]...               # Run from source
 
 ### Key Data Flow
 
-1. **Input Processing**: `gat.Print()` reads content and detects MIME type
-2. **Content Detection**: Binary vs text, with special handling for images and gzip
-3. **Lexer Selection**: Auto-detect language from filename/content or use explicit `--lang`
-4. **Content Transformation**: 
-   - Markdown rendering (glamour) if `--render-markdown`
-   - Code prettification if `--pretty`
-5. **Output Formatting**: Apply syntax highlighting and format (terminal/HTML/JSON/SVG)
+- **Input Processing**: `gat.Print()` reads content and detects MIME type
+- **Content Detection**: Binary vs text, with special handling for images and gzip
+- **Lexer Selection**: Auto-detect language from filename/content or use explicit `--lang`
+- **Content Transformation**: 
+  - Markdown rendering (glamour) if `--render-markdown`
+  - Code prettification if `--pretty`
+- **Output Formatting**: Apply syntax highlighting and format (terminal/HTML/JSON/SVG)
 
 ### Special Features
 
