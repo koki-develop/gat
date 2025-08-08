@@ -108,4 +108,4 @@ jobs:
             echo "value<<$EOF"
             jq < "$CLAUDE_CODE_EXECUTION_FILE"
             echo "$EOF"
-          } >> "$GITHUB_OUTPUT"
+          }
