@@ -26,9 +26,12 @@ jobs:
           persist-credentials: false
 
       - uses: anthropics/claude-code-action/base-action@15db2b3c79c0681556c056e9bc3f61fd3fc0347d # v0.0.54
+        id: claude
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          allowed_tools: 'Bash(gh pr diff:*),Bash(gh pr comment:*),WebFetch(domain:github.com),WebFetch(domain:raw.githubusercontent.com)'
+          allowed_tools: 'Bash(gh pr diff:*),WebFetch(domain:github.com),WebFetch(domain:raw.githubusercontent.com)'
           prompt: |
             ## Context
 
@@ -69,9 +72,6 @@ jobs:
                - **Needs Manual Migration**: Manual code fixes or configuration changes required
                - **Not Safe**: Major breaking changes or security risks present
 
-            5. **Post Review Results as Comment**
-               - Post detailed analysis results as a comment using `gh pr comment ${{ github.event.pull_request.number }} --body '## Renovate PR Review Results ...'`
-
             ### Report Format
 
             ```markdown
@@ -97,3 +97,15 @@ jobs:
             - [Release notes]
             - [CHANGELOG]
             ```
+
+      - name: Get Claude Code Result
+        id: result
+        env:
+          CLAUDE_CODE_EXECUTION_FILE: ${{ steps.claude.outputs.execution_file }}
+        run: |
+          EOF=$(uuidgen)
+          {
+            echo "value<<$EOF"
+            jq < "$CLAUDE_CODE_EXECUTION_FILE"
+            echo "$EOF"
+          } >> "$GITHUB_OUTPUT"
