@@ -1,4 +1,4 @@
-name: Review Renovate
+name: Claude Renovate Review
 
 permissions: {}
 
@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  review:
+  claude-renovate-review:
     if: github.event.pull_request.user.login == 'renovate[bot]'
     timeout-minutes: 30
     runs-on: ubuntu-latest
