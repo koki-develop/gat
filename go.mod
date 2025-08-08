@@ -8,7 +8,7 @@ require (
 	github.com/alecthomas/chroma/v2 v2.18.0
 	github.com/charmbracelet/glamour v0.10.0
 	github.com/client9/csstool v0.2.2
-	github.com/google/yamlfmt v0.17.0
+	github.com/google/yamlfmt v0.17.2
 	github.com/mattn/go-sixel v0.0.5
 	github.com/spf13/cobra v1.9.1
 	github.com/stretchr/testify v1.10.0
