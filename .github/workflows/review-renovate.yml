@@ -24,88 +24,13 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-
-      - uses: anthropics/claude-code-action/base-action@15db2b3c79c0681556c056e9bc3f61fd3fc0347d # v0.0.54
-        id: claude
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      - uses: ./.github/actions/claude-renovate-review
+        id: review
         with:
+          github_token: ${{ github.token }}
+          pull_request_number: ${{ github.event.pull_request.number }}
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          allowed_tools: 'Bash(gh pr diff:*),WebFetch(domain:github.com),WebFetch(domain:raw.githubusercontent.com)'
-          prompt: |
-            ## Context
-
-            <pull_request>
-            <number>${{ github.event.pull_request.number }}</number>
-            <title>${{ github.event.pull_request.title }}</title>
-            <body>
-            ${{ github.event.pull_request.body }}
-            </body>
-            </pull_request>
-
-            ## Your Role
-
-            Conduct a detailed review of the Renovate Pull Request and evaluate the safety of merging.
-
-            **Important**: Do not execute local tests or build commands. This review should be conducted based solely on static analysis of changes, release notes, and impact assessment.
-
-            ### Execution Steps
-
-            1. **Pull Request Analysis**
-               - Review the Pull Request information provided as context
-               - Retrieve the Pull Request diff using `gh pr diff ${{ github.event.pull_request.number }}`
-               - Identify target packages and version changes
-
-            2. **Release Content Investigation**
-               - Review release notes and CHANGELOG of the target package
-               - Understand breaking changes, new features, and bug fixes
-               - Check for security-related fixes
-
-            3. **Codebase Impact Analysis**
-               - Search for usage locations of the target package in the current codebase
-               - Verify the need for modifications due to API changes
-               - Investigate impact on other packages due to dependency changes
-               - Check impact on configuration files and environment settings
-
-            4. **Safety Assessment (3 Levels)**
-               - **Safe**: Backward compatibility is maintained, immediately mergeable
-               - **Needs Manual Migration**: Manual code fixes or configuration changes required
-               - **Not Safe**: Major breaking changes or security risks present
-
-            ### Report Format
-
-            ```markdown
-            ## Renovate PR Review Results
-
-            ### ⚖️ Safety Assessment:
-            [✅ Safe | ⚠️ Needs Manual Migration | ❌ Not Safe]
-
-            ### 🔍 Release Content Analysis
-            - [Major changes]
-            - [Breaking changes]
-            - [Security fixes]
-
-            ### 🎯 Impact Scope Investigation
-            - [Usage location identification results]
-            - [Impact on other dependencies]
-
-            ### 💡 Recommended Actions
-            - [Required modification work]
-            - [Specific response methods]
-
-            ### 🔗 Reference Links
-            - [Release notes]
-            - [CHANGELOG]
-            ```
-
-      - name: Get Claude Code Result
-        id: result
+      - name: debug
         env:
-          CLAUDE_CODE_EXECUTION_FILE: ${{ steps.claude.outputs.execution_file }}
-        run: |
-          EOF=$(uuidgen)
-          {
-            echo "value<<$EOF"
-            jq < "$CLAUDE_CODE_EXECUTION_FILE"
-            echo "$EOF"
-          }
+          REVIEW_REPORT: ${{ steps.review.outputs.report }}
+        run: echo "$REVIEW_REPORT"
