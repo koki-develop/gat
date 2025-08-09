@@ -31,3 +31,5 @@ jobs:
             WebFetch(domain:github.com)
             WebFetch(domain:raw.githubusercontent.com)
             WebFetch(domain:pkg.go.dev)
+            WebFetch(domain:golang.org)
+            WebFetch(domain:go.dev)
