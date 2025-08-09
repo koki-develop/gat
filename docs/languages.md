@@ -50,6 +50,7 @@
 | `CoffeeScript` | `coffee-script`, `coffeescript`, `coffee` |
 | `Common Lisp` | `common-lisp`, `cl`, `lisp` |
 | `Coq` | `coq` |
+| `Core` | `core` |
 | `Crystal` | `cr`, `crystal` |
 | `CSS` | `css` |
 | `CSV` | `csv` |
@@ -62,7 +63,7 @@
 | `Diff` | `diff`, `udiff` |
 | `Django/Jinja` | `django`, `jinja` |
 | `dns` | `zone`, `bind` |
-| `Docker` | `docker`, `dockerfile` |
+| `Docker` | `docker`, `dockerfile`, `containerfile` |
 | `DTD` | `dtd` |
 | `Dylan` | `dylan` |
 | `EBNF` | `ebnf` |
@@ -116,6 +117,7 @@
 | `Lean4` | `lean4`, `lean` |
 | `Lighttpd configuration file` | `lighty`, `lighttpd` |
 | `LLVM` | `llvm` |
+| `lox` | |
 | `Lua` | `lua`, `luau` |
 | `Makefile` | `make`, `makefile`, `mf`, `bsdmake` |
 | `Mako` | `mako` |
@@ -131,6 +133,7 @@
 | `Modula-2` | `modula2`, `m2` |
 | `Mojo` | `mojo`, `🔥` |
 | `MonkeyC` | `monkeyc` |
+| `MoonScript` | `moonscript`, `moon` |
 | `MorrowindScript` | `morrowind`, `mwscript` |
 | `Myghty` | `myghty` |
 | `MySQL` | `mysql`, `mariadb` |
@@ -142,6 +145,7 @@
 | `Nim` | `nim`, `nimrod` |
 | `Nix` | `nixos`, `nix` |
 | `NSIS` | `nsis`, `nsi`, `nsh` |
+| `Nu` | `nu` |
 | `Objective-C` | `objective-c`, `objectivec`, `obj-c`, `objc` |
 | `ObjectPascal` | `objectpascal` |
 | `OCaml` | `ocaml` |
@@ -257,6 +261,7 @@
 | `Zig` | `zig` |
 | `Caddyfile` | `caddyfile`, `caddy` |
 | `Caddyfile Directives` | `caddyfile-directives`, `caddyfile-d`, `caddy-d` |
+| `Gemtext` | `gemtext`, `gmi`, `gmni`, `gemini` |
 | `Genshi Text` | `genshitext` |
 | `Genshi HTML` | `html+genshi`, `html+kid` |
 | `Genshi` | `genshi`, `kid`, `xml+genshi`, `xml+kid` |
