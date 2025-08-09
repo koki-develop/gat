@@ -10,12 +10,12 @@
 }
 </style><rect width="100%" height="100%" fill="#ffffff"/>
 <g font-family="Liberation Mono" font-size="14px" fill="#-00001">
-<text x="0" y="1.200000em" xml:space="preserve"><tspan fill="#0000aa">package</tspan>&#160;main
-</text><text x="0" y="2.400000em" xml:space="preserve">
-</text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#0000aa">import</tspan>&#160;<tspan fill="#aa5500">&quot;fmt&quot;</tspan>
-</text><text x="0" y="4.800000em" xml:space="preserve">
-</text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#0000aa">func</tspan>&#160;<tspan fill="#00aa00">main</tspan>()&#160;{
-</text><text x="0" y="7.200000em" xml:space="preserve">&#160;&#160;&#160;&#160;fmt.<tspan fill="#00aa00">Println</tspan>(<tspan fill="#aa5500">&quot;hello&#160;world&quot;</tspan>)
-</text><text x="0" y="8.400000em" xml:space="preserve">}</text>
+<text x="0" y="1.200000em" xml:space="preserve"><tspan fill="#0000aa">package</tspan><tspan fill="#bbbbbb">&#160;</tspan>main<tspan fill="#bbbbbb">
+</tspan></text><text x="0" y="2.400000em" xml:space="preserve"><tspan fill="#bbbbbb">
+</tspan></text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#bbbbbb"></tspan><tspan fill="#0000aa">import</tspan><tspan fill="#bbbbbb">&#160;</tspan><tspan fill="#aa5500">&quot;fmt&quot;</tspan><tspan fill="#bbbbbb">
+</tspan></text><text x="0" y="4.800000em" xml:space="preserve"><tspan fill="#bbbbbb">
+</tspan></text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#bbbbbb"></tspan><tspan fill="#0000aa">func</tspan><tspan fill="#bbbbbb">&#160;</tspan><tspan fill="#00aa00">main</tspan>()<tspan fill="#bbbbbb">&#160;</tspan>{<tspan fill="#bbbbbb">
+</tspan></text><text x="0" y="7.200000em" xml:space="preserve"><tspan fill="#bbbbbb">&#160;&#160;&#160;&#160;</tspan>fmt.<tspan fill="#00aa00">Println</tspan>(<tspan fill="#aa5500">&quot;hello&#160;world&quot;</tspan>)<tspan fill="#bbbbbb">
+</tspan></text><text x="0" y="8.400000em" xml:space="preserve"><tspan fill="#bbbbbb"></tspan>}</text>
 </g>
 </svg>

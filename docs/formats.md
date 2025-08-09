@@ -84,13 +84,13 @@
 /* GenericSubheading */ .chroma .gu { color: #75715e }
 body { color:#f8f8f2;background-color:#272822;; }
 </style><body class="bg">
-<pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre>
+<pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nx">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="s">&#34;fmt&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre>
 </body>
 </html>
 ```
@@ -98,13 +98,13 @@ body { color:#f8f8f2;background-color:#272822;; }
 ## `html-min`
 
 ```html
-<html><style>.bg{color:#f8f8f2;background-color:#272822}.chroma{color:#f8f8f2;background-color:#272822}.chroma .err{color:#960050;background-color:#1e0010}.chroma .lnlinks{outline:none;text-decoration:none;color:inherit}.chroma .lntd{vertical-align:top;padding:0;margin:0;border:0}.chroma .lntable{border-spacing:0;padding:0;margin:0;border:0}.chroma .hl{background-color:#3c3d38}.chroma .lnt{white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f}.chroma .ln{white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f}.chroma .line{display:flex}.chroma .k{color:#66d9ef}.chroma .kc{color:#66d9ef}.chroma .kd{color:#66d9ef}.chroma .kn{color:#f92672}.chroma .kp{color:#66d9ef}.chroma .kr{color:#66d9ef}.chroma .kt{color:#66d9ef}.chroma .na{color:#a6e22e}.chroma .nc{color:#a6e22e}.chroma .no{color:#66d9ef}.chroma .nd{color:#a6e22e}.chroma .ne{color:#a6e22e}.chroma .nx{color:#a6e22e}.chroma .nt{color:#f92672}.chroma .nf{color:#a6e22e}.chroma .fm{color:#a6e22e}.chroma .l{color:#ae81ff}.chroma .ld{color:#e6db74}.chroma .s{color:#e6db74}.chroma .sa{color:#e6db74}.chroma .sb{color:#e6db74}.chroma .sc{color:#e6db74}.chroma .dl{color:#e6db74}.chroma .sd{color:#e6db74}.chroma .s2{color:#e6db74}.chroma .se{color:#ae81ff}.chroma .sh{color:#e6db74}.chroma .si{color:#e6db74}.chroma .sx{color:#e6db74}.chroma .sr{color:#e6db74}.chroma .s1{color:#e6db74}.chroma .ss{color:#e6db74}.chroma .m{color:#ae81ff}.chroma .mb{color:#ae81ff}.chroma .mf{color:#ae81ff}.chroma .mh{color:#ae81ff}.chroma .mi{color:#ae81ff}.chroma .il{color:#ae81ff}.chroma .mo{color:#ae81ff}.chroma .o{color:#f92672}.chroma .ow{color:#f92672}.chroma .c{color:#75715e}.chroma .ch{color:#75715e}.chroma .cm{color:#75715e}.chroma .c1{color:#75715e}.chroma .cs{color:#75715e}.chroma .cp{color:#75715e}.chroma .cpf{color:#75715e}.chroma .gd{color:#f92672}.chroma .ge{font-style:italic}.chroma .gi{color:#a6e22e}.chroma .gs{font-weight:700}.chroma .gu{color:#75715e}body{color:#f8f8f2;background-color:#272822}</style><body class="bg"><pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></body></html>
+<html><style>.bg{color:#f8f8f2;background-color:#272822}.chroma{color:#f8f8f2;background-color:#272822}.chroma .err{color:#960050;background-color:#1e0010}.chroma .lnlinks{outline:none;text-decoration:none;color:inherit}.chroma .lntd{vertical-align:top;padding:0;margin:0;border:0}.chroma .lntable{border-spacing:0;padding:0;margin:0;border:0}.chroma .hl{background-color:#3c3d38}.chroma .lnt{white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f}.chroma .ln{white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f}.chroma .line{display:flex}.chroma .k{color:#66d9ef}.chroma .kc{color:#66d9ef}.chroma .kd{color:#66d9ef}.chroma .kn{color:#f92672}.chroma .kp{color:#66d9ef}.chroma .kr{color:#66d9ef}.chroma .kt{color:#66d9ef}.chroma .na{color:#a6e22e}.chroma .nc{color:#a6e22e}.chroma .no{color:#66d9ef}.chroma .nd{color:#a6e22e}.chroma .ne{color:#a6e22e}.chroma .nx{color:#a6e22e}.chroma .nt{color:#f92672}.chroma .nf{color:#a6e22e}.chroma .fm{color:#a6e22e}.chroma .l{color:#ae81ff}.chroma .ld{color:#e6db74}.chroma .s{color:#e6db74}.chroma .sa{color:#e6db74}.chroma .sb{color:#e6db74}.chroma .sc{color:#e6db74}.chroma .dl{color:#e6db74}.chroma .sd{color:#e6db74}.chroma .s2{color:#e6db74}.chroma .se{color:#ae81ff}.chroma .sh{color:#e6db74}.chroma .si{color:#e6db74}.chroma .sx{color:#e6db74}.chroma .sr{color:#e6db74}.chroma .s1{color:#e6db74}.chroma .ss{color:#e6db74}.chroma .m{color:#ae81ff}.chroma .mb{color:#ae81ff}.chroma .mf{color:#ae81ff}.chroma .mh{color:#ae81ff}.chroma .mi{color:#ae81ff}.chroma .il{color:#ae81ff}.chroma .mo{color:#ae81ff}.chroma .o{color:#f92672}.chroma .ow{color:#f92672}.chroma .c{color:#75715e}.chroma .ch{color:#75715e}.chroma .cm{color:#75715e}.chroma .c1{color:#75715e}.chroma .cs{color:#75715e}.chroma .cp{color:#75715e}.chroma .cpf{color:#75715e}.chroma .gd{color:#f92672}.chroma .ge{font-style:italic}.chroma .gi{color:#a6e22e}.chroma .gs{font-weight:700}.chroma .gu{color:#75715e}body{color:#f8f8f2;background-color:#272822}</style><body class="bg"><pre class="chroma"><code><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nx">main</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="s">&#34;fmt&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">func</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;hello world&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span></span></span></code></pre></body></html>
 ```
 
 ## `json`
@@ -112,27 +112,27 @@ body { color:#f8f8f2;background-color:#272822;; }
 ```json
 [
   {"type":"KeywordNamespace","value":"package"},
-  {"type":"Text","value":" "},
+  {"type":"TextWhitespace","value":" "},
   {"type":"NameOther","value":"main"},
-  {"type":"Text","value":"\n\n"},
+  {"type":"TextWhitespace","value":"\n\n"},
   {"type":"KeywordNamespace","value":"import"},
-  {"type":"Text","value":" "},
+  {"type":"TextWhitespace","value":" "},
   {"type":"LiteralString","value":"\"fmt\""},
-  {"type":"Text","value":"\n\n"},
+  {"type":"TextWhitespace","value":"\n\n"},
   {"type":"KeywordDeclaration","value":"func"},
-  {"type":"Text","value":" "},
+  {"type":"TextWhitespace","value":" "},
   {"type":"NameFunction","value":"main"},
   {"type":"Punctuation","value":"()"},
-  {"type":"Text","value":" "},
+  {"type":"TextWhitespace","value":" "},
   {"type":"Punctuation","value":"{"},
-  {"type":"Text","value":"\n\t"},
+  {"type":"TextWhitespace","value":"\n\t"},
   {"type":"NameOther","value":"fmt"},
   {"type":"Punctuation","value":"."},
   {"type":"NameFunction","value":"Println"},
   {"type":"Punctuation","value":"("},
   {"type":"LiteralString","value":"\"hello world\""},
   {"type":"Punctuation","value":")"},
-  {"type":"Text","value":"\n"},
+  {"type":"TextWhitespace","value":"\n"},
   {"type":"Punctuation","value":"}"}
 ]
 ```
@@ -140,7 +140,7 @@ body { color:#f8f8f2;background-color:#272822;; }
 ## `json-min`
 
 ```json
-[{"type":"KeywordNamespace","value":"package"},{"type":"Text","value":" "},{"type":"NameOther","value":"main"},{"type":"Text","value":"\n\n"},{"type":"KeywordNamespace","value":"import"},{"type":"Text","value":" "},{"type":"LiteralString","value":"\"fmt\""},{"type":"Text","value":"\n\n"},{"type":"KeywordDeclaration","value":"func"},{"type":"Text","value":" "},{"type":"NameFunction","value":"main"},{"type":"Punctuation","value":"()"},{"type":"Text","value":" "},{"type":"Punctuation","value":"{"},{"type":"Text","value":"\n\t"},{"type":"NameOther","value":"fmt"},{"type":"Punctuation","value":"."},{"type":"NameFunction","value":"Println"},{"type":"Punctuation","value":"("},{"type":"LiteralString","value":"\"hello world\""},{"type":"Punctuation","value":")"},{"type":"Text","value":"\n"},{"type":"Punctuation","value":"}"}]
+[{"type":"KeywordNamespace","value":"package"},{"type":"TextWhitespace","value":" "},{"type":"NameOther","value":"main"},{"type":"TextWhitespace","value":"\n\n"},{"type":"KeywordNamespace","value":"import"},{"type":"TextWhitespace","value":" "},{"type":"LiteralString","value":"\"fmt\""},{"type":"TextWhitespace","value":"\n\n"},{"type":"KeywordDeclaration","value":"func"},{"type":"TextWhitespace","value":" "},{"type":"NameFunction","value":"main"},{"type":"Punctuation","value":"()"},{"type":"TextWhitespace","value":" "},{"type":"Punctuation","value":"{"},{"type":"TextWhitespace","value":"\n\t"},{"type":"NameOther","value":"fmt"},{"type":"Punctuation","value":"."},{"type":"NameFunction","value":"Println"},{"type":"Punctuation","value":"("},{"type":"LiteralString","value":"\"hello world\""},{"type":"Punctuation","value":")"},{"type":"TextWhitespace","value":"\n"},{"type":"Punctuation","value":"}"}]
 ```
 
 ## `noop`
@@ -256,27 +256,27 @@ font-style: normal;
 
 ```tokens
 &Token{KeywordNamespace, "package"}
-&Token{Text, " "}
+&Token{TextWhitespace, " "}
 &Token{NameOther, "main"}
-&Token{Text, "\n\n"}
+&Token{TextWhitespace, "\n\n"}
 &Token{KeywordNamespace, "import"}
-&Token{Text, " "}
+&Token{TextWhitespace, " "}
 &Token{LiteralString, "\"fmt\""}
-&Token{Text, "\n\n"}
+&Token{TextWhitespace, "\n\n"}
 &Token{KeywordDeclaration, "func"}
-&Token{Text, " "}
+&Token{TextWhitespace, " "}
 &Token{NameFunction, "main"}
 &Token{Punctuation, "()"}
-&Token{Text, " "}
+&Token{TextWhitespace, " "}
 &Token{Punctuation, "{"}
-&Token{Text, "\n\t"}
+&Token{TextWhitespace, "\n\t"}
 &Token{NameOther, "fmt"}
 &Token{Punctuation, "."}
 &Token{NameFunction, "Println"}
 &Token{Punctuation, "("}
 &Token{LiteralString, "\"hello world\""}
 &Token{Punctuation, ")"}
-&Token{Text, "\n"}
+&Token{TextWhitespace, "\n"}
 &Token{Punctuation, "}"}
 ```
 
