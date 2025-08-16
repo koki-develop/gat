@@ -10,12 +10,12 @@
 }
 </style><rect width="100%" height="100%" fill="#ffffff"/>
 <g font-family="Liberation Mono" font-size="14px" fill="#4d4d4d">
-<text x="0" y="1.200000em" xml:space="preserve"><tspan fill="#2c5dcd" font-weight="bold">package</tspan>&#160;main
-</text><text x="0" y="2.400000em" xml:space="preserve">
-</text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#2c5dcd" font-weight="bold">import</tspan>&#160;<tspan fill="#00cc66">&quot;fmt&quot;</tspan>
-</text><text x="0" y="4.800000em" xml:space="preserve">
-</text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#2c5dcd" font-weight="bold">func</tspan>&#160;<tspan fill="#ff8000" font-weight="bold">main</tspan>()&#160;{
-</text><text x="0" y="7.200000em" xml:space="preserve">&#160;&#160;&#160;&#160;fmt.<tspan fill="#ff8000" font-weight="bold">Println</tspan>(<tspan fill="#00cc66">&quot;hello&#160;world&quot;</tspan>)
-</text><text x="0" y="8.400000em" xml:space="preserve">}</text>
+<text x="0" y="1.200000em" xml:space="preserve"><tspan fill="#2c5dcd" font-weight="bold">package</tspan><tspan fill="#cbcbcb">&#160;</tspan>main<tspan fill="#cbcbcb">
+</tspan></text><text x="0" y="2.400000em" xml:space="preserve"><tspan fill="#cbcbcb">
+</tspan></text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#cbcbcb"></tspan><tspan fill="#2c5dcd" font-weight="bold">import</tspan><tspan fill="#cbcbcb">&#160;</tspan><tspan fill="#00cc66">&quot;fmt&quot;</tspan><tspan fill="#cbcbcb">
+</tspan></text><text x="0" y="4.800000em" xml:space="preserve"><tspan fill="#cbcbcb">
+</tspan></text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#cbcbcb"></tspan><tspan fill="#2c5dcd" font-weight="bold">func</tspan><tspan fill="#cbcbcb">&#160;</tspan><tspan fill="#ff8000" font-weight="bold">main</tspan>()<tspan fill="#cbcbcb">&#160;</tspan>{<tspan fill="#cbcbcb">
+</tspan></text><text x="0" y="7.200000em" xml:space="preserve"><tspan fill="#cbcbcb">&#160;&#160;&#160;&#160;</tspan>fmt.<tspan fill="#ff8000" font-weight="bold">Println</tspan>(<tspan fill="#00cc66">&quot;hello&#160;world&quot;</tspan>)<tspan fill="#cbcbcb">
+</tspan></text><text x="0" y="8.400000em" xml:space="preserve"><tspan fill="#cbcbcb"></tspan>}</text>
 </g>
 </svg>
