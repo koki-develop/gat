@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.25.0](https://github.com/koki-develop/gat/compare/v0.24.1...v0.25.0) (2025-08-16)
+
+
+### Features
+
+* **deps:** update module github.com/alecthomas/chroma/v2 to v2.20.0 ([#185](https://github.com/koki-develop/gat/issues/185)) ([99be01a](https://github.com/koki-develop/gat/commit/99be01a23af638cbc38328ee29bba56c8431d888))
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/google/yamlfmt to v0.17.2 ([#180](https://github.com/koki-develop/gat/issues/180)) ([f8ea163](https://github.com/koki-develop/gat/commit/f8ea163413ce4287edba3d5add8363095b59c4d0))
+* **deps:** update module github.com/tdewolff/minify/v2 to v2.23.10 ([#182](https://github.com/koki-develop/gat/issues/182)) ([9c5ba93](https://github.com/koki-develop/gat/commit/9c5ba93a18da2edd980c9095cdd5f9ff646de0d1))
+* **deps:** update module github.com/tdewolff/minify/v2 to v2.23.11 ([#188](https://github.com/koki-develop/gat/issues/188)) ([7311e8c](https://github.com/koki-develop/gat/commit/7311e8ca7f80c3444d7efd1398a087abbe2aef80))
+* **deps:** update module golang.org/x/image to v0.29.0 ([#176](https://github.com/koki-develop/gat/issues/176)) ([daea246](https://github.com/koki-develop/gat/commit/daea24621f766157334304798e7f8528614b3ca5))
+* **deps:** update module golang.org/x/term to v0.33.0 ([#186](https://github.com/koki-develop/gat/issues/186)) ([f24517e](https://github.com/koki-develop/gat/commit/f24517e340c072fdc0116c7f0424aa8b4492d64d))
+
 ## [0.24.1](https://github.com/koki-develop/gat/compare/v0.24.0...v0.24.1) (2025-06-05)
 
 
