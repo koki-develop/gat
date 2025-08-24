@@ -39,3 +39,4 @@ brews:
       owner: koki-develop
       name: homebrew-tap
       token: "{{ .Env.TAP_GITHUB_TOKEN }}"
+    directory: Formula
