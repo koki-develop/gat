@@ -28,16 +28,16 @@ cat alternative written in Go.
 
 ## Installation
 
+### Homebrew Tap (Recommended)
+
+```console
+$ brew install koki-develop/tap/gat
+```
+
 ### Homebrew
 
 ```console
 $ brew install gat
-```
-
-### Homebrew Tap
-
-```console
-$ brew install koki-develop/tap/gat
 ```
 
 ### `go install`
