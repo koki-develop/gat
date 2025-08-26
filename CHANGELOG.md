@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.25.2](https://github.com/koki-develop/gat/compare/v0.25.1...v0.25.2) (2025-08-26)
+
+
+### Bug Fixes
+
+* Add shell completion installation to Homebrew formula ([#204](https://github.com/koki-develop/gat/issues/204)) ([ba4b67e](https://github.com/koki-develop/gat/commit/ba4b67eeea685bfa0d9b08160511d26b20136663))
+* **deps:** update module github.com/stretchr/testify to v1.11.0 ([#200](https://github.com/koki-develop/gat/issues/200)) ([82f2d9c](https://github.com/koki-develop/gat/commit/82f2d9c3fc51fe6efb8901e01ff2cbefcde976ba))
+
 ## [0.25.1](https://github.com/koki-develop/gat/compare/v0.25.0...v0.25.1) (2025-08-24)
 
 
