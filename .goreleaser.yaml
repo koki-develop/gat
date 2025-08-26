@@ -3,6 +3,7 @@ version: 2
 before:
   hooks:
     - go mod tidy
+    - ./scripts/build-completions.sh
 builds:
   - ldflags:
       - -s -w -X github.com/koki-develop/gat/cmd.version=v{{.Version}}
@@ -15,6 +16,8 @@ builds:
 
 archives:
   - formats: [tar.gz]
+    files:
+      - completions/*
     name_template: >-
       {{ .ProjectName }}_
       {{- title .Os }}_
@@ -40,3 +43,8 @@ brews:
       name: homebrew-tap
       token: "{{ .Env.TAP_GITHUB_TOKEN }}"
     directory: Formula
+    install: |
+      bin.install "gat"
+      bash_completion.install "completions/gat.bash" => "gat"
+      zsh_completion.install "completions/gat.zsh" => "_gat"
+      fish_completion.install "completions/gat.fish"
