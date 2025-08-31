@@ -11,7 +11,6 @@ cat alternative written in Go.
 <a href="https://github.com/koki-develop/gat/releases/latest"><img src="https://img.shields.io/github/v/release/koki-develop/gat" alt="GitHub release (latest by date)"></a>
 <a href="https://github.com/koki-develop/gat/releases/latest"><img alt="GitHub all releases" src="https://img.shields.io/github/downloads/koki-develop/gat/total?style=flat"></a>
 <a href="https://github.com/koki-develop/gat/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/koki-develop/gat/ci.yml?logo=github" alt="GitHub Workflow Status"></a>
-<a href="https://codeclimate.com/github/koki-develop/gat/maintainability"><img src="https://img.shields.io/codeclimate/maintainability/koki-develop/gat?style=flat&amp;logo=codeclimate" alt="Maintainability"></a>
 <a href="https://goreportcard.com/report/github.com/koki-develop/gat"><img src="https://goreportcard.com/badge/github.com/koki-develop/gat" alt="Go Report Card"></a>
 <a href="./LICENSE"><img src="https://img.shields.io/github/license/koki-develop/gat" alt="LICENSE"></a>
 </p>
