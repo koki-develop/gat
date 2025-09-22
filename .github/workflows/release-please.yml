@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   release-please:
+    name: Release Please
     timeout-minutes: 10
     runs-on: ubuntu-latest
     permissions:
@@ -29,6 +30,7 @@ jobs:
           token: ${{ github.token }}
 
   release:
+    name: Release
     if: ${{ needs.release-please.outputs.should-release == 'true' }}
     timeout-minutes: 10
     needs: release-please
