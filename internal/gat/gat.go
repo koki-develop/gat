@@ -180,10 +180,9 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 		p, ok := prettier.Get(g.lexer.Config().Name)
 		if ok {
 			s, err := p.Pretty(src)
-			if err != nil {
-				return err
+			if err == nil {
+				src = s
 			}
-			src = s
 		}
 	}
 
