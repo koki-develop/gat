@@ -33,7 +33,7 @@ type Config struct {
 }
 
 type Gat struct {
-	lexer          chroma.Lexer
+	explicitLexer  chroma.Lexer
 	formatter      chroma.Formatter
 	style          *chroma.Style
 	renderMarkdown bool
@@ -54,7 +54,7 @@ func New(cfg *Config) (*Gat, error) {
 		if err != nil {
 			return nil, err
 		}
-		g.lexer = l
+		g.explicitLexer = l
 	}
 
 	// formatter
@@ -147,15 +147,16 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 	}
 
 	// analyse lexer
-	if g.lexer == nil {
+	lexer := g.explicitLexer
+	if lexer == nil {
 		l, err := lexers.Get(lexers.WithFilename(opt.Filename), lexers.WithSource(src))
 		if err != nil {
 			return err
 		}
-		g.lexer = l
+		lexer = l
 	}
 
-	if g.renderMarkdown && g.lexer.Config().Name == "markdown" {
+	if g.renderMarkdown && lexer.Config().Name == "markdown" {
 		r, err := glamour.NewTermRenderer(
 			glamour.WithAutoStyle(),
 			glamour.WithWordWrap(-1),
@@ -177,7 +178,7 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 
 	// pretty code
 	if opt.Pretty {
-		p, ok := prettier.Get(g.lexer.Config().Name)
+		p, ok := prettier.Get(lexer.Config().Name)
 		if ok {
 			s, err := p.Pretty(src)
 			if err == nil {
@@ -187,7 +188,7 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 	}
 
 	// print
-	it, err := g.lexer.Tokenise(nil, src)
+	it, err := lexer.Tokenise(nil, src)
 	if err != nil {
 		return err
 	}
