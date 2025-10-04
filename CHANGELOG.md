@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.25.4](https://github.com/koki-develop/gat/compare/v0.25.3...v0.25.4) (2025-10-04)
+
+
+### Bug Fixes
+
+* Resolve lexer per file instead of caching ([#216](https://github.com/koki-develop/gat/issues/216)) ([496638c](https://github.com/koki-develop/gat/commit/496638cbe4641c4201cb3a3f832155b117fa8f40))
+
 ## [0.25.3](https://github.com/koki-develop/gat/compare/v0.25.2...v0.25.3) (2025-10-04)
 
 
