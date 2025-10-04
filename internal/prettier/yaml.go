@@ -27,7 +27,7 @@ func (p *YAMLPrettier) Pretty(input string) (string, error) {
 
 	b, err := formatter.Format([]byte(input))
 	if err != nil {
-		return "", nil
+		return "", err
 	}
 
 	return string(b), nil
