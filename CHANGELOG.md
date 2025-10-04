@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.25.3](https://github.com/koki-develop/gat/compare/v0.25.2...v0.25.3) (2025-10-04)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/spf13/cobra to v1.10.1 ([#208](https://github.com/koki-develop/gat/issues/208)) ([003a1b3](https://github.com/koki-develop/gat/commit/003a1b33403544ff86c0026e555fd9c50459682d))
+* **deps:** update module github.com/stretchr/testify to v1.11.1 ([#205](https://github.com/koki-develop/gat/issues/205)) ([50b2a27](https://github.com/koki-develop/gat/commit/50b2a2752b3dcc10b7c655ba35037c9fceecaf12))
+* **deps:** update module github.com/tdewolff/minify/v2 to v2.24.2 ([#206](https://github.com/koki-develop/gat/issues/206)) ([7c3f438](https://github.com/koki-develop/gat/commit/7c3f43820eae256427d746d9664ca71dcc01c351))
+* Gracefully handle prettifier errors ([#215](https://github.com/koki-develop/gat/issues/215)) ([ee26c5e](https://github.com/koki-develop/gat/commit/ee26c5ee88995b005153d2ff04d66ad642f3821d))
+
 ## [0.25.2](https://github.com/koki-develop/gat/compare/v0.25.1...v0.25.2) (2025-08-26)
 
 
