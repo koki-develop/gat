@@ -1,6 +1,6 @@
 module github.com/koki-develop/gat
 
-go 1.23.0
+go 1.24.0
 
 toolchain go1.25.1
 
@@ -14,7 +14,7 @@ require (
 	github.com/stretchr/testify v1.11.1
 	github.com/tdewolff/minify/v2 v2.24.2
 	github.com/yosssi/gohtml v0.0.0-20201013000340-ee4748c638f4
-	golang.org/x/image v0.30.0
+	golang.org/x/image v0.32.0
 	golang.org/x/term v0.34.0
 )
 
@@ -52,6 +52,6 @@ require (
 	github.com/yuin/goldmark-emoji v1.0.5 // indirect
 	golang.org/x/net v0.38.0 // indirect
 	golang.org/x/sys v0.35.0 // indirect
-	golang.org/x/text v0.28.0 // indirect
+	golang.org/x/text v0.30.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
