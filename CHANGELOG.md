@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.25.5](https://github.com/koki-develop/gat/compare/v0.25.4...v0.25.5) (2025-11-14)
+
+
+### Bug Fixes
+
+* **deps:** update module golang.org/x/image to v0.32.0 ([#214](https://github.com/koki-develop/gat/issues/214)) ([18b9cee](https://github.com/koki-develop/gat/commit/18b9ceededb2dee59e728572874f9f914da57b54))
+
 ## [0.25.4](https://github.com/koki-develop/gat/compare/v0.25.3...v0.25.4) (2025-10-04)
 
 
