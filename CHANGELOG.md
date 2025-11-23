@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.25.6](https://github.com/koki-develop/gat/compare/v0.25.5...v0.25.6) (2025-11-23)
+
+
+### Bug Fixes
+
+* **ci:** Fix release workflow ([ec08eb4](https://github.com/koki-develop/gat/commit/ec08eb439ff48b5b673585d90722994fad4ebdf3))
+
 ## [0.25.5](https://github.com/koki-develop/gat/compare/v0.25.4...v0.25.5) (2025-11-23)
 
 
