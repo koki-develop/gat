@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.25.7](https://github.com/koki-develop/gat/compare/v0.25.6...v0.25.7) (2025-11-24)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/google/yamlfmt to v0.20.0 ([#226](https://github.com/koki-develop/gat/issues/226)) ([9c49b11](https://github.com/koki-develop/gat/commit/9c49b114ec22412a3d2e3f5f6bb349b6ab2582fc))
+* **deps:** update module golang.org/x/image to v0.33.0 ([#227](https://github.com/koki-develop/gat/issues/227)) ([8a6f996](https://github.com/koki-develop/gat/commit/8a6f9961570a6f0982dfc097065b267947ab0555))
+* **deps:** update module golang.org/x/term to v0.37.0 ([#228](https://github.com/koki-develop/gat/issues/228)) ([bc65e75](https://github.com/koki-develop/gat/commit/bc65e75242bd53c694d796e866661e34fb5bb9ba))
+
 ## [0.25.6](https://github.com/koki-develop/gat/compare/v0.25.5...v0.25.6) (2025-11-23)
 
 
