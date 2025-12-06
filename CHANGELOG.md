@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.25.8](https://github.com/koki-develop/gat/compare/v0.25.7...v0.25.8) (2025-12-06)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/spf13/cobra to v1.10.2 ([#237](https://github.com/koki-develop/gat/issues/237)) ([ddf6a51](https://github.com/koki-develop/gat/commit/ddf6a511e7ce2a49236231a51caeb5c1702a08e0))
+
 ## [0.25.7](https://github.com/koki-develop/gat/compare/v0.25.6...v0.25.7) (2025-11-24)
 
 
