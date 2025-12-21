@@ -14,10 +14,10 @@
 <rect id="&quot;hello&#160;world&quot;" x="16ch" y="6.250000em" width="13ch" height="1.2em" fill="#e0e0ff" />
 <text x="0" y="1.200000em" xml:space="preserve"><tspan fill="#228899" font-weight="bold">package</tspan><tspan fill="#bbbbbb">&#160;</tspan>main<tspan fill="#bbbbbb">
 </tspan></text><text x="0" y="2.400000em" xml:space="preserve"><tspan fill="#bbbbbb">
-</tspan></text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#bbbbbb"></tspan><tspan fill="#228899" font-weight="bold">import</tspan><tspan fill="#bbbbbb">&#160;</tspan>&quot;fmt&quot;<tspan fill="#bbbbbb">
+</tspan></text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#228899" font-weight="bold">import</tspan><tspan fill="#bbbbbb">&#160;</tspan>&quot;fmt&quot;<tspan fill="#bbbbbb">
 </tspan></text><text x="0" y="4.800000em" xml:space="preserve"><tspan fill="#bbbbbb">
-</tspan></text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#bbbbbb"></tspan><tspan fill="#228899" font-weight="bold">func</tspan><tspan fill="#bbbbbb">&#160;</tspan><tspan fill="#55eedd" font-weight="bold">main</tspan>()<tspan fill="#bbbbbb">&#160;</tspan>{<tspan fill="#bbbbbb">
+</tspan></text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#228899" font-weight="bold">func</tspan><tspan fill="#bbbbbb">&#160;</tspan><tspan fill="#55eedd" font-weight="bold">main</tspan>()<tspan fill="#bbbbbb">&#160;</tspan>{<tspan fill="#bbbbbb">
 </tspan></text><text x="0" y="7.200000em" xml:space="preserve"><tspan fill="#bbbbbb">&#160;&#160;&#160;&#160;</tspan>fmt.<tspan fill="#55eedd" font-weight="bold">Println</tspan>(&quot;hello&#160;world&quot;)<tspan fill="#bbbbbb">
-</tspan></text><text x="0" y="8.400000em" xml:space="preserve"><tspan fill="#bbbbbb"></tspan>}</text>
+</tspan></text><text x="0" y="8.400000em" xml:space="preserve">}</text>
 </g>
 </svg>

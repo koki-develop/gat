@@ -12,10 +12,10 @@
 <g font-family="Liberation Mono" font-size="14px" fill="#f8f8f2">
 <text x="0" y="1.200000em" xml:space="preserve"><tspan fill="#ffb8d1">package</tspan><tspan fill="#a8757b">&#160;</tspan>main<tspan fill="#a8757b">
 </tspan></text><text x="0" y="2.400000em" xml:space="preserve"><tspan fill="#a8757b">
-</tspan></text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#a8757b"></tspan><tspan fill="#ffb8d1">import</tspan><tspan fill="#a8757b">&#160;</tspan><tspan fill="#1bc5e0">&quot;fmt&quot;</tspan><tspan fill="#a8757b">
+</tspan></text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#ffb8d1">import</tspan><tspan fill="#a8757b">&#160;</tspan><tspan fill="#1bc5e0">&quot;fmt&quot;</tspan><tspan fill="#a8757b">
 </tspan></text><text x="0" y="4.800000em" xml:space="preserve"><tspan fill="#a8757b">
-</tspan></text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#a8757b"></tspan><tspan fill="#c2ffdf">func</tspan><tspan fill="#a8757b">&#160;</tspan><tspan fill="#ceb1ff">main</tspan>()<tspan fill="#a8757b">&#160;</tspan>{<tspan fill="#a8757b">
+</tspan></text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#c2ffdf">func</tspan><tspan fill="#a8757b">&#160;</tspan><tspan fill="#ceb1ff">main</tspan>()<tspan fill="#a8757b">&#160;</tspan>{<tspan fill="#a8757b">
 </tspan></text><text x="0" y="7.200000em" xml:space="preserve"><tspan fill="#a8757b">&#160;&#160;&#160;&#160;</tspan>fmt.<tspan fill="#ceb1ff">Println</tspan>(<tspan fill="#1bc5e0">&quot;hello&#160;world&quot;</tspan>)<tspan fill="#a8757b">
-</tspan></text><text x="0" y="8.400000em" xml:space="preserve"><tspan fill="#a8757b"></tspan>}</text>
+</tspan></text><text x="0" y="8.400000em" xml:space="preserve">}</text>
 </g>
 </svg>
