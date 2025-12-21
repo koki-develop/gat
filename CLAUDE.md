@@ -106,3 +106,29 @@ The project uses Release Please for automated releases:
 - Test files follow Go convention: `*_test.go` alongside implementation
 - Use table-driven tests where appropriate
 - Mock external dependencies when needed
+
+## Masker Package Patterns
+
+When adding new API key patterns to `internal/masker/`:
+
+### Pattern Ordering
+- Place more specific patterns before general ones to avoid false matches
+- Example: `sk-ant-` must be before `sk-` to prevent Anthropic keys from matching OpenAI pattern
+
+### Supported Patterns
+- AWS Access Key ID: `AKIA[0-9A-Z]{16}`
+- GitHub Tokens: `gh[pousr]_[a-zA-Z0-9]{36,}`
+- GitLab PAT: `glpat-[a-zA-Z0-9\-_]{20,}`
+- Slack Tokens: `xox[baprs]-[0-9a-zA-Z\-]+`
+- Anthropic API Key: `sk-ant-[a-zA-Z0-9\-_]+`
+- OpenAI API Key: `sk-(?:proj-)?[a-zA-Z0-9_\-]{20,}` (supports both legacy and project formats)
+- Supabase Secret Key: `sb_secret_[a-zA-Z0-9\-_]+`
+- JWT Tokens: `eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*`
+- Private Key Headers: `-----BEGIN\s+(RSA|DSA|EC|OPENSSH|PGP)\s+PRIVATE\s+KEY-----`
+
+### Pattern Update Workflow
+1. Add regex pattern to `internal/masker/masker.go`
+2. Add test cases to `internal/masker/masker_test.go` with realistic examples
+3. Run tests: `go test ./internal/masker/...`
+4. Update README.md supported patterns list
+5. Test cases should include special characters (`_`, `-`) where applicable
