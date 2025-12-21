@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.26.0](https://github.com/koki-develop/gat/compare/v0.25.8...v0.26.0) (2025-12-21)
+
+
+### Features
+
+* add --mask-secrets flag to mask sensitive information ([8782afc](https://github.com/koki-develop/gat/commit/8782afcff0695ed6e40c7a74841129649bfd2fae))
+* **deps:** update module github.com/alecthomas/chroma/v2 to v2.21.1 ([#244](https://github.com/koki-develop/gat/issues/244)) ([4435462](https://github.com/koki-develop/gat/commit/4435462e439218e50d6c07b76471c0c49bbb5a19))
+* **masker:** add support for Anthropic, OpenAI, and Supabase API keys ([aaeb24d](https://github.com/koki-develop/gat/commit/aaeb24d7c63833569f594cfe5a1e88d29dbcba64))
+* **masker:** add support for AWS temporary credentials and secret keys ([ae2a833](https://github.com/koki-develop/gat/commit/ae2a83304e104ec3b19a6fc845d655be53ce0094))
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/tdewolff/minify/v2 to v2.24.8 ([#243](https://github.com/koki-develop/gat/issues/243)) ([727dd1d](https://github.com/koki-develop/gat/commit/727dd1da059e37fd763bf76472e3121198ca1965))
+
 ## [0.25.8](https://github.com/koki-develop/gat/compare/v0.25.7...v0.25.8) (2025-12-06)
 
 
