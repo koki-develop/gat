@@ -112,6 +112,9 @@ Supported patterns:
 - GitHub Tokens (`ghp_`, `gho_`, `ghs_`, `ghr_`)
 - GitLab Personal Access Tokens
 - Slack Tokens
+- Anthropic API Keys
+- OpenAI API Keys
+- Supabase Secret Keys
 - JWT Tokens
 - Private Key Headers
 

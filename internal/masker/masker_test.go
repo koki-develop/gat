@@ -39,6 +39,26 @@ func TestMask(t *testing.T) {
 			want:  "SLACK_TOKEN=" + strings.Repeat("*", 23),
 		},
 		{
+			name:  "Anthropic API Key",
+			input: "ANTHROPIC_API_KEY=sk-ant-api03-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+			want:  "ANTHROPIC_API_KEY=" + strings.Repeat("*", 57),
+		},
+		{
+			name:  "OpenAI API Key (legacy)",
+			input: "OPENAI_API_KEY=sk-1234567890_abcdef-1234567890_abcdef-1234567890",
+			want:  "OPENAI_API_KEY=" + strings.Repeat("*", 49),
+		},
+		{
+			name:  "OpenAI API Key (project)",
+			input: "OPENAI_API_KEY=sk-proj-abcd_1234-efgh_5678-ijkl_9012-mnop",
+			want:  "OPENAI_API_KEY=" + strings.Repeat("*", 42),
+		},
+		{
+			name:  "Supabase Secret Key",
+			input: "SUPABASE_KEY=sb_secret_1234567890abcdef1234567890abcdef",
+			want:  "SUPABASE_KEY=" + strings.Repeat("*", 42),
+		},
+		{
 			name:  "JWT Token",
 			input: "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U",
 			want:  "Authorization: Bearer " + strings.Repeat("*", 108),

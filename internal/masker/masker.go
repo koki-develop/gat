@@ -14,6 +14,12 @@ var patterns = []*regexp.Regexp{
 	regexp.MustCompile(`glpat-[a-zA-Z0-9\-_]{20,}`),
 	// Slack Tokens
 	regexp.MustCompile(`xox[baprs]-[0-9a-zA-Z\-]+`),
+	// Anthropic API Key (must be before OpenAI to avoid false matches)
+	regexp.MustCompile(`sk-ant-[a-zA-Z0-9\-_]+`),
+	// OpenAI API Key (both legacy sk- and new sk-proj- formats)
+	regexp.MustCompile(`sk-(?:proj-)?[a-zA-Z0-9_\-]{20,}`),
+	// Supabase Secret Key
+	regexp.MustCompile(`sb_secret_[a-zA-Z0-9\-_]+`),
 	// JWT Tokens
 	regexp.MustCompile(`eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*`),
 	// Private Key Headers
