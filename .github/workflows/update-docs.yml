@@ -40,6 +40,7 @@ jobs:
         if: ${{ steps.update-docs.outputs.diff == 'true' }}
         with:
           token: ${{ github.token }}
+          sign-commits: true
           title: "chore: Update docs"
           body: ${{ github.sha }}
           branch: docs/update
