@@ -36,6 +36,7 @@
 | `C#` | `csharp`, `c#` |
 | `C++` | `cpp`, `c++` |
 | `C` | `c` |
+| `C3` | `c3` |
 | `Cap'n Proto` | `capnp` |
 | `Cassandra CQL` | `cassandra`, `cql` |
 | `Ceylon` | `ceylon` |
@@ -60,6 +61,7 @@
 | `Dart` | `dart` |
 | `Dax` | `dax` |
 | `Desktop file` | `desktop`, `desktop_entry` |
+| `Devicetree` | `devicetree`, `dts` |
 | `Diff` | `diff`, `udiff` |
 | `Django/Jinja` | `django`, `jinja` |
 | `dns` | `zone`, `bind` |
@@ -113,6 +115,7 @@
 | `Jsonnet` | `jsonnet` |
 | `Julia` | `julia`, `jl` |
 | `Jungle` | `jungle` |
+| `Kakoune` | `kak`, `kakoune`, `kakrc`, `kakscript` |
 | `Kotlin` | `kotlin` |
 | `Lean4` | `lean4`, `lean` |
 | `Lighttpd configuration file` | `lighty`, `lighttpd` |
@@ -130,6 +133,7 @@
 | `Metal` | `metal` |
 | `MiniZinc` | `minizinc`, `MZN`, `mzn` |
 | `MLIR` | `mlir` |
+| `Modelica` | `modelica` |
 | `Modula-2` | `modula2`, `m2` |
 | `Mojo` | `mojo`, `🔥` |
 | `MonkeyC` | `monkeyc` |
@@ -177,7 +181,7 @@
 | `PRQL` | `prql` |
 | `PSL` | `psl` |
 | `Puppet` | `puppet` |
-| `Python` | `python`, `py`, `sage`, `python3`, `py3` |
+| `Python` | `python`, `py`, `sage`, `python3`, `py3`, `starlark` |
 | `Python 2` | `python2`, `py2` |
 | `QBasic` | `qbasic`, `basic` |
 | `QML` | `qml`, `qbs` |
@@ -189,6 +193,8 @@
 | `reg` | `registry` |
 | `Rego` | `rego` |
 | `Rexx` | `rexx`, `arexx` |
+| `RGBDS Assembly` | `rgbasm` |
+| `Ring` | `ring` |
 | `RPGLE` | `SQLRPGLE`, `RPG IV` |
 | `RPMSpec` | `spec` |
 | `Ruby` | `rb`, `ruby`, `duby` |
@@ -233,6 +239,7 @@
 | `Turing` | `turing` |
 | `Turtle` | `turtle` |
 | `Twig` | `twig` |
+| `Protocol Buffer Text Format` | `txtpb` |
 | `TypeScript` | `ts`, `tsx`, `typescript` |
 | `TypoScript` | `typoscript` |
 | `TypoScriptCssData` | `typoscriptcssdata` |
@@ -248,6 +255,7 @@
 | `VHS` | `vhs`, `tape`, `cassette` |
 | `VimL` | `vim` |
 | `vue` | `vue`, `vuejs` |
+| `WebAssembly Text Format` | `wast`, `wat` |
 | `WDTE` | |
 | `WebGPU Shading Language` | `wgsl` |
 | `WebVTT` | `vtt` |
