@@ -62,6 +62,9 @@ goreleaser release --snapshot --clean
 - **internal/prettier/**: Code prettifiers
   - Language-specific formatting (CSS, Go, HTML, JSON, XML, YAML)
 
+- **internal/masker/**: Sensitive information masking
+  - Masks API keys, tokens, and other secrets in output
+
 - **internal/styles/**: Theme definitions
   - Custom syntax highlighting themes
 
