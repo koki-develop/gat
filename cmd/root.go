@@ -59,11 +59,11 @@ var rootCmd = &cobra.Command{
 		}
 
 		if len(args) == 0 {
-			return g.Print(os.Stdout, os.Stdin, gat.WithPretty(flagPretty))
+			return g.Print(os.Stdout, os.Stdin, gat.WithPretty(flagPretty), gat.WithMask(flagMaskSecrets))
 		}
 
 		for _, filename := range args {
-			if err := processFile(g, filename, gat.WithPretty(flagPretty), gat.WithFilename(filename)); err != nil {
+			if err := processFile(g, filename, gat.WithPretty(flagPretty), gat.WithMask(flagMaskSecrets), gat.WithFilename(filename)); err != nil {
 				return err
 			}
 		}

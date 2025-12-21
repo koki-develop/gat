@@ -36,6 +36,9 @@ var (
 	// --pretty
 	flagPretty bool
 
+	// --mask-secrets
+	flagMaskSecrets bool
+
 	// --list-langs
 	flagListLangs bool
 
@@ -56,6 +59,7 @@ func init() {
 	rootCmd.Flags().BoolVar(&flagNoResize, "no-resize", false, "do not resize images")
 
 	rootCmd.Flags().BoolVarP(&flagPretty, "pretty", "p", false, "whether to format a content pretty")
+	rootCmd.Flags().BoolVar(&flagMaskSecrets, "mask-secrets", false, "mask sensitive information (API keys, tokens)")
 
 	rootCmd.Flags().BoolVar(&flagListLangs, "list-langs", false, "print a list of supported languages for syntax highlighting")
 	rootCmd.Flags().BoolVar(&flagListFormats, "list-formats", false, "print a list of supported output formats")

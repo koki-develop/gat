@@ -67,6 +67,7 @@ Flags:
       --list-formats      print a list of supported output formats
       --list-langs        print a list of supported languages for syntax highlighting
       --list-themes       print a list of supported themes with preview
+      --mask-secrets      mask sensitive information (API keys, tokens)
       --no-resize         do not resize images
   -p, --pretty            whether to format a content pretty
   -M, --render-markdown   render markdown
@@ -93,8 +94,26 @@ See [themes.md](./docs/themes.md) for valid themes.
 
 ### `-p`, `--pretty`
 
-Format a content pretty.  
+Format a content pretty.
 For unsupported languages, this flag is ignored.
+
+### `--mask-secrets`
+
+Mask sensitive information such as API keys and tokens.
+Matched patterns are replaced with `*` characters of the same length.
+
+```console
+$ echo 'AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE' | gat --mask-secrets
+AWS_ACCESS_KEY_ID=********************
+```
+
+Supported patterns:
+- AWS Access Key ID
+- GitHub Tokens (`ghp_`, `gho_`, `ghs_`, `ghr_`)
+- GitLab Personal Access Tokens
+- Slack Tokens
+- JWT Tokens
+- Private Key Headers
 
 ### `-M`, `--render-markdown`
 

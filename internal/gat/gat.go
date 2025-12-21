@@ -17,6 +17,7 @@ import (
 	"github.com/charmbracelet/glamour"
 	"github.com/koki-develop/gat/internal/formatters"
 	"github.com/koki-develop/gat/internal/lexers"
+	"github.com/koki-develop/gat/internal/masker"
 	"github.com/koki-develop/gat/internal/prettier"
 	"github.com/koki-develop/gat/internal/styles"
 	"github.com/mattn/go-sixel"
@@ -76,6 +77,7 @@ func New(cfg *Config) (*Gat, error) {
 
 type printOption struct {
 	Pretty   bool
+	Mask     bool
 	Filename string
 }
 
@@ -90,6 +92,12 @@ func WithPretty(p bool) PrintOption {
 func WithFilename(name string) PrintOption {
 	return func(o *printOption) {
 		o.Filename = name
+	}
+}
+
+func WithMask(m bool) PrintOption {
+	return func(o *printOption) {
+		o.Mask = m
 	}
 }
 
@@ -185,6 +193,11 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 				src = s
 			}
 		}
+	}
+
+	// mask sensitive information
+	if opt.Mask {
+		src = masker.Mask(src)
 	}
 
 	// print
