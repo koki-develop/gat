@@ -19,6 +19,16 @@ func TestMask(t *testing.T) {
 			want:  "aws_access_key_id = " + strings.Repeat("*", 20),
 		},
 		{
+			name:  "AWS Access Key (temporary/SSO)",
+			input: "aws_access_key_id = ASIAISEXAMPLEKEY1234",
+			want:  "aws_access_key_id = " + strings.Repeat("*", 20),
+		},
+		{
+			name:  "AWS Secret Access Key",
+			input: "aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+			want:  "aws_secret_access_key = " + strings.Repeat("*", 40),
+		},
+		{
 			name:  "GitHub Personal Access Token",
 			input: "token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 			want:  "token: " + strings.Repeat("*", 40),

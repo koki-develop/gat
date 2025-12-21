@@ -114,9 +114,11 @@ When adding new API key patterns to `internal/masker/`:
 ### Pattern Ordering
 - Place more specific patterns before general ones to avoid false matches
 - Example: `sk-ant-` must be before `sk-` to prevent Anthropic keys from matching OpenAI pattern
+- Example: AWS Secret Access Key (`[a-zA-Z0-9+/]{40}`) must be last due to its generic pattern
 
-### Supported Patterns
-- AWS Access Key ID: `AKIA[0-9A-Z]{16}`
+### Supported Patterns (in order of application)
+- AWS Access Key ID (permanent): `AKIA[0-9A-Z]{16}`
+- AWS Access Key ID (temporary/SSO): `ASIA[0-9A-Z]{16}`
 - GitHub Tokens: `gh[pousr]_[a-zA-Z0-9]{36,}`
 - GitLab PAT: `glpat-[a-zA-Z0-9\-_]{20,}`
 - Slack Tokens: `xox[baprs]-[0-9a-zA-Z\-]+`
@@ -125,6 +127,7 @@ When adding new API key patterns to `internal/masker/`:
 - Supabase Secret Key: `sb_secret_[a-zA-Z0-9\-_]+`
 - JWT Tokens: `eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*`
 - Private Key Headers: `-----BEGIN\s+(RSA|DSA|EC|OPENSSH|PGP)\s+PRIVATE\s+KEY-----`
+- AWS Secret Access Key: `[a-zA-Z0-9+/]{40}` (must be last due to generic pattern)
 
 ### Pattern Update Workflow
 1. Add regex pattern to `internal/masker/masker.go`
