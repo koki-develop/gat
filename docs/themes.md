@@ -5,6 +5,9 @@
 - [`algol`](#algol)
 - [`algol_nu`](#algol_nu)
 - [`arduino`](#arduino)
+- [`ashen`](#ashen)
+- [`aura-theme-dark`](#aura-theme-dark)
+- [`aura-theme-dark-soft`](#aura-theme-dark-soft)
 - [`autumn`](#autumn)
 - [`average`](#average)
 - [`base16-snazzy`](#base16-snazzy)
@@ -88,6 +91,18 @@
 ## `arduino`
 
 ![arduino](./themes/arduino.svg)
+
+## `ashen`
+
+![ashen](./themes/ashen.svg)
+
+## `aura-theme-dark`
+
+![aura-theme-dark](./themes/aura-theme-dark.svg)
+
+## `aura-theme-dark-soft`
+
+![aura-theme-dark-soft](./themes/aura-theme-dark-soft.svg)
 
 ## `autumn`
 
