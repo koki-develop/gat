@@ -60,10 +60,20 @@ goreleaser release --snapshot --clean
   - Terraform lexer implementation
 
 - **internal/prettier/**: Code prettifiers
-  - Language-specific formatting (Go, JSON, XML, Markdown)
+  - Language-specific formatting (CSS, Go, HTML, JSON, XML, YAML)
 
 - **internal/styles/**: Theme definitions
   - Custom syntax highlighting themes
+
+- **scripts/**: Build scripts
+  - Shell completion generation
+
+- **docs/**: Documentation assets
+  - Demo GIFs, images, theme previews
+
+- **tapes/**: VHS tape files for generating demo GIFs
+
+- **assets/**: Logo files
 
 ### Key Dependencies
 
