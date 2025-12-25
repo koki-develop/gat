@@ -56,8 +56,8 @@ goreleaser release --snapshot --clean
 - **internal/formatters/**: Output format processors
   - HTML minification, JSON formatting, SVG optimization
 
-- **internal/lexers/**: Custom syntax highlighters
-  - Terraform lexer implementation
+- **internal/lexers/**: Lexer utilities
+  - Wrapper functions for Chroma's lexer registry
 
 - **internal/prettier/**: Code prettifiers
   - Language-specific formatting (CSS, Go, HTML, JSON, XML, YAML)
