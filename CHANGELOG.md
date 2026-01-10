@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.26.1](https://github.com/koki-develop/gat/compare/v0.26.0...v0.26.1) (2026-01-10)
+
+
+### Bug Fixes
+
+* **deps:** update module golang.org/x/term to v0.38.0 ([#248](https://github.com/koki-develop/gat/issues/248)) ([65ef7a0](https://github.com/koki-develop/gat/commit/65ef7a03a62b22eeda72b26d109cc414f1f05ffc))
+
 ## [0.26.0](https://github.com/koki-develop/gat/compare/v0.25.8...v0.26.0) (2025-12-21)
 
 
