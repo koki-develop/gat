@@ -9,7 +9,7 @@ require (
 	github.com/charmbracelet/glamour v0.10.0
 	github.com/client9/csstool v0.2.2
 	github.com/google/yamlfmt v0.20.0
-	github.com/mattn/go-sixel v0.0.5
+	github.com/mattn/go-sixel v0.0.8
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
 	github.com/tdewolff/minify/v2 v2.24.8
