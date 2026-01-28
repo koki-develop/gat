@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.26.1](https://github.com/koki-develop/gat/compare/v0.26.0...v0.26.1) (2026-01-28)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/mattn/go-sixel to v0.0.8 ([#251](https://github.com/koki-develop/gat/issues/251)) ([0f9f469](https://github.com/koki-develop/gat/commit/0f9f469e7b8790d7b9564bd0eddfd95d90654433))
+* **deps:** update module golang.org/x/image to v0.35.0 ([#247](https://github.com/koki-develop/gat/issues/247)) ([b8ccd3f](https://github.com/koki-develop/gat/commit/b8ccd3f67acc7063c314d82fe1a90615c4cdaeaa))
+* **deps:** update module golang.org/x/term to v0.38.0 ([#248](https://github.com/koki-develop/gat/issues/248)) ([65ef7a0](https://github.com/koki-develop/gat/commit/65ef7a03a62b22eeda72b26d109cc414f1f05ffc))
+
 ## [0.26.0](https://github.com/koki-develop/gat/compare/v0.25.8...v0.26.0) (2025-12-21)
 
 
