@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.26.2](https://github.com/koki-develop/gat/compare/v0.26.1...v0.26.2) (2026-03-04)
+
+
+### Bug Fixes
+
+* **masker:** add word boundaries to prevent partial matches in long strings ([cae4c46](https://github.com/koki-develop/gat/commit/cae4c4668e0af0c0515584cf1288e6ba85198d7e))
+
 ## [0.26.1](https://github.com/koki-develop/gat/compare/v0.26.0...v0.26.1) (2026-01-28)
 
 
