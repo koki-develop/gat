@@ -98,6 +98,11 @@ func TestMask(t *testing.T) {
 			input: "KEY=AKIAIOSFODNN7EXAMPLE",
 			want:  "KEY=" + strings.Repeat("*", 20),
 		},
+		{
+			name:  "Long alphanumeric string should not be partially masked",
+			input: strings.Repeat("A", 76),
+			want:  strings.Repeat("A", 76),
+		},
 	}
 
 	for _, tt := range tests {

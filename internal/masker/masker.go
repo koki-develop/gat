@@ -7,27 +7,27 @@ import (
 
 var patterns = []*regexp.Regexp{
 	// AWS Access Key ID (permanent)
-	regexp.MustCompile(`AKIA[0-9A-Z]{16}`),
+	regexp.MustCompile(`\bAKIA[0-9A-Z]{16}\b`),
 	// AWS Access Key ID (temporary, STS/SSO)
-	regexp.MustCompile(`ASIA[0-9A-Z]{16}`),
+	regexp.MustCompile(`\bASIA[0-9A-Z]{16}\b`),
 	// GitHub Tokens (ghp_, gho_, ghs_, ghr_)
-	regexp.MustCompile(`gh[pousr]_[a-zA-Z0-9]{36,}`),
+	regexp.MustCompile(`\bgh[pousr]_[a-zA-Z0-9]{36,}\b`),
 	// GitLab Personal Access Token
-	regexp.MustCompile(`glpat-[a-zA-Z0-9\-_]{20,}`),
+	regexp.MustCompile(`\bglpat-[a-zA-Z0-9\-_]{20,}\b`),
 	// Slack Tokens
-	regexp.MustCompile(`xox[baprs]-[0-9a-zA-Z\-]+`),
+	regexp.MustCompile(`\bxox[baprs]-[0-9a-zA-Z\-]+\b`),
 	// Anthropic API Key (must be before OpenAI to avoid false matches)
-	regexp.MustCompile(`sk-ant-[a-zA-Z0-9\-_]+`),
+	regexp.MustCompile(`\bsk-ant-[a-zA-Z0-9\-_]+\b`),
 	// OpenAI API Key (both legacy sk- and new sk-proj- formats)
-	regexp.MustCompile(`sk-(?:proj-)?[a-zA-Z0-9_\-]{20,}`),
+	regexp.MustCompile(`\bsk-(?:proj-)?[a-zA-Z0-9_\-]{20,}\b`),
 	// Supabase Secret Key
-	regexp.MustCompile(`sb_secret_[a-zA-Z0-9\-_]+`),
+	regexp.MustCompile(`\bsb_secret_[a-zA-Z0-9\-_]+\b`),
 	// JWT Tokens
-	regexp.MustCompile(`eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*`),
+	regexp.MustCompile(`\beyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*\b`),
 	// Private Key Headers
 	regexp.MustCompile(`-----BEGIN\s+(RSA|DSA|EC|OPENSSH|PGP)\s+PRIVATE\s+KEY-----`),
 	// AWS Secret Access Key (must be last due to generic pattern that could match other secrets)
-	regexp.MustCompile(`[a-zA-Z0-9+/]{40}`),
+	regexp.MustCompile(`\b[a-zA-Z0-9+/]{40}\b`),
 }
 
 // Mask replaces sensitive patterns in content with asterisks of the same length
