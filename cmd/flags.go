@@ -39,6 +39,18 @@ var (
 	// --mask-secrets
 	flagMaskSecrets bool
 
+	// -v, --show-nonprinting
+	flagShowNonPrinting bool
+
+	// -E, --show-ends
+	flagShowEnds bool
+
+	// -T, --show-tabs
+	flagShowTabs bool
+
+	// -A, --show-all
+	flagShowAll bool
+
 	// --list-langs
 	flagListLangs bool
 
@@ -60,6 +72,10 @@ func init() {
 
 	rootCmd.Flags().BoolVarP(&flagPretty, "pretty", "p", false, "whether to format a content pretty")
 	rootCmd.Flags().BoolVar(&flagMaskSecrets, "mask-secrets", false, "mask sensitive information (API keys, tokens)")
+	rootCmd.Flags().BoolVarP(&flagShowNonPrinting, "show-nonprinting", "v", false, "use ^ and M- notation, except for LFD and TAB")
+	rootCmd.Flags().BoolVarP(&flagShowEnds, "show-ends", "E", false, "display $ at end of each line")
+	rootCmd.Flags().BoolVarP(&flagShowTabs, "show-tabs", "T", false, "display TAB characters as ^I")
+	rootCmd.Flags().BoolVarP(&flagShowAll, "show-all", "A", false, "equivalent to -vET")
 
 	rootCmd.Flags().BoolVar(&flagListLangs, "list-langs", false, "print a list of supported languages for syntax highlighting")
 	rootCmd.Flags().BoolVar(&flagListFormats, "list-formats", false, "print a list of supported output formats")

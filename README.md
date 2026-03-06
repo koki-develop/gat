@@ -59,20 +59,24 @@ Usage:
   gat [file]... [flags]
 
 Flags:
-  -b, --force-binary      force binary output
-  -c, --force-color       force colored output
-  -f, --format string     output format (default "terminal256")
-  -h, --help              help for gat
-  -l, --lang string       language for syntax highlighting
-      --list-formats      print a list of supported output formats
-      --list-langs        print a list of supported languages for syntax highlighting
-      --list-themes       print a list of supported themes with preview
-      --mask-secrets      mask sensitive information (API keys, tokens)
-      --no-resize         do not resize images
-  -p, --pretty            whether to format a content pretty
-  -M, --render-markdown   render markdown
-  -t, --theme string      highlight theme (default "monokai")
-  -v, --version           version for gat
+  -b, --force-binary       force binary output
+  -c, --force-color        force colored output
+  -f, --format string      output format (default "terminal256")
+  -h, --help               help for gat
+  -l, --lang string        language for syntax highlighting
+      --list-formats       print a list of supported output formats
+      --list-langs         print a list of supported languages for syntax highlighting
+      --list-themes        print a list of supported themes with preview
+      --mask-secrets       mask sensitive information (API keys, tokens)
+      --no-resize          do not resize images
+  -p, --pretty             whether to format a content pretty
+  -M, --render-markdown    render markdown
+  -A, --show-all           equivalent to -vET
+  -E, --show-ends          display $ at end of each line
+  -v, --show-nonprinting   use ^ and M- notation, except for LFD and TAB
+  -T, --show-tabs          display TAB characters as ^I
+  -t, --theme string       highlight theme (default "monokai")
+      --version            version for gat
 ```
 
 ### `-l`, `--lang`
@@ -118,6 +122,41 @@ Supported patterns:
 - Supabase Secret Keys
 - JWT Tokens
 - Private Key Headers
+
+### `-v`, `--show-nonprinting`
+
+Display non-printing characters using `^` and `M-` notation, except for LFD (line feed) and TAB.
+This is equivalent to `cat -v`.
+
+```console
+$ printf 'hello\x01world\n' | gat -v
+hello^Aworld
+```
+
+### `-E`, `--show-ends`
+
+Display `$` at the end of each line.
+This is equivalent to `cat -E`.
+
+```console
+$ echo 'hello' | gat -E
+hello$
+```
+
+### `-T`, `--show-tabs`
+
+Display TAB characters as `^I`.
+This is equivalent to `cat -T`.
+
+```console
+$ printf 'hello\tworld\n' | gat -T
+hello^Iworld
+```
+
+### `-A`, `--show-all`
+
+Equivalent to `-vET`. Display non-printing characters, line endings, and tabs.
+This is equivalent to `cat -A`.
 
 ### `-M`, `--render-markdown`
 

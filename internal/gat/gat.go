@@ -15,6 +15,7 @@ import (
 
 	"github.com/alecthomas/chroma/v2"
 	"github.com/charmbracelet/glamour"
+	"github.com/koki-develop/gat/internal/display"
 	"github.com/koki-develop/gat/internal/formatters"
 	"github.com/koki-develop/gat/internal/lexers"
 	"github.com/koki-develop/gat/internal/masker"
@@ -79,6 +80,7 @@ type printOption struct {
 	Pretty   bool
 	Mask     bool
 	Filename string
+	Display  *display.Options
 }
 
 type PrintOption func(*printOption)
@@ -98,6 +100,12 @@ func WithFilename(name string) PrintOption {
 func WithMask(m bool) PrintOption {
 	return func(o *printOption) {
 		o.Mask = m
+	}
+}
+
+func WithDisplay(d *display.Options) PrintOption {
+	return func(o *printOption) {
+		o.Display = d
 	}
 }
 
@@ -200,12 +208,18 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 		src = masker.Mask(src)
 	}
 
+	// display transformation
+	out := w
+	if opt.Display != nil {
+		out = display.NewWriter(w, opt.Display)
+	}
+
 	// print
 	it, err := lexer.Tokenise(nil, src)
 	if err != nil {
 		return err
 	}
-	if err := g.formatter.Format(w, g.style, it); err != nil {
+	if err := g.formatter.Format(out, g.style, it); err != nil {
 		return err
 	}
 

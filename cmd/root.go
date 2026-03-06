@@ -4,6 +4,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/koki-develop/gat/internal/display"
 	"github.com/koki-develop/gat/internal/gat"
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
@@ -46,6 +47,18 @@ var rootCmd = &cobra.Command{
 			}
 		}
 
+		if flagShowAll {
+			flagShowNonPrinting = true
+			flagShowEnds = true
+			flagShowTabs = true
+		}
+
+		displayOpts := &display.Options{
+			ShowNonPrinting: flagShowNonPrinting,
+			ShowEnds:        flagShowEnds,
+			ShowTabs:        flagShowTabs,
+		}
+
 		g, err := gat.New(&gat.Config{
 			Language:       flagLang,
 			Format:         flagFormat,
@@ -59,11 +72,11 @@ var rootCmd = &cobra.Command{
 		}
 
 		if len(args) == 0 {
-			return g.Print(os.Stdout, os.Stdin, gat.WithPretty(flagPretty), gat.WithMask(flagMaskSecrets))
+			return g.Print(os.Stdout, os.Stdin, gat.WithPretty(flagPretty), gat.WithMask(flagMaskSecrets), gat.WithDisplay(displayOpts))
 		}
 
 		for _, filename := range args {
-			if err := processFile(g, filename, gat.WithPretty(flagPretty), gat.WithMask(flagMaskSecrets), gat.WithFilename(filename)); err != nil {
+			if err := processFile(g, filename, gat.WithPretty(flagPretty), gat.WithMask(flagMaskSecrets), gat.WithDisplay(displayOpts), gat.WithFilename(filename)); err != nil {
 				return err
 			}
 		}
