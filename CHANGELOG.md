@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.0](https://github.com/koki-develop/gat/compare/v0.26.2...v0.27.0) (2026-03-06)
+
+
+### Features
+
+* **display:** add cat-compatible display flags (-v, -E, -T, -A) ([b2a367a](https://github.com/koki-develop/gat/commit/b2a367ae780777a316fef293c0d345fbb3b564a9))
+
 ## [0.26.2](https://github.com/koki-develop/gat/compare/v0.26.1...v0.26.2) (2026-03-04)
 
 
