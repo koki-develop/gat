@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.1](https://github.com/koki-develop/gat/compare/v0.27.0...v0.27.1) (2026-04-20)
+
+
+### Bug Fixes
+
+* **deps:** update module golang.org/x/image to v0.38.0 [security] ([#259](https://github.com/koki-develop/gat/issues/259)) ([79b075a](https://github.com/koki-develop/gat/commit/79b075a6fa7f2e58787abdfedb983ec25085f5ac))
+
 ## [0.27.0](https://github.com/koki-develop/gat/compare/v0.26.2...v0.27.0) (2026-03-06)
 
 
