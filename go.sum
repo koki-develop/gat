@@ -86,12 +86,12 @@ github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.11.1 h1:7s2iGBzp5EwR7/aIZr8ao5+dra3wiQyKjjFuvgVKu7U=
 github.com/stretchr/testify v1.11.1/go.mod h1:wZwfW3scLgRK+23gO65QZefKpKQRnfz6sD981Nm4B6U=
-github.com/tdewolff/minify/v2 v2.24.8 h1:58/VjsbevI4d5FGV0ZSuBrHMSSkH4MCH0sIz/eKIauE=
-github.com/tdewolff/minify/v2 v2.24.8/go.mod h1:0Ukj0CRpo/sW/nd8uZ4ccXaV1rEVIWA3dj8U7+Shhfw=
+github.com/tdewolff/minify/v2 v2.24.12 h1:YXJxVJmz7vxgnEv1v8J/EI4x+Uw4MMohcRFK7TFOjmk=
+github.com/tdewolff/minify/v2 v2.24.12/go.mod h1:exq1pjdrh9uAICdfVKQwqz6MsJmWmQahZuTC6pTO6ro=
 github.com/tdewolff/parse v2.3.3+incompatible h1:q6OSjvHtvBucLb34z24OH1xl5wGdw1mI9Vd38Qj9evs=
 github.com/tdewolff/parse v2.3.3+incompatible/go.mod h1:8oBwCsVmUkgHO8M5iCzSIDtpzXOT0WXX9cWhz+bIzJQ=
-github.com/tdewolff/parse/v2 v2.8.5 h1:ZmBiA/8Do5Rpk7bDye0jbbDUpXXbCdc3iah4VeUvwYU=
-github.com/tdewolff/parse/v2 v2.8.5/go.mod h1:Hwlni2tiVNKyzR1o6nUs4FOF07URA+JLBLd6dlIXYqo=
+github.com/tdewolff/parse/v2 v2.8.11 h1:SGyjEy3xEqd+W9WVzTlTQ5GkP/en4a1AZNZVJ1cvgm0=
+github.com/tdewolff/parse/v2 v2.8.11/go.mod h1:Hwlni2tiVNKyzR1o6nUs4FOF07URA+JLBLd6dlIXYqo=
 github.com/tdewolff/test v1.0.0/go.mod h1:DiQUlutnqlEvdvhSn2LPGy4TFwRauAaYDsL+683RNX4=
 github.com/tdewolff/test v1.0.11 h1:FdLbwQVHxqG16SlkGveC0JVyrJN62COWTRyUFzfbtBE=
 github.com/tdewolff/test v1.0.11/go.mod h1:XPuWBzvdUzhCuxWO1ojpXsyzsA5bFoS3tO/Q3kFuTG8=
