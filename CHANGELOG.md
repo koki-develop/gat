@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.2](https://github.com/koki-develop/gat/compare/v0.27.1...v0.27.2) (2026-04-30)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/tdewolff/minify/v2 to v2.24.12 ([#263](https://github.com/koki-develop/gat/issues/263)) ([17240cf](https://github.com/koki-develop/gat/commit/17240cfa2b6ac4b396db24126a23c3cda836600a))
+
 ## [0.27.1](https://github.com/koki-develop/gat/compare/v0.27.0...v0.27.1) (2026-04-20)
 
 
