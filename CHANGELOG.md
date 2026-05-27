@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.27.3](https://github.com/koki-develop/gat/compare/v0.27.2...v0.27.3) (2026-05-27)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/mattn/go-sixel to v0.0.9 ([#267](https://github.com/koki-develop/gat/issues/267)) ([3ce3efe](https://github.com/koki-develop/gat/commit/3ce3efe0c23ef3116bd337ea0a41874cfaad9bbe))
+
 ## [0.27.2](https://github.com/koki-develop/gat/compare/v0.27.1...v0.27.2) (2026-04-30)
 
 
