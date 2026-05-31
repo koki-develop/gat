@@ -14,8 +14,8 @@
 </text><text x="0" y="2.400000em" xml:space="preserve">
 </text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#a277ff">import</tspan>&#160;<tspan fill="#61ffca">&quot;fmt&quot;</tspan>
 </text><text x="0" y="4.800000em" xml:space="preserve">
-</text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#a277ff">func</tspan>&#160;<tspan fill="#ffca85">main</tspan>()&#160;{
-</text><text x="0" y="7.200000em" xml:space="preserve">&#160;&#160;&#160;&#160;fmt.<tspan fill="#ffca85">Println</tspan>(<tspan fill="#61ffca">&quot;hello&#160;world&quot;</tspan>)
-</text><text x="0" y="8.400000em" xml:space="preserve">}</text>
+</text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#a277ff">func</tspan>&#160;<tspan fill="#ffca85">main</tspan><tspan fill="#f694ff">()</tspan>&#160;<tspan fill="#f694ff">{</tspan>
+</text><text x="0" y="7.200000em" xml:space="preserve">&#160;&#160;&#160;&#160;fmt<tspan fill="#f694ff">.</tspan><tspan fill="#ffca85">Println</tspan><tspan fill="#f694ff">(</tspan><tspan fill="#61ffca">&quot;hello&#160;world&quot;</tspan><tspan fill="#f694ff">)</tspan>
+</text><text x="0" y="8.400000em" xml:space="preserve"><tspan fill="#f694ff">}</tspan></text>
 </g>
 </svg>

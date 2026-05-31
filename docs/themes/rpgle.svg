@@ -8,14 +8,14 @@
 	font-weight: normal;
 	font-style: normal;
 }
-</style><rect width="100%" height="100%" fill="#15141b"/>
-<g font-family="Liberation Mono" font-size="14px" fill="#bdbdbd">
-<text x="0" y="1.200000em" xml:space="preserve"><tspan fill="#8464c6">package</tspan>&#160;main
+</style><rect width="100%" height="100%" fill="#fafafa"/>
+<g font-family="Liberation Mono" font-size="14px" fill="#272822">
+<text x="0" y="1.200000em" xml:space="preserve"><tspan fill="#f92672">package</tspan>&#160;<tspan fill="#75af00">main</tspan>
 </text><text x="0" y="2.400000em" xml:space="preserve">
-</text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#8464c6">import</tspan>&#160;<tspan fill="#54c59f">&quot;fmt&quot;</tspan>
+</text><text x="0" y="3.600000em" xml:space="preserve"><tspan fill="#f92672">import</tspan>&#160;<tspan fill="#d88200">&quot;fmt&quot;</tspan>
 </text><text x="0" y="4.800000em" xml:space="preserve">
-</text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#8464c6">func</tspan>&#160;<tspan fill="#c7a06f">main</tspan><tspan fill="#c17ac8">()</tspan>&#160;<tspan fill="#c17ac8">{</tspan>
-</text><text x="0" y="7.200000em" xml:space="preserve">&#160;&#160;&#160;&#160;fmt<tspan fill="#c17ac8">.</tspan><tspan fill="#c7a06f">Println</tspan><tspan fill="#c17ac8">(</tspan><tspan fill="#54c59f">&quot;hello&#160;world&quot;</tspan><tspan fill="#c17ac8">)</tspan>
-</text><text x="0" y="8.400000em" xml:space="preserve"><tspan fill="#c17ac8">}</tspan></text>
+</text><text x="0" y="6.000000em" xml:space="preserve"><tspan fill="#00a8c8">func</tspan>&#160;<tspan fill="#75af00">main</tspan><tspan fill="#ff0000">()</tspan>&#160;<tspan fill="#ff0000">{</tspan>
+</text><text x="0" y="7.200000em" xml:space="preserve">&#160;&#160;&#160;&#160;<tspan fill="#75af00">fmt</tspan><tspan fill="#ff0000">.</tspan><tspan fill="#75af00">Println</tspan><tspan fill="#ff0000">(</tspan><tspan fill="#d88200">&quot;hello&#160;world&quot;</tspan><tspan fill="#ff0000">)</tspan>
+</text><text x="0" y="8.400000em" xml:space="preserve"><tspan fill="#ff0000">}</tspan></text>
 </g>
 </svg>
