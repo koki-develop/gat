@@ -127,6 +127,9 @@ When adding new API key patterns to `internal/masker/`:
 - Anthropic API Key: `sk-ant-[a-zA-Z0-9\-_]+`
 - OpenAI API Key: `sk-(?:proj-)?[a-zA-Z0-9_\-]{20,}` (supports both legacy and project formats)
 - Supabase Secret Key: `sb_secret_[a-zA-Z0-9\-_]+`
+- npm Access Token: `npm_[a-zA-Z0-9]{36}`
+- PyPI API Token: `pypi-AgEIcHlwaS5vcmc[a-zA-Z0-9_\-]{50,}` (the `AgEIcHlwaS5vcmc` segment is a fixed base64 prefix encoding the `pypi.org` macaroon location)
+- RubyGems API Key: `rubygems_[a-f0-9]{32,}`
 - JWT Tokens: `eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*`
 - Private Key Headers: `-----BEGIN\s+(RSA|DSA|EC|OPENSSH|PGP)\s+PRIVATE\s+KEY-----`
 - AWS Secret Access Key: `[a-zA-Z0-9+/]{40}` (must be last due to generic pattern; gated by a `hasMixedCase` validator)

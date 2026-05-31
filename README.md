@@ -120,6 +120,9 @@ Supported patterns:
 - Anthropic API Keys
 - OpenAI API Keys
 - Supabase Secret Keys
+- npm Access Tokens
+- PyPI API Tokens
+- RubyGems API Keys
 - JWT Tokens
 - Private Key Headers
 

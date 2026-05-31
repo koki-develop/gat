@@ -35,6 +35,14 @@ var patterns = []pattern{
 	{re: regexp.MustCompile(`\bsk-(?:proj-)?[a-zA-Z0-9_\-]{20,}\b`)},
 	// Supabase Secret Key
 	{re: regexp.MustCompile(`\bsb_secret_[a-zA-Z0-9\-_]+\b`)},
+	// npm Access Token (npm_ + 36 base62 chars)
+	{re: regexp.MustCompile(`\bnpm_[a-zA-Z0-9]{36}\b`)},
+	// PyPI API Token (pypi- + base64-serialized macaroon, always prefixed
+	// with the fixed AgEIcHlwaS5vcmc that encodes the "pypi.org" location)
+	{re: regexp.MustCompile(`\bpypi-AgEIcHlwaS5vcmc[a-zA-Z0-9_\-]{50,}`)},
+	// RubyGems API Key (rubygems_ + hex; the value is SecureRandom.hex(16) =
+	// 32 hex chars, but match 32+ to also cover longer scanner-reported forms)
+	{re: regexp.MustCompile(`\brubygems_[a-f0-9]{32,}\b`)},
 	// JWT Tokens
 	{re: regexp.MustCompile(`\beyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*\b`)},
 	// Private Key Headers
