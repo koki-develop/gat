@@ -130,6 +130,9 @@ When adding new API key patterns to `internal/masker/`:
 - npm Access Token: `npm_[a-zA-Z0-9]{36}`
 - PyPI API Token: `pypi-AgEIcHlwaS5vcmc[a-zA-Z0-9_\-]{50,}` (the `AgEIcHlwaS5vcmc` segment is a fixed base64 prefix encoding the `pypi.org` macaroon location)
 - RubyGems API Key: `rubygems_[a-f0-9]{32,}`
+- Google / Firebase API Key: `AIza[0-9A-Za-z_\-]{35}` (Firebase web API keys share the same `AIza` format, so one pattern covers both)
+- Stripe Secret / Restricted API Key: `(?:sk|rk)_(?:test|live|prod|org)_[a-zA-Z0-9]{10,99}` (covers test/live/org per Stripe docs plus prod for gitleaks parity; underscore separator distinguishes it from OpenAI's `sk-`, so no overlap)
+- SendGrid API Key: `SG\.[a-zA-Z0-9=_.\-]{66}` (no trailing `\b`; the value may end in a non-word char like the PyPI pattern)
 - JWT Tokens: `eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*`
 - Private Key Headers: `-----BEGIN\s+(RSA|DSA|EC|OPENSSH|PGP)\s+PRIVATE\s+KEY-----`
 - AWS Secret Access Key: `[a-zA-Z0-9+/]{40}` (must be last due to generic pattern; gated by a `hasMixedCase` validator)

@@ -123,6 +123,9 @@ Supported patterns:
 - npm Access Tokens
 - PyPI API Tokens
 - RubyGems API Keys
+- Google / Firebase API Keys
+- Stripe Secret / Restricted API Keys
+- SendGrid API Keys
 - JWT Tokens
 - Private Key Headers
 

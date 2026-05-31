@@ -94,6 +94,36 @@ func TestMask(t *testing.T) {
 			want:  "RUBYGEMS_API_KEY=" + strings.Repeat("*", 41),
 		},
 		{
+			name:  "Google API Key",
+			input: "GOOGLE_API_KEY=AIzaSyEXAMPLE_GOOGLE_API_KEY_0123456789",
+			want:  "GOOGLE_API_KEY=" + strings.Repeat("*", 39),
+		},
+		{
+			name:  "Firebase API Key",
+			input: "FIREBASE_API_KEY=AIzaSyEXAMPLE_FIREBASE_API_KEY_01234567",
+			want:  "FIREBASE_API_KEY=" + strings.Repeat("*", 39),
+		},
+		{
+			name:  "Stripe Secret Key (live)",
+			input: "STRIPE_SECRET_KEY=sk_live_EXAMPLESTRIPESECRETKEYDONOTUSE012345678901234567890123456789012345678901234567890123456789012345678",
+			want:  "STRIPE_SECRET_KEY=" + strings.Repeat("*", 107),
+		},
+		{
+			name:  "Stripe Restricted Key (test)",
+			input: "STRIPE_RK=rk_test_EXAMPLEDUMMYKEY123456789",
+			want:  "STRIPE_RK=" + strings.Repeat("*", 32),
+		},
+		{
+			name:  "Stripe Organization Key",
+			input: "STRIPE_ORG_KEY=sk_org_EXAMPLEDUMMYKEY123456789",
+			want:  "STRIPE_ORG_KEY=" + strings.Repeat("*", 31),
+		},
+		{
+			name:  "SendGrid API Key",
+			input: "SENDGRID_API_KEY=SG.EXAMPLE_SENDGRID_TOKEN.EXAMPLE_SENDGRID_SIGNATURE_DO_NOT_USE_00000",
+			want:  "SENDGRID_API_KEY=" + strings.Repeat("*", 69),
+		},
+		{
 			name:  "JWT Token",
 			input: "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dozjgNryP4J3jVmNHl0w5N_XgL0n3I9PlFUP0THsR8U",
 			want:  "Authorization: Bearer " + strings.Repeat("*", 108),

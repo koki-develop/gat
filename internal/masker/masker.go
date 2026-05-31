@@ -43,6 +43,17 @@ var patterns = []pattern{
 	// RubyGems API Key (rubygems_ + hex; the value is SecureRandom.hex(16) =
 	// 32 hex chars, but match 32+ to also cover longer scanner-reported forms)
 	{re: regexp.MustCompile(`\brubygems_[a-f0-9]{32,}\b`)},
+	// Google (GCP) / Firebase API Key (AIza + 35 chars). Firebase web API keys
+	// share this same AIza format, so this single pattern covers both.
+	{re: regexp.MustCompile(`\bAIza[0-9A-Za-z_\-]{35}\b`)},
+	// Stripe Secret / Restricted API Key. Per Stripe docs the modes are test,
+	// live, and org (organization keys, sk_org_); prod is kept for gitleaks parity.
+	// Distinct from OpenAI's sk- thanks to the underscore separator, so there is
+	// no overlap with the OpenAI pattern above.
+	{re: regexp.MustCompile(`\b(?:sk|rk)_(?:test|live|prod|org)_[a-zA-Z0-9]{10,99}\b`)},
+	// SendGrid API Key (SG. + 66 chars). No trailing \b because the value may
+	// end in a non-word character (=, ., -), like the PyPI pattern above.
+	{re: regexp.MustCompile(`\bSG\.[a-zA-Z0-9=_.\-]{66}`)},
 	// JWT Tokens
 	{re: regexp.MustCompile(`\beyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*\b`)},
 	// Private Key Headers
