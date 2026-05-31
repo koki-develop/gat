@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.29.0](https://github.com/koki-develop/gat/compare/v0.28.0...v0.29.0) (2026-05-31)
+
+
+### Features
+
+* **deps:** update module github.com/alecthomas/chroma/v2 to v2.24.1 ([#274](https://github.com/koki-develop/gat/issues/274)) ([8f3a50b](https://github.com/koki-develop/gat/commit/8f3a50b60f56b06d6cace03b611c8e218fe0d614))
+
+
+### Bug Fixes
+
+* **masker:** skip lower-case hex look-alikes for AWS secret keys ([0fe52ea](https://github.com/koki-develop/gat/commit/0fe52eaeca63de197d79c3e38a8b981a809f69c0))
+
 ## [0.28.0](https://github.com/koki-develop/gat/compare/v0.27.3...v0.28.0) (2026-05-31)
 
 
