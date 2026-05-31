@@ -127,7 +127,11 @@ When adding new API key patterns to `internal/masker/`:
 - Supabase Secret Key: `sb_secret_[a-zA-Z0-9\-_]+`
 - JWT Tokens: `eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*`
 - Private Key Headers: `-----BEGIN\s+(RSA|DSA|EC|OPENSSH|PGP)\s+PRIVATE\s+KEY-----`
-- AWS Secret Access Key: `[a-zA-Z0-9+/]{40}` (must be last due to generic pattern)
+- AWS Secret Access Key: `[a-zA-Z0-9+/]{40}` (must be last due to generic pattern; gated by a `hasMixedCase` validator)
+
+### Match Validators
+- A pattern may carry an optional `validate func(string) bool`. When set, a regex match is masked only if the validator returns true. This narrows generic patterns without relying on lookahead (unsupported by Go's RE2).
+- AWS Secret Access Key uses `hasMixedCase`: a real key is base64 of 30 random bytes, so it almost always mixes upper- and lower-case. Requiring mixed case skips common 40-char look-alikes such as Git SHA-1 hashes (lower-case hex only).
 
 ### Pattern Update Workflow
 1. Add regex pattern to `internal/masker/masker.go`

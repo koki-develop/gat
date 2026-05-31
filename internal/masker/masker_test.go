@@ -103,6 +103,16 @@ func TestMask(t *testing.T) {
 			input: strings.Repeat("A", 76),
 			want:  strings.Repeat("A", 76),
 		},
+		{
+			name:  "AWS Secret Access Key (real value with mixed case) is masked",
+			input: "aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+			want:  "aws_secret_access_key = " + strings.Repeat("*", 40),
+		},
+		{
+			name:  "Git full SHA (lower-case hex) is not mistaken for an AWS secret key",
+			input: "commit da39a3ee5e6b4b0d3255bfef95601890afd80709",
+			want:  "commit da39a3ee5e6b4b0d3255bfef95601890afd80709",
+		},
 	}
 
 	for _, tt := range tests {
@@ -130,7 +140,7 @@ func TestPatternsAreSingleLine(t *testing.T) {
 	}
 
 	for _, p := range patterns {
-		src := p.String()
+		src := p.re.String()
 		if strings.Contains(src, "PRIVATE") {
 			// The private-key header is the sole, documented exception.
 			assert.True(t, spansNewline(src),
