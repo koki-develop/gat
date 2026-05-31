@@ -112,3 +112,33 @@ func TestMask(t *testing.T) {
 		})
 	}
 }
+
+// TestPatternsAreSingleLine guards an invariant the streaming passthrough path
+// in internal/gat depends on: every pattern is confined to a single line,
+// except the private-key header. That path masks input line by line, so a
+// newly added pattern that can span newlines would silently fail to mask there.
+// If this test fails, reconsider the per-line masking in internal/gat before
+// adding the pattern.
+func TestPatternsAreSingleLine(t *testing.T) {
+	// spansNewline reports whether a pattern's source contains a construct that
+	// can match across a newline in Go's RE2: \s matches \n, (?s) makes . match
+	// \n, and a literal \n obviously spans lines.
+	spansNewline := func(src string) bool {
+		return strings.Contains(src, `\s`) ||
+			strings.Contains(src, `(?s)`) ||
+			strings.Contains(src, `\n`)
+	}
+
+	for _, p := range patterns {
+		src := p.String()
+		if strings.Contains(src, "PRIVATE") {
+			// The private-key header is the sole, documented exception.
+			assert.True(t, spansNewline(src),
+				"expected private-key pattern to span newlines (\\s+): %q", src)
+			continue
+		}
+		assert.False(t, spansNewline(src),
+			"pattern %q can match across newlines; per-line masking in internal/gat "+
+				"(streaming passthrough) would silently miss it", src)
+	}
+}

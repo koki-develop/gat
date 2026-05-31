@@ -41,6 +41,8 @@ type Gat struct {
 	renderMarkdown bool
 	forceBinary    bool
 	noResize       bool
+	noColor        bool
+	terminalFormat bool
 }
 
 func New(cfg *Config) (*Gat, error) {
@@ -72,6 +74,9 @@ func New(cfg *Config) (*Gat, error) {
 		return nil, fmt.Errorf("unknown theme: %s", cfg.Theme)
 	}
 	g.style = s
+
+	g.noColor = cfg.Theme == "noop"
+	g.terminalFormat = strings.HasPrefix(cfg.Format, "terminal")
 
 	return g, nil
 }
@@ -107,6 +112,13 @@ func WithDisplay(d *display.Options) PrintOption {
 	return func(o *printOption) {
 		o.Display = d
 	}
+}
+
+// isPassthrough reports whether the configuration requires no tokenization, so
+// the input can be streamed out as it is read (with masking and display
+// transforms still applied per chunk) instead of being buffered in full.
+func (g *Gat) isPassthrough(opt *printOption) bool {
+	return g.noColor && g.terminalFormat && !g.renderMarkdown && !opt.Pretty
 }
 
 func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
@@ -153,6 +165,40 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 				}
 			}
 			return nil
+		}
+
+		// Stream the input out as it is read instead of buffering the whole
+		// source (only valid when isPassthrough; see its doc).
+		if g.isPassthrough(opt) {
+			out := w
+			if opt.Display != nil {
+				out = display.NewWriter(w, opt.Display)
+			}
+
+			if !opt.Mask {
+				_, err := br.WriteTo(out)
+				return err
+			}
+
+			// Mask per line. All masker patterns are single-line, except the
+			// private-key header (\s+ matches \n); a newline-split PEM header is
+			// therefore intentionally left unmasked here. The single-line
+			// invariant is enforced by TestPatternsAreSingleLine in the masker
+			// package.
+			for {
+				line, err := br.ReadString('\n')
+				if len(line) > 0 {
+					if _, werr := io.WriteString(out, masker.Mask(line)); werr != nil {
+						return werr
+					}
+				}
+				if err != nil {
+					if err == io.EOF {
+						return nil
+					}
+					return err
+				}
+			}
 		}
 
 		buf := new(bytes.Buffer)
