@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.28.0](https://github.com/koki-develop/gat/compare/v0.27.3...v0.28.0) (2026-05-31)
+
+
+### Features
+
+* **gat:** detect content lazily in passthrough mode ([2984d7b](https://github.com/koki-develop/gat/commit/2984d7b89c2c435911358cd4b1025023450e2d37))
+* **gat:** stream output without buffering when no transform is needed ([521625c](https://github.com/koki-develop/gat/commit/521625c46e6583fd22717f81d691fb39d3bb6399))
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/tdewolff/minify/v2 to v2.24.13 ([#269](https://github.com/koki-develop/gat/issues/269)) ([d0f7b21](https://github.com/koki-develop/gat/commit/d0f7b21e755c2a168ef6dbe80e3803813bbf332d))
+
 ## [0.27.3](https://github.com/koki-develop/gat/compare/v0.27.2...v0.27.3) (2026-05-27)
 
 
