@@ -120,8 +120,10 @@ When adding new API key patterns to `internal/masker/`:
 - AWS Access Key ID (permanent): `AKIA[0-9A-Z]{16}`
 - AWS Access Key ID (temporary/SSO): `ASIA[0-9A-Z]{16}`
 - GitHub Tokens: `gh[pousr]_[a-zA-Z0-9]{36,}`
+- GitHub Fine-grained PAT: `github_pat_\w{82}`
 - GitLab PAT: `glpat-[a-zA-Z0-9\-_]{20,}`
 - Slack Tokens: `xox[baprs]-[0-9a-zA-Z\-]+`
+- Slack App-level Token: `xapp-\d-[A-Z0-9]+-\d+-[a-z0-9]+`
 - Anthropic API Key: `sk-ant-[a-zA-Z0-9\-_]+`
 - OpenAI API Key: `sk-(?:proj-)?[a-zA-Z0-9_\-]{20,}` (supports both legacy and project formats)
 - Supabase Secret Key: `sb_secret_[a-zA-Z0-9\-_]+`

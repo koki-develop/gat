@@ -114,7 +114,7 @@ AWS_ACCESS_KEY_ID=********************
 Supported patterns:
 - AWS Access Key ID
 - AWS Secret Access Key
-- GitHub Tokens (`ghp_`, `gho_`, `ghs_`, `ghr_`)
+- GitHub Tokens
 - GitLab Personal Access Tokens
 - Slack Tokens
 - Anthropic API Keys

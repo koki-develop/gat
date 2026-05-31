@@ -39,6 +39,11 @@ func TestMask(t *testing.T) {
 			want:  "GITHUB_TOKEN=" + strings.Repeat("*", 40),
 		},
 		{
+			name:  "GitHub Fine-grained Personal Access Token",
+			input: "token: github_pat_11ABCDE0Y0abcdefghijkl_mnopqrstuvwxyzABCDEFGHIJKLMNOPqrstuvwxyz0123456789ABCDEFGHI",
+			want:  "token: " + strings.Repeat("*", 93),
+		},
+		{
 			name:  "GitLab Personal Access Token",
 			input: "GITLAB_TOKEN=glpat-xxxxxxxxxxxxxxxxxxxx",
 			want:  "GITLAB_TOKEN=" + strings.Repeat("*", 26),
@@ -47,6 +52,11 @@ func TestMask(t *testing.T) {
 			name:  "Slack Bot Token",
 			input: "SLACK_TOKEN=xoxb-123456789-abcdefgh",
 			want:  "SLACK_TOKEN=" + strings.Repeat("*", 23),
+		},
+		{
+			name:  "Slack App-level Token",
+			input: "SLACK_APP_TOKEN=xapp-1-A0123ABCDEF-1234567890123-abcdef0123456789abcdef0123456789",
+			want:  "SLACK_APP_TOKEN=" + strings.Repeat("*", 65),
 		},
 		{
 			name:  "Anthropic API Key",

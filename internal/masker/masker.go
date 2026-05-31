@@ -21,10 +21,14 @@ var patterns = []pattern{
 	{re: regexp.MustCompile(`\bASIA[0-9A-Z]{16}\b`)},
 	// GitHub Tokens (ghp_, gho_, ghs_, ghr_)
 	{re: regexp.MustCompile(`\bgh[pousr]_[a-zA-Z0-9]{36,}\b`)},
+	// GitHub Fine-grained Personal Access Token (github_pat_ + 82 word chars)
+	{re: regexp.MustCompile(`\bgithub_pat_\w{82}\b`)},
 	// GitLab Personal Access Token
 	{re: regexp.MustCompile(`\bglpat-[a-zA-Z0-9\-_]{20,}\b`)},
 	// Slack Tokens
 	{re: regexp.MustCompile(`\bxox[baprs]-[0-9a-zA-Z\-]+\b`)},
+	// Slack App-level Token (xapp-)
+	{re: regexp.MustCompile(`\bxapp-\d-[A-Z0-9]+-\d+-[a-z0-9]+\b`)},
 	// Anthropic API Key (must be before OpenAI to avoid false matches)
 	{re: regexp.MustCompile(`\bsk-ant-[a-zA-Z0-9\-_]+\b`)},
 	// OpenAI API Key (both legacy sk- and new sk-proj- formats)
