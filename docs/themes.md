@@ -1,6 +1,5 @@
 # Highlight Themes
 
-- [`RPGLE`](#RPGLE)
 - [`abap`](#abap)
 - [`algol`](#algol)
 - [`algol_nu`](#algol_nu)
@@ -18,6 +17,7 @@
 - [`catppuccin-macchiato`](#catppuccin-macchiato)
 - [`catppuccin-mocha`](#catppuccin-mocha)
 - [`colorful`](#colorful)
+- [`darcula`](#darcula)
 - [`doom-one`](#doom-one)
 - [`doom-one2`](#doom-one2)
 - [`dracula`](#dracula)
@@ -32,6 +32,9 @@
 - [`hr_high_contrast`](#hr_high_contrast)
 - [`hrdark`](#hrdark)
 - [`igor`](#igor)
+- [`kanagawa-dragon`](#kanagawa-dragon)
+- [`kanagawa-lotus`](#kanagawa-lotus)
+- [`kanagawa-wave`](#kanagawa-wave)
 - [`lovelace`](#lovelace)
 - [`manni`](#manni)
 - [`modus-operandi`](#modus-operandi)
@@ -54,6 +57,7 @@
 - [`rose-pine`](#rose-pine)
 - [`rose-pine-dawn`](#rose-pine-dawn)
 - [`rose-pine-moon`](#rose-pine-moon)
+- [`rpgle`](#rpgle)
 - [`rrt`](#rrt)
 - [`solarized-dark`](#solarized-dark)
 - [`solarized-dark256`](#solarized-dark256)
@@ -71,10 +75,6 @@
 - [`witchhazel`](#witchhazel)
 - [`xcode`](#xcode)
 - [`xcode-dark`](#xcode-dark)
-
-## `RPGLE`
-
-![RPGLE](./themes/RPGLE.svg)
 
 ## `abap`
 
@@ -144,6 +144,10 @@
 
 ![colorful](./themes/colorful.svg)
 
+## `darcula`
+
+![darcula](./themes/darcula.svg)
+
 ## `doom-one`
 
 ![doom-one](./themes/doom-one.svg)
@@ -199,6 +203,18 @@
 ## `igor`
 
 ![igor](./themes/igor.svg)
+
+## `kanagawa-dragon`
+
+![kanagawa-dragon](./themes/kanagawa-dragon.svg)
+
+## `kanagawa-lotus`
+
+![kanagawa-lotus](./themes/kanagawa-lotus.svg)
+
+## `kanagawa-wave`
+
+![kanagawa-wave](./themes/kanagawa-wave.svg)
 
 ## `lovelace`
 
@@ -287,6 +303,10 @@
 ## `rose-pine-moon`
 
 ![rose-pine-moon](./themes/rose-pine-moon.svg)
+
+## `rpgle`
+
+![rpgle](./themes/rpgle.svg)
 
 ## `rrt`
 

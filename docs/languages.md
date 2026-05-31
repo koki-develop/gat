@@ -10,6 +10,7 @@
 | `Agda` | `agda` |
 | `AL` | `al` |
 | `Alloy` | `alloy` |
+| `AMPL` | `ampl` |
 | `Angular2` | `ng2` |
 | `ANTLR` | `antlr` |
 | `ApacheConf` | `apacheconf`, `aconf`, `apache` |
@@ -72,6 +73,7 @@
 | `Elixir` | `elixir`, `ex`, `exs` |
 | `Elm` | `elm` |
 | `EmacsLisp` | `emacs`, `elisp`, `emacs-lisp` |
+| `ERB` | `erb`, `html+erb`, `html+ruby`, `rhtml` |
 | `Erlang` | `erlang` |
 | `Factor` | `factor` |
 | `Fennel` | `fennel`, `fnl` |
@@ -83,6 +85,7 @@
 | `GAS` | `gas`, `asm` |
 | `GDScript` | `gdscript`, `gd` |
 | `GDScript3` | `gdscript3`, `gd3` |
+| `Gettext` | `pot`, `po` |
 | `Gherkin` | `cucumber`, `Cucumber`, `gherkin`, `Gherkin` |
 | `Gleam` | `gleam` |
 | `GLSL` | `glsl` |
@@ -116,12 +119,15 @@
 | `Julia` | `julia`, `jl` |
 | `Jungle` | `jungle` |
 | `Kakoune` | `kak`, `kakoune`, `kakrc`, `kakscript` |
+| `KDL` | `kdl` |
 | `Kotlin` | `kotlin` |
+| `Lateralus` | `lateralus`, `ltl` |
 | `Lean4` | `lean4`, `lean` |
 | `Lighttpd configuration file` | `lighty`, `lighttpd` |
 | `LLVM` | `llvm` |
 | `lox` | |
-| `Lua` | `lua`, `luau` |
+| `Lua` | `lua` |
+| `Luau` | `luau` |
 | `Makefile` | `make`, `makefile`, `mf`, `bsdmake` |
 | `Mako` | `mako` |
 | `Mason` | `mason` |
@@ -131,12 +137,14 @@
 | `MCFunction` | `mcfunction`, `mcf` |
 | `Meson` | `meson`, `meson.build` |
 | `Metal` | `metal` |
+| `microcad` | `µcad` |
 | `MiniZinc` | `minizinc`, `MZN`, `mzn` |
 | `MLIR` | `mlir` |
 | `Modelica` | `modelica` |
 | `Modula-2` | `modula2`, `m2` |
 | `Mojo` | `mojo`, `🔥` |
 | `MonkeyC` | `monkeyc` |
+| `MoonBit` | `moonbit`, `mbt` |
 | `MoonScript` | `moonscript`, `moon` |
 | `MorrowindScript` | `morrowind`, `mwscript` |
 | `Myghty` | `myghty` |
@@ -202,6 +210,7 @@
 | `SAS` | `sas` |
 | `Sass` | `sass` |
 | `Scala` | `scala` |
+| `scdoc` | `scdoc` |
 | `Scheme` | `scheme`, `scm` |
 | `Scilab` | `scilab` |
 | `SCSS` | `scss` |
@@ -214,6 +223,7 @@
 | `Snobol` | `snobol` |
 | `Solidity` | `sol`, `solidity` |
 | `SourcePawn` | `sp` |
+| `Spade` | `spade` |
 | `SPARQL` | `sparql` |
 | `SQL` | `sql` |
 | `SquidConf` | `squidconf`, `squid.conf`, `squid` |
@@ -279,6 +289,7 @@
 | `Haxe` | `hx`, `haxe`, `hxsl` |
 | `HTTP` | `http` |
 | `markdown` | `md`, `mkd` |
+| `Markless` | `mess` |
 | `PHTML` | `phtml` |
 | `Raku` | `perl6`, `pl6`, `raku` |
 | `reStructuredText` | `rst`, `rest`, `restructuredtext` |
