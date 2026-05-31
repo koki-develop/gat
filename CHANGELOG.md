@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.30.0](https://github.com/koki-develop/gat/compare/v0.29.0...v0.30.0) (2026-05-31)
+
+
+### Features
+
+* **masker:** add GitHub App stateless installation token pattern ([66a7c85](https://github.com/koki-develop/gat/commit/66a7c85f6964889f80b725f20acec2ea00c4c05c))
+* **masker:** add GitHub fine-grained PAT and Slack app-level token ([cf32a32](https://github.com/koki-develop/gat/commit/cf32a3298e77c25add43183da55c2c13f73a292f))
+* **masker:** add Google, Stripe, and SendGrid key patterns ([2829cd7](https://github.com/koki-develop/gat/commit/2829cd7117d35c5dace31719ef652e63c437090e))
+* **masker:** add npm, PyPI, and RubyGems token patterns ([8f9197b](https://github.com/koki-develop/gat/commit/8f9197b33077a945127bb01541ac057ef77d53d4))
+
 ## [0.29.0](https://github.com/koki-develop/gat/compare/v0.28.0...v0.29.0) (2026-05-31)
 
 
