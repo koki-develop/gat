@@ -44,6 +44,11 @@ func TestMask(t *testing.T) {
 			want:  "token: " + strings.Repeat("*", 93),
 		},
 		{
+			name:  "GitHub App installation token (stateless, JWT format)",
+			input: "token: ghs_eyJhbGciOiJIUzI1NiJ9.eyJpbnN0YWxsYXRpb25faWQiOjEyMzQ1Njc4OTB9.EXAMPLE_SIGNATURE_DO_NOT_USE_THIS_012345678",
+			want:  "token: " + strings.Repeat("*", 109),
+		},
+		{
 			name:  "GitLab Personal Access Token",
 			input: "GITLAB_TOKEN=glpat-xxxxxxxxxxxxxxxxxxxx",
 			want:  "GITLAB_TOKEN=" + strings.Repeat("*", 26),

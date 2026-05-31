@@ -19,6 +19,16 @@ var patterns = []pattern{
 	{re: regexp.MustCompile(`\bAKIA[0-9A-Z]{16}\b`)},
 	// AWS Access Key ID (temporary, STS/SSO)
 	{re: regexp.MustCompile(`\bASIA[0-9A-Z]{16}\b`)},
+	// GitHub App installation token (stateless, JWT format). GitHub is rolling
+	// out a new ghs_-prefixed installation token that is a ~520-char JWT and so
+	// contains dots, hyphens, and underscores. The generic GitHub pattern below
+	// only matches [a-zA-Z0-9], so it would stop at the first dot (or miss the
+	// token entirely when the leading segment is under 36 chars); this pattern,
+	// placed first so it masks the whole token, follows GitHub's own guidance of
+	// ghs_[A-Za-z0-9.\-_]{36,}. No trailing \b because the value may end in a
+	// non-word char (- or _), like the SendGrid and PyPI patterns below.
+	// https://github.blog/changelog/2026-05-15-github-app-installation-tokens-per-request-override-header/
+	{re: regexp.MustCompile(`\bghs_[a-zA-Z0-9._\-]{36,}`)},
 	// GitHub Tokens (ghp_, gho_, ghs_, ghr_)
 	{re: regexp.MustCompile(`\bgh[pousr]_[a-zA-Z0-9]{36,}\b`)},
 	// GitHub Fine-grained Personal Access Token (github_pat_ + 82 word chars)

@@ -119,6 +119,7 @@ When adding new API key patterns to `internal/masker/`:
 ### Supported Patterns (in order of application)
 - AWS Access Key ID (permanent): `AKIA[0-9A-Z]{16}`
 - AWS Access Key ID (temporary/SSO): `ASIA[0-9A-Z]{16}`
+- GitHub App installation token (stateless/JWT): `ghs_[a-zA-Z0-9._\-]{36,}` (no trailing `\b`; placed before the generic GitHub pattern so the whole ~520-char `ghs_`-prefixed JWT—which contains dots/`-`/`_`—is masked, instead of the generic `[a-zA-Z0-9]` pattern stopping at the first dot)
 - GitHub Tokens: `gh[pousr]_[a-zA-Z0-9]{36,}`
 - GitHub Fine-grained PAT: `github_pat_\w{82}`
 - GitLab PAT: `glpat-[a-zA-Z0-9\-_]{20,}`
