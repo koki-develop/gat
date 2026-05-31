@@ -2,8 +2,12 @@ package gat
 
 import (
 	"bytes"
+	"compress/gzip"
+	"io"
 	"strings"
+	"sync"
 	"testing"
+	"time"
 
 	"github.com/koki-develop/gat/internal/display"
 	"github.com/koki-develop/gat/internal/masker"
@@ -219,4 +223,196 @@ func TestGat_Print_nonPassthroughIsHighlighted(t *testing.T) {
 			t.Errorf("expected HTML markup in output, got %q", buf.String())
 		}
 	})
+}
+
+// signalWriter records output and closes firstWrite on the first non-empty
+// write, so a test can detect that output was emitted before EOF.
+type signalWriter struct {
+	mu         sync.Mutex
+	buf        bytes.Buffer
+	once       sync.Once
+	firstWrite chan struct{}
+}
+
+func (w *signalWriter) Write(p []byte) (int, error) {
+	w.mu.Lock()
+	defer w.mu.Unlock()
+	if len(p) > 0 {
+		w.once.Do(func() { close(w.firstWrite) })
+	}
+	return w.buf.Write(p)
+}
+
+func (w *signalWriter) String() string {
+	w.mu.Lock()
+	defer w.mu.Unlock()
+	return w.buf.String()
+}
+
+// gatedReader serves its chunks, then blocks the next Read until release is
+// closed before reporting EOF. It models a slow stream that has not yet
+// terminated.
+type gatedReader struct {
+	chunks  [][]byte
+	idx     int
+	release chan struct{}
+}
+
+func (r *gatedReader) Read(p []byte) (int, error) {
+	if r.idx < len(r.chunks) {
+		n := copy(p, r.chunks[r.idx])
+		r.idx++
+		return n, nil
+	}
+	<-r.release
+	return 0, io.EOF
+}
+
+// In passthrough mode, a sub-1024-byte chunk must be emitted without waiting
+// for the input to terminate (i.e. content detection must not block for a full
+// 1024-byte read).
+func TestGat_Print_passthrough_streamsBeforeEOF(t *testing.T) {
+	release := make(chan struct{})
+	r := &gatedReader{chunks: [][]byte{[]byte("first\n")}, release: release}
+	w := &signalWriter{firstWrite: make(chan struct{})}
+
+	done := make(chan error, 1)
+	go func() { done <- newPassthroughGat(t).Print(w, r) }()
+
+	select {
+	case <-w.firstWrite:
+		// emitted before EOF — good
+	case <-time.After(2 * time.Second):
+		close(release)
+		<-done
+		t.Fatal("output was buffered: first chunk not emitted before input terminated")
+	}
+
+	close(release)
+	if err := <-done; err != nil {
+		t.Fatalf("Print() error = %v", err)
+	}
+	if got := w.String(); got != "first\n" {
+		t.Errorf("output = %q, want %q", got, "first\n")
+	}
+}
+
+// Bulk gzip input is still detected and decompressed in passthrough mode (the
+// lazy detection must fall back to the normal content-type routing).
+func TestGat_Print_passthrough_gzipStillDecompresses(t *testing.T) {
+	const content = "plain text content\n"
+	var gz bytes.Buffer
+	zw := gzip.NewWriter(&gz)
+	if _, err := zw.Write([]byte(content)); err != nil {
+		t.Fatalf("gzip write: %v", err)
+	}
+	if err := zw.Close(); err != nil {
+		t.Fatalf("gzip close: %v", err)
+	}
+
+	var out bytes.Buffer
+	if err := newPassthroughGat(t).Print(&out, bytes.NewReader(gz.Bytes())); err != nil {
+		t.Fatalf("Print() error = %v", err)
+	}
+	if out.String() != content {
+		t.Errorf("gzip not decompressed: got %q, want %q", out.String(), content)
+	}
+}
+
+// Bulk binary input is still guarded in passthrough mode rather than streamed
+// raw to the terminal.
+func TestGat_Print_passthrough_binaryStillGuarded(t *testing.T) {
+	in := append([]byte("some text"), 0x00)
+	in = append(in, []byte("more bytes")...)
+
+	var out bytes.Buffer
+	if err := newPassthroughGat(t).Print(&out, bytes.NewReader(in)); err != nil {
+		t.Fatalf("Print() error = %v", err)
+	}
+	if !strings.Contains(out.String(), "binary file") {
+		t.Errorf("binary not guarded: got %q", out.String())
+	}
+}
+
+// The masked streaming path (the motivating use case for --mask-secrets) also
+// emits each line as it arrives, without waiting for the input to terminate.
+func TestGat_Print_passthrough_streamsBeforeEOF_masked(t *testing.T) {
+	const ghToken = "ghp_0123456789abcdefghijklmnopqrstuvwxyz123456"
+	// The first chunk must contain a newline; the masked path reads line by line.
+	firstLine := "secret " + ghToken + "\n"
+
+	release := make(chan struct{})
+	r := &gatedReader{chunks: [][]byte{[]byte(firstLine)}, release: release}
+	w := &signalWriter{firstWrite: make(chan struct{})}
+
+	done := make(chan error, 1)
+	go func() { done <- newPassthroughGat(t).Print(w, r, WithMask(true)) }()
+
+	select {
+	case <-w.firstWrite:
+		// emitted before EOF — good
+	case <-time.After(2 * time.Second):
+		close(release)
+		<-done
+		t.Fatal("masked output was buffered: first line not emitted before input terminated")
+	}
+
+	close(release)
+	if err := <-done; err != nil {
+		t.Fatalf("Print() error = %v", err)
+	}
+	got := w.String()
+	if strings.Contains(got, ghToken) {
+		t.Errorf("token not masked: %q", got)
+	}
+	if want := masker.Mask(firstLine); got != want {
+		t.Errorf("output = %q, want %q", got, want)
+	}
+}
+
+// Accepted limitation: gzip arriving in a first read too small to contain its
+// magic is not recognized and streams through raw. Files and bulk streams are
+// unaffected (their first read is large). This pins the trade-off documented
+// on detectionHead.
+func TestGat_Print_passthrough_gzipTrickleStreamsRaw(t *testing.T) {
+	const content = "plain text content\n"
+	var gz bytes.Buffer
+	zw := gzip.NewWriter(&gz)
+	if _, err := zw.Write([]byte(content)); err != nil {
+		t.Fatalf("gzip write: %v", err)
+	}
+	if err := zw.Close(); err != nil {
+		t.Fatalf("gzip close: %v", err)
+	}
+	raw := gz.Bytes()
+
+	// Deliver one byte on the first read so detection cannot see the gzip magic.
+	release := make(chan struct{})
+	close(release)
+	r := &gatedReader{chunks: [][]byte{raw[:1], raw[1:]}, release: release}
+
+	var out bytes.Buffer
+	if err := newPassthroughGat(t).Print(&out, r); err != nil {
+		t.Fatalf("Print() error = %v", err)
+	}
+	if out.String() != string(raw) {
+		t.Errorf("expected raw gzip passthrough, got %d bytes (want %d)", out.Len(), len(raw))
+	}
+}
+
+// Accepted limitation: a NUL byte arriving after the first read is not caught,
+// so the content streams through. This mirrors the forceBinary CLI behavior on
+// the common passthrough path.
+func TestGat_Print_passthrough_binaryTrickleStreamsRaw(t *testing.T) {
+	release := make(chan struct{})
+	close(release)
+	r := &gatedReader{chunks: [][]byte{[]byte("some text"), {0x00}, []byte("more")}, release: release}
+
+	var out bytes.Buffer
+	if err := newPassthroughGat(t).Print(&out, r); err != nil {
+		t.Fatalf("Print() error = %v", err)
+	}
+	if want := "some text\x00more"; out.String() != want {
+		t.Errorf("expected raw passthrough, got %q", out.String())
+	}
 }

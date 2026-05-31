@@ -121,6 +121,34 @@ func (g *Gat) isPassthrough(opt *printOption) bool {
 	return g.noColor && g.terminalFormat && !g.renderMarkdown && !opt.Pretty
 }
 
+// detectionHead returns the leading bytes used for content-type and binary
+// detection. Normally it reads up to 1024 bytes. In passthrough mode it blocks
+// only for the first read and returns whatever is already buffered (capped at
+// 1024), so a slowly trickling text stream is not held back waiting for a full
+// 1024-byte read. For bulk input the first read already fills the buffer, so
+// detection is identical to the non-passthrough path, and image/gzip/binary
+// content is routed to its normal handler by the caller.
+//
+// Trade-off: when non-text content (gzip, binary) arrives in a first read
+// smaller than its detection window, it goes unrecognized and is streamed
+// through as text. This never happens for files or bulk streams (the first
+// read is large); it only affects content trickling in tiny fragments, which
+// in practice is text. The common non-tty passthrough path also sets
+// forceBinary, which already streams binary raw regardless.
+func (g *Gat) detectionHead(br *bufio.Reader, opt *printOption) ([]byte, error) {
+	if !g.isPassthrough(opt) {
+		return br.Peek(1024)
+	}
+	if _, err := br.Peek(1); err != nil {
+		return nil, err // includes io.EOF for empty input
+	}
+	n := br.Buffered()
+	if n > 1024 {
+		n = 1024
+	}
+	return br.Peek(n)
+}
+
 func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 	// parse options
 	opt := &printOption{}
@@ -129,7 +157,7 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 	}
 
 	br := bufio.NewReader(r)
-	head, err := br.Peek(1024)
+	head, err := g.detectionHead(br, opt)
 	if err != nil && err != io.EOF {
 		return err
 	}
