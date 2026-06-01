@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.30.1](https://github.com/koki-develop/gat/compare/v0.30.0...v0.30.1) (2026-06-01)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/google/yamlfmt to v0.21.0 ([#276](https://github.com/koki-develop/gat/issues/276)) ([129a698](https://github.com/koki-develop/gat/commit/129a698ee316730b8e05d086792f7e752352dfb6))
+
 ## [0.30.0](https://github.com/koki-develop/gat/compare/v0.29.0...v0.30.0) (2026-05-31)
 
 
