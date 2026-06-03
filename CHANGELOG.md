@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.30.2](https://github.com/koki-develop/gat/compare/v0.30.1...v0.30.2) (2026-06-03)
+
+
+### Bug Fixes
+
+* **masker:** require keyword context to mask AWS Secret Access Key ([5df906b](https://github.com/koki-develop/gat/commit/5df906b76cab5dbfbf9ed34009d1ebc1ab81515e))
+
 ## [0.30.1](https://github.com/koki-develop/gat/compare/v0.30.0...v0.30.1) (2026-06-01)
 
 
