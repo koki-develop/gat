@@ -5,13 +5,16 @@ import (
 	"strings"
 )
 
-// pattern pairs a secret-matching regular expression with an optional
-// validator. When validate is non-nil, a regex match is masked only if
-// validate reports it as a genuine secret. This lets generic patterns reject
-// look-alikes that happen to share the same shape.
+// pattern pairs a secret-matching regular expression with optional refinements.
+// When validate is non-nil, a match is masked only if validate reports the
+// masked portion as a genuine secret. When maskGroup is > 0, only that capture
+// group is replaced with asterisks instead of the whole match — used for
+// contextual patterns where the regex also has to match a surrounding keyword
+// to gain confidence, but only the secret value should be masked.
 type pattern struct {
-	re       *regexp.Regexp
-	validate func(string) bool
+	re        *regexp.Regexp
+	validate  func(string) bool
+	maskGroup int
 }
 
 var patterns = []pattern{
@@ -68,41 +71,58 @@ var patterns = []pattern{
 	{re: regexp.MustCompile(`\beyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*\b`)},
 	// Private Key Headers
 	{re: regexp.MustCompile(`-----BEGIN\s+(RSA|DSA|EC|OPENSSH|PGP)\s+PRIVATE\s+KEY-----`)},
-	// AWS Secret Access Key (must be last due to generic pattern that could match other secrets).
-	// A real key is base64 of 30 random bytes, so it almost always mixes upper- and
-	// lower-case letters. Requiring mixed case rejects common 40-char look-alikes such as
-	// Git SHA-1 hashes, which are lower-case hex only.
-	{re: regexp.MustCompile(`\b[a-zA-Z0-9+/]{40}\b`), validate: hasMixedCase},
+	// AWS Secret Access Key (contextual). The value alone is 40 base64 chars
+	// with no fixed prefix, which collides with file paths, hashes, and other
+	// 40-char strings — even gitleaks ships no standalone rule for it, and
+	// trufflehog / detect-secrets only confirm matches by calling AWS STS. We
+	// can't validate live, so we mask only when the value is preceded by an
+	// obvious AWS_SECRET_*_KEY-style identifier. Covers the env-var, AWS
+	// credentials file, and JSON/YAML forms; uses [ \t]* (not \s*) to keep the
+	// match single-line, per TestPatternsAreSingleLine.
+	{
+		re:        regexp.MustCompile(`(?i)\baws[_.\-]?secret[_.\-]?(?:access[_.\-]?)?key\b["']?[ \t]*[:=][ \t]*["']?([a-zA-Z0-9+/]{40})`),
+		maskGroup: 1,
+	},
 }
 
-// hasMixedCase reports whether s contains at least one ASCII upper-case letter
-// and at least one ASCII lower-case letter.
-func hasMixedCase(s string) bool {
-	var hasUpper, hasLower bool
-	for _, r := range s {
-		switch {
-		case r >= 'A' && r <= 'Z':
-			hasUpper = true
-		case r >= 'a' && r <= 'z':
-			hasLower = true
-		}
-		if hasUpper && hasLower {
-			return true
-		}
-	}
-	return false
-}
-
-// Mask replaces sensitive patterns in content with asterisks of the same length
+// Mask replaces sensitive patterns in content with asterisks of the same length.
 func Mask(content string) string {
 	result := content
 	for _, p := range patterns {
-		result = p.re.ReplaceAllStringFunc(result, func(match string) string {
+		result = p.apply(result)
+	}
+	return result
+}
+
+func (p pattern) apply(s string) string {
+	if p.maskGroup == 0 {
+		return p.re.ReplaceAllStringFunc(s, func(match string) string {
 			if p.validate != nil && !p.validate(match) {
 				return match
 			}
 			return strings.Repeat("*", len(match))
 		})
 	}
-	return result
+
+	matches := p.re.FindAllStringSubmatchIndex(s, -1)
+	if len(matches) == 0 {
+		return s
+	}
+	var b strings.Builder
+	b.Grow(len(s))
+	last := 0
+	gs, ge := p.maskGroup*2, p.maskGroup*2+1
+	for _, m := range matches {
+		if ge >= len(m) || m[gs] < 0 {
+			continue
+		}
+		if p.validate != nil && !p.validate(s[m[gs]:m[ge]]) {
+			continue
+		}
+		b.WriteString(s[last:m[gs]])
+		b.WriteString(strings.Repeat("*", m[ge]-m[gs]))
+		last = m[ge]
+	}
+	b.WriteString(s[last:])
+	return b.String()
 }

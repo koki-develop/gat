@@ -114,7 +114,6 @@ When adding new API key patterns to `internal/masker/`:
 ### Pattern Ordering
 - Place more specific patterns before general ones to avoid false matches
 - Example: `sk-ant-` must be before `sk-` to prevent Anthropic keys from matching OpenAI pattern
-- Example: AWS Secret Access Key (`[a-zA-Z0-9+/]{40}`) must be last due to its generic pattern
 
 ### Supported Patterns (in order of application)
 - AWS Access Key ID (permanent): `AKIA[0-9A-Z]{16}`
@@ -136,11 +135,11 @@ When adding new API key patterns to `internal/masker/`:
 - SendGrid API Key: `SG\.[a-zA-Z0-9=_.\-]{66}` (no trailing `\b`; the value may end in a non-word char like the PyPI pattern)
 - JWT Tokens: `eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*`
 - Private Key Headers: `-----BEGIN\s+(RSA|DSA|EC|OPENSSH|PGP)\s+PRIVATE\s+KEY-----`
-- AWS Secret Access Key: `[a-zA-Z0-9+/]{40}` (must be last due to generic pattern; gated by a `hasMixedCase` validator)
+- AWS Secret Access Key (contextual): `(?i)\baws[_.\-]?secret[_.\-]?(?:access[_.\-]?)?key\b["']?[ \t]*[:=][ \t]*["']?([a-zA-Z0-9+/]{40})` — only the captured 40-char value is masked. The standalone 40-char base64 pattern was dropped because it collides with file paths, hashes, and other 40-char strings (gitleaks ships no rule for it; trufflehog / detect-secrets validate live against AWS STS). Covers the env-var form, AWS credentials file, and quoted JSON/YAML; uses `[ \t]*` to keep the match single-line per `TestPatternsAreSingleLine`.
 
-### Match Validators
+### Match Refinements
 - A pattern may carry an optional `validate func(string) bool`. When set, a regex match is masked only if the validator returns true. This narrows generic patterns without relying on lookahead (unsupported by Go's RE2).
-- AWS Secret Access Key uses `hasMixedCase`: a real key is base64 of 30 random bytes, so it almost always mixes upper- and lower-case. Requiring mixed case skips common 40-char look-alikes such as Git SHA-1 hashes (lower-case hex only).
+- A pattern may also set `maskGroup int` (default 0). When `> 0`, only that capture group is replaced with asterisks instead of the whole match — used for contextual patterns like AWS Secret Access Key where the regex matches a surrounding `AWS_SECRET_*_KEY` keyword but only the secret value should be masked.
 
 ### Pattern Update Workflow
 1. Add regex pattern to `internal/masker/masker.go`

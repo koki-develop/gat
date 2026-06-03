@@ -24,9 +24,74 @@ func TestMask(t *testing.T) {
 			want:  "aws_access_key_id = " + strings.Repeat("*", 20),
 		},
 		{
-			name:  "AWS Secret Access Key",
+			name:  "AWS Secret Access Key (credentials file format)",
 			input: "aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
 			want:  "aws_secret_access_key = " + strings.Repeat("*", 40),
+		},
+		{
+			name:  "AWS Secret Access Key (env var format)",
+			input: "AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+			want:  "AWS_SECRET_ACCESS_KEY=" + strings.Repeat("*", 40),
+		},
+		{
+			name:  "AWS Secret Access Key (JSON format)",
+			input: `"aws_secret_access_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"`,
+			want:  `"aws_secret_access_key": "` + strings.Repeat("*", 40) + `"`,
+		},
+		{
+			name:  "AWS Secret Access Key (short AWS_SECRET_KEY alias)",
+			input: "AWS_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+			want:  "AWS_SECRET_KEY=" + strings.Repeat("*", 40),
+		},
+		{
+			// Exercises apply()'s multi-match submatch path: two contextual
+			// secrets in one input. Verifies the inter-match text and tail
+			// are preserved verbatim when output is rebuilt index-by-index
+			// via FindAllStringSubmatchIndex.
+			name:  "AWS Secret Access Key (multiple secrets in one input)",
+			input: "aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\n# next entry\nAWS_SECRET_KEY=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+			want:  "aws_secret_access_key = " + strings.Repeat("*", 40) + "\n# next entry\nAWS_SECRET_KEY=" + strings.Repeat("*", 40),
+		},
+		{
+			// The character class [a-zA-Z0-9+/] includes `+` alongside `/`.
+			// Locks in `+` so a future tightening (e.g. to \w{40}) is caught.
+			name:  "AWS Secret Access Key (value containing +)",
+			input: "AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI+K7MDENG+bPxRfiCYEXAMPLEKEY",
+			want:  "AWS_SECRET_ACCESS_KEY=" + strings.Repeat("*", 40),
+		},
+		{
+			// `[_.\-]?` allows `.` between identifier segments (Java
+			// properties / system-property form).
+			name:  "AWS Secret Access Key (dot-separated identifier)",
+			input: "aws.secret.access.key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+			want:  "aws.secret.access.key=" + strings.Repeat("*", 40),
+		},
+		{
+			// `[_.\-]?` allows `-` between identifier segments (kebab-case).
+			name:  "AWS Secret Access Key (kebab-case identifier)",
+			input: "aws-secret-access-key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+			want:  "aws-secret-access-key=" + strings.Repeat("*", 40),
+		},
+		{
+			// `[ \t]*` (not `\s*`, to preserve the single-line invariant)
+			// allows tabs around the separator.
+			name:  "AWS Secret Access Key (tab around separator)",
+			input: "AWS_SECRET_ACCESS_KEY\t=\twJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+			want:  "AWS_SECRET_ACCESS_KEY\t=\t" + strings.Repeat("*", 40),
+		},
+		{
+			// `(?i)` makes the identifier match case-insensitively.
+			name:  "AWS Secret Access Key (mixed-case identifier)",
+			input: "Aws_Secret_Access_Key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+			want:  "Aws_Secret_Access_Key=" + strings.Repeat("*", 40),
+		},
+		{
+			// Each `[_.\-]?` is individually optional, so a concatenated
+			// identifier with no internal separators also matches. Locks in
+			// the behavior — flip `[_.\-]?` to `[_.\-]` to reject it.
+			name:  "AWS Secret Access Key (no internal separators)",
+			input: "awssecretkey=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+			want:  "awssecretkey=" + strings.Repeat("*", 40),
 		},
 		{
 			name:  "GitHub Personal Access Token",
@@ -164,14 +229,25 @@ func TestMask(t *testing.T) {
 			want:  strings.Repeat("A", 76),
 		},
 		{
-			name:  "AWS Secret Access Key (real value with mixed case) is masked",
-			input: "aws_secret_access_key = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-			want:  "aws_secret_access_key = " + strings.Repeat("*", 40),
+			// Regression: a 40-char filesystem path segment used to false-positive
+			// against the old standalone AWS Secret Access Key pattern. With the
+			// contextual pattern, no AWS keyword precedes the value, so it stays.
+			name:  "40-char path segment without AWS keyword is not masked",
+			input: "/Users/koki/.opensrc/repos/github.com/clauderic/dnd-kit/0.4.0/packages/react/src/sortable/useSortable.ts",
+			want:  "/Users/koki/.opensrc/repos/github.com/clauderic/dnd-kit/0.4.0/packages/react/src/sortable/useSortable.ts",
 		},
 		{
-			name:  "Git full SHA (lower-case hex) is not mistaken for an AWS secret key",
+			name:  "Git full SHA without AWS keyword is not masked",
 			input: "commit da39a3ee5e6b4b0d3255bfef95601890afd80709",
 			want:  "commit da39a3ee5e6b4b0d3255bfef95601890afd80709",
+		},
+		{
+			// A bare 40-char base64 value with no preceding AWS_SECRET_*_KEY
+			// identifier is intentionally not masked — see gitleaks' decision
+			// to drop the standalone rule for the same reason.
+			name:  "Bare 40-char base64 without AWS keyword is not masked",
+			input: "value: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+			want:  "value: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
 		},
 	}
 
