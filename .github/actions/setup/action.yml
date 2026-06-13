@@ -4,7 +4,7 @@ description: Setup the environment for the runner
 runs:
   using: composite
   steps:
-    - uses: jdx/mise-action@146a28175021df8ca24f8ee1828cc2a60f980bd5 # v3.5.1
+    - uses: jdx/mise-action@5228313ee0372e111a38da051671ca30fc5a96db # v3.6.3
       with:
         experimental: true
     - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
