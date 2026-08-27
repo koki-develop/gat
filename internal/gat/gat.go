@@ -18,12 +18,30 @@ import (
 	"github.com/koki-develop/gat/internal/display"
 	"github.com/koki-develop/gat/internal/formatters"
 	"github.com/koki-develop/gat/internal/lexers"
-	"github.com/koki-develop/gat/internal/masker"
 	"github.com/koki-develop/gat/internal/prettier"
 	"github.com/koki-develop/gat/internal/styles"
+	"github.com/koki-develop/mask-go"
 	"github.com/mattn/go-sixel"
 	"golang.org/x/image/draw"
 )
+
+// masker is what --mask-secrets masks with: every pattern mask-go carries, so
+// that a pattern added there is one gat masks with on the next upgrade.
+var masker = mask.New(mask.WithPatterns(mask.AllBuiltinPatterns()...))
+
+// maskMaxRetained is how much text the streaming path holds back while a
+// pattern is still reading a value, before it gives up and masks what it holds.
+//
+// Giving up masks everything held and everything after it to the end of the
+// stream, so on a file carrying one unbroken run — an unterminated PEM block, a
+// megabytes-long base64 blob — the default mebibyte is low enough to turn the
+// rest of the output into asterisks. The highlighting path buffers whole files
+// already, so the limit is raised to where a real file does not reach it.
+//
+// A stream that never ends pays for that: a value it leaves open holds the
+// output until the limit, so raising the limit lengthens the silence. A file
+// pays nothing, its end settling every pattern still reading.
+const maskMaxRetained = 16 << 20
 
 type Config struct {
 	Language       string
@@ -114,9 +132,28 @@ func WithDisplay(d *display.Options) PrintOption {
 	}
 }
 
+// maskedReader wraps r so that a path streaming its input straight out masks
+// on the way. The reader holds back only the tail its patterns are still
+// reading, so a value written across two reads is masked whole and ordinary
+// text goes straight through.
+//
+// A newline does not settle text; the next write does. So a feed being followed
+// stalls a line behind whenever its newest line ends on something a pattern has
+// opened — a bare aws_secret_access_key=, a PEM begin boundary, a trailing sk-.
+// That is the price of masking across chunks. Masking a line at a time would
+// not stall, and would release the body of a private key one line at a time.
+func (g *Gat) maskedReader(r io.Reader, opt *printOption) io.Reader {
+	if !opt.Mask {
+		return r
+	}
+	return mask.NewReader(r, masker, mask.WithMaxRetained(maskMaxRetained))
+}
+
 // isPassthrough reports whether the configuration requires no tokenization, so
-// the input can be streamed out as it is read (with masking and display
-// transforms still applied per chunk) instead of being buffered in full.
+// the input can be streamed out as it is read instead of being buffered in
+// full. Display transforms still apply per chunk. Masking applies across
+// chunks: a value may begin in one read and end in another, so the text a
+// pattern is still reading is held back rather than written out in pieces.
 func (g *Gat) isPassthrough(opt *printOption) bool {
 	return g.noColor && g.terminalFormat && !g.renderMarkdown && !opt.Pretty
 }
@@ -203,30 +240,8 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 				out = display.NewWriter(w, opt.Display)
 			}
 
-			if !opt.Mask {
-				_, err := br.WriteTo(out)
-				return err
-			}
-
-			// Mask per line. All masker patterns are single-line, except the
-			// private-key header (\s+ matches \n); a newline-split PEM header is
-			// therefore intentionally left unmasked here. The single-line
-			// invariant is enforced by TestPatternsAreSingleLine in the masker
-			// package.
-			for {
-				line, err := br.ReadString('\n')
-				if len(line) > 0 {
-					if _, werr := io.WriteString(out, masker.Mask(line)); werr != nil {
-						return werr
-					}
-				}
-				if err != nil {
-					if err == io.EOF {
-						return nil
-					}
-					return err
-				}
-			}
+			_, err := io.Copy(out, g.maskedReader(br, opt))
+			return err
 		}
 
 		buf := new(bytes.Buffer)

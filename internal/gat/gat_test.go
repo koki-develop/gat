@@ -10,7 +10,6 @@ import (
 	"time"
 
 	"github.com/koki-develop/gat/internal/display"
-	"github.com/koki-develop/gat/internal/masker"
 )
 
 func TestGat_isPassthrough(t *testing.T) {
@@ -123,34 +122,24 @@ func TestGat_Print_passthrough(t *testing.T) {
 	})
 }
 
-// A newline-split (malformed) PEM header is missed by per-line masking
-// (intended divergence); a single-line PEM header is masked as before.
-func TestGat_Print_passthrough_pemDivergence(t *testing.T) {
-	t.Run("split PEM header is NOT masked (intended divergence)", func(t *testing.T) {
-		in := "-----BEGIN\nRSA\nPRIVATE\nKEY-----\n"
-		var buf bytes.Buffer
-		if err := newPassthroughGat(t).Print(&buf, strings.NewReader(in), WithMask(true)); err != nil {
-			t.Fatalf("Print() error = %v", err)
-		}
-		if buf.String() != in {
-			t.Errorf("split PEM unexpectedly altered: output = %q, want %q", buf.String(), in)
-		}
-	})
+// A private key is written across several lines, and the streaming path masks
+// it whole: the reader holds the block back until its closing boundary arrives
+// rather than releasing the lines it is made of one at a time.
+func TestGat_Print_passthrough_privateKeyAcrossLines(t *testing.T) {
+	const key = "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEA0123456789abcdef\n-----END RSA PRIVATE KEY-----"
+	in := "before\n" + key + "\nafter\n"
 
-	t.Run("single-line PEM header IS masked", func(t *testing.T) {
-		in := "-----BEGIN RSA PRIVATE KEY-----\n"
-		var buf bytes.Buffer
-		if err := newPassthroughGat(t).Print(&buf, strings.NewReader(in), WithMask(true)); err != nil {
-			t.Fatalf("Print() error = %v", err)
-		}
-		want := masker.Mask(in)
-		if buf.String() != want {
-			t.Errorf("output = %q, want %q", buf.String(), want)
-		}
-		if strings.Contains(buf.String(), "BEGIN RSA PRIVATE KEY") {
-			t.Errorf("single-line PEM not masked: %q", buf.String())
-		}
-	})
+	var buf bytes.Buffer
+	if err := newPassthroughGat(t).Print(&buf, strings.NewReader(in), WithMask(true)); err != nil {
+		t.Fatalf("Print() error = %v", err)
+	}
+	want := masker.Mask(in)
+	if buf.String() != want {
+		t.Errorf("output = %q, want %q", buf.String(), want)
+	}
+	if strings.Contains(buf.String(), "BEGIN RSA PRIVATE KEY") {
+		t.Errorf("private key not masked: %q", buf.String())
+	}
 }
 
 func TestGat_Print_passthrough_maskWithDisplay(t *testing.T) {
@@ -176,7 +165,7 @@ func TestGat_Print_passthrough_maskWithDisplay(t *testing.T) {
 
 func TestGat_Print_passthrough_multipleSecrets(t *testing.T) {
 	const ghToken = "ghp_0123456789abcdefghijklmnopqrstuvwxyz123456"
-	const oaToken = "sk-0123456789abcdefghijklmnopqrstuvwxyz"
+	const oaToken = "sk-proj-0123456789abcdefT3BlbkFJ0123456789abcdef"
 	in := "header\ntoken1 " + ghToken + "\nmiddle\ntoken2 " + oaToken + "\nfooter\n"
 
 	var buf bytes.Buffer
@@ -223,6 +212,70 @@ func TestGat_Print_nonPassthroughIsHighlighted(t *testing.T) {
 			t.Errorf("expected HTML markup in output, got %q", buf.String())
 		}
 	})
+}
+
+// The highlighting path masks the whole source before it is tokenized, so a
+// secret never reaches the lexer and never reaches the output.
+func TestGat_Print_nonPassthroughMasksSecrets(t *testing.T) {
+	const ghToken = "ghp_0123456789abcdefghijklmnopqrstuvwxyz123456"
+
+	g, err := New(&Config{Theme: "monokai", Format: "terminal256", Language: "go"})
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+	var buf bytes.Buffer
+	if err := g.Print(&buf, strings.NewReader("// token: "+ghToken+"\n"), WithMask(true)); err != nil {
+		t.Fatalf("Print() error = %v", err)
+	}
+	if strings.Contains(buf.String(), ghToken) {
+		t.Errorf("token not masked: %q", buf.String())
+	}
+	if !strings.Contains(buf.String(), strings.Repeat("*", len(ghToken))) {
+		t.Errorf("expected the token replaced by asterisks, got %q", buf.String())
+	}
+}
+
+// The body of a private key arriving line by line is held rather than written
+// out as it comes: releasing those lines would write the key itself, and how
+// far the block reaches is not known until its closing boundary arrives. The
+// lines in front of the block still stream, so what is held is the block.
+func TestGat_Print_passthrough_holdsPrivateKeyBody(t *testing.T) {
+	const body = "MIIEpAIBAAKCAQEA0123456789abcdef"
+
+	release := make(chan struct{})
+	chunks := [][]byte{
+		[]byte("plain line\n"),
+		[]byte("-----BEGIN RSA PRIVATE KEY-----\n"),
+		[]byte(body + "\n" + body + "\n"),
+	}
+	r := &gatedReader{chunks: chunks, release: release}
+	w := &signalWriter{firstWrite: make(chan struct{})}
+
+	done := make(chan error, 1)
+	go func() { done <- newPassthroughGat(t).Print(w, r, WithMask(true)) }()
+
+	select {
+	case <-w.firstWrite:
+	case <-time.After(2 * time.Second):
+		close(release)
+		<-done
+		t.Fatal("nothing was emitted before input terminated")
+	}
+	if got := w.String(); strings.Contains(got, body) {
+		t.Errorf("private key body released before its block closed: %q", got)
+	}
+
+	close(release)
+	if err := <-done; err != nil {
+		t.Fatalf("Print() error = %v", err)
+	}
+	got := w.String()
+	if strings.Contains(got, body) {
+		t.Errorf("private key body not masked: %q", got)
+	}
+	if !strings.HasPrefix(got, "plain line\n") {
+		t.Errorf("text in front of the block did not stream: %q", got)
+	}
 }
 
 // signalWriter records output and closes firstWrite on the first non-empty
@@ -338,7 +391,8 @@ func TestGat_Print_passthrough_binaryStillGuarded(t *testing.T) {
 // emits each line as it arrives, without waiting for the input to terminate.
 func TestGat_Print_passthrough_streamsBeforeEOF_masked(t *testing.T) {
 	const ghToken = "ghp_0123456789abcdefghijklmnopqrstuvwxyz123456"
-	// The first chunk must contain a newline; the masked path reads line by line.
+	// The newline settles the token, so the masking reader releases the line
+	// instead of holding it back for more of a value that may still be coming.
 	firstLine := "secret " + ghToken + "\n"
 
 	release := make(chan struct{})

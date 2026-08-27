@@ -62,9 +62,6 @@ goreleaser release --snapshot --clean
 - **internal/prettier/**: Code prettifiers
   - Language-specific formatting (CSS, Go, HTML, JSON, XML, YAML)
 
-- **internal/masker/**: Sensitive information masking
-  - Masks API keys, tokens, and other secrets in output
-
 - **internal/styles/**: Theme definitions
   - Custom syntax highlighting themes
 
@@ -84,6 +81,7 @@ goreleaser release --snapshot --clean
 - **Cobra**: CLI framework for command parsing
 - **Glamour**: Markdown rendering with terminal styling
 - **go-sixel**: Image display in terminal via Sixel protocol
+- **mask-go**: Secret patterns for `--mask-secrets`
 
 ### Design Principles
 
@@ -107,43 +105,10 @@ The project uses Release Please for automated releases:
 - Use table-driven tests where appropriate
 - Mock external dependencies when needed
 
-## Masker Package Patterns
+## Secret Masking
 
-When adding new API key patterns to `internal/masker/`:
-
-### Pattern Ordering
-- Place more specific patterns before general ones to avoid false matches
-- Example: `sk-ant-` must be before `sk-` to prevent Anthropic keys from matching OpenAI pattern
-
-### Supported Patterns (in order of application)
-- AWS Access Key ID (permanent): `AKIA[0-9A-Z]{16}`
-- AWS Access Key ID (temporary/SSO): `ASIA[0-9A-Z]{16}`
-- GitHub App installation token (stateless/JWT): `ghs_[a-zA-Z0-9._\-]{36,}` (no trailing `\b`; placed before the generic GitHub pattern so the whole ~520-char `ghs_`-prefixed JWT—which contains dots/`-`/`_`—is masked, instead of the generic `[a-zA-Z0-9]` pattern stopping at the first dot)
-- GitHub Tokens: `gh[pousr]_[a-zA-Z0-9]{36,}`
-- GitHub Fine-grained PAT: `github_pat_\w{82}`
-- GitLab PAT: `glpat-[a-zA-Z0-9\-_]{20,}`
-- Slack Tokens: `xox[baprs]-[0-9a-zA-Z\-]+`
-- Slack App-level Token: `xapp-\d-[A-Z0-9]+-\d+-[a-z0-9]+`
-- Anthropic API Key: `sk-ant-[a-zA-Z0-9\-_]+`
-- OpenAI API Key: `sk-(?:proj-)?[a-zA-Z0-9_\-]{20,}` (supports both legacy and project formats)
-- Supabase Secret Key: `sb_secret_[a-zA-Z0-9\-_]+`
-- npm Access Token: `npm_[a-zA-Z0-9]{36}`
-- PyPI API Token: `pypi-AgEIcHlwaS5vcmc[a-zA-Z0-9_\-]{50,}` (the `AgEIcHlwaS5vcmc` segment is a fixed base64 prefix encoding the `pypi.org` macaroon location)
-- RubyGems API Key: `rubygems_[a-f0-9]{32,}`
-- Google / Firebase API Key: `AIza[0-9A-Za-z_\-]{35}` (Firebase web API keys share the same `AIza` format, so one pattern covers both)
-- Stripe Secret / Restricted API Key: `(?:sk|rk)_(?:test|live|prod|org)_[a-zA-Z0-9]{10,99}` (covers test/live/org per Stripe docs plus prod for gitleaks parity; underscore separator distinguishes it from OpenAI's `sk-`, so no overlap)
-- SendGrid API Key: `SG\.[a-zA-Z0-9=_.\-]{66}` (no trailing `\b`; the value may end in a non-word char like the PyPI pattern)
-- JWT Tokens: `eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*`
-- Private Key Headers: `-----BEGIN\s+(RSA|DSA|EC|OPENSSH|PGP)\s+PRIVATE\s+KEY-----`
-- AWS Secret Access Key (contextual): `(?i)\baws[_.\-]?secret[_.\-]?(?:access[_.\-]?)?key\b["']?[ \t]*[:=][ \t]*["']?([a-zA-Z0-9+/]{40})` — only the captured 40-char value is masked. The standalone 40-char base64 pattern was dropped because it collides with file paths, hashes, and other 40-char strings (gitleaks ships no rule for it; trufflehog / detect-secrets validate live against AWS STS). Covers the env-var form, AWS credentials file, and quoted JSON/YAML; uses `[ \t]*` to keep the match single-line per `TestPatternsAreSingleLine`.
-
-### Match Refinements
-- A pattern may carry an optional `validate func(string) bool`. When set, a regex match is masked only if the validator returns true. This narrows generic patterns without relying on lookahead (unsupported by Go's RE2).
-- A pattern may also set `maskGroup int` (default 0). When `> 0`, only that capture group is replaced with asterisks instead of the whole match — used for contextual patterns like AWS Secret Access Key where the regex matches a surrounding `AWS_SECRET_*_KEY` keyword but only the secret value should be masked.
-
-### Pattern Update Workflow
-1. Add regex pattern to `internal/masker/masker.go`
-2. Add test cases to `internal/masker/masker_test.go` with realistic examples
-3. Run tests: `go test ./internal/masker/...`
-4. Update README.md supported patterns list
-5. Test cases should include special characters (`_`, `-`) where applicable
+`--mask-secrets` masks with [mask-go](https://github.com/koki-develop/mask-go),
+through the package-level `masker` in `internal/gat/gat.go`. It is built from
+`mask.AllBuiltinPatterns()`, so a pattern added to mask-go reaches gat by
+upgrading the dependency — add new patterns there rather than here, and update
+the README list when the set changes.

@@ -110,23 +110,29 @@ $ echo 'AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE' | gat --mask-secrets
 AWS_ACCESS_KEY_ID=********************
 ```
 
-Supported patterns:
-- AWS Access Key ID
-- AWS Secret Access Key
-- GitHub Tokens
-- GitLab Personal Access Tokens
-- Slack Tokens
+Patterns come from [mask-go](https://github.com/koki-develop/mask-go), which covers:
 - Anthropic API Keys
-- OpenAI API Keys
-- Supabase Secret Keys
+- AWS Access Key IDs / Secret Access Keys
+- Cloudflare API Tokens / API Keys
+- GitHub Tokens
+- GitLab Tokens
+- Google API Keys
+- Grafana Service Account Tokens
+- HashiCorp Vault Tokens
+- JSON Web Tokens
+- Linear API Keys
+- Notion API Tokens
 - npm Access Tokens
+- OpenAI API Keys
+- OpenRouter API Keys
+- Private Keys
 - PyPI API Tokens
 - RubyGems API Keys
-- Google / Firebase API Keys
-- Stripe Secret / Restricted API Keys
 - SendGrid API Keys
-- JWT Tokens
-- Private Key Headers
+- Sentry Auth Tokens
+- Slack Tokens
+- Stripe API Keys / Webhook Signing Secrets
+- Supabase Access Tokens
 
 ### `-v`, `--show-nonprinting`
 
