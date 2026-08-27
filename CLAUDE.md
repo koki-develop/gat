@@ -112,3 +112,12 @@ through the package-level `masker` in `internal/gat/gat.go`. It is built from
 `mask.AllBuiltinPatterns()`, so a pattern added to mask-go reaches gat by
 upgrading the dependency — add new patterns there rather than here, and update
 the README list when the set changes.
+
+`Print` leaves by four paths and each masks in its own place: the highlighting
+path masks the whole source before tokenizing, the rendered markdown and
+forced-binary branches mask before their own writes because both return before
+that shared call, and the streaming passthrough path wraps its reader in
+`maskedReader`. A branch that returns early masks on its own or it does not
+mask at all, so reach for `maskedReader` when adding one that streams. Markdown
+masks with `markdownMasker` instead, which redacts to a word rather than to
+asterisks that glamour would read as markup.

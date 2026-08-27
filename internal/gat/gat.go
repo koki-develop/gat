@@ -29,6 +29,17 @@ import (
 // that a pattern added there is one gat masks with on the next upgrade.
 var masker = mask.New(mask.WithPatterns(mask.AllBuiltinPatterns()...))
 
+// markdownMasker is what the rendered markdown branch masks with. It redacts to
+// a bare word because that branch masks the source glamour then reads, where a
+// redaction is markup: asterisks alone on a line are a thematic break, so the
+// value renders away to a horizontal rule and inside a list takes the rest of
+// the list with it, and brackets are link syntax, so a redaction followed by a
+// colon is a link reference definition and renders as nothing at all.
+var markdownMasker = mask.New(
+	mask.WithPatterns(mask.AllBuiltinPatterns()...),
+	mask.WithRedactor(mask.Fixed("REDACTED")),
+)
+
 // maskMaxRetained is how much text the streaming path holds back while a
 // pattern is still reading a value, before it gives up and masks what it holds.
 //
@@ -221,7 +232,7 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 	default:
 		if isBinary(head) {
 			if g.forceBinary {
-				if _, err := br.WriteTo(w); err != nil {
+				if _, err := io.Copy(w, g.maskedReader(br, opt)); err != nil {
 					return err
 				}
 			} else {
@@ -262,6 +273,14 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 	}
 
 	if g.renderMarkdown && lexer.Config().Name == "markdown" {
+		// Masking happens here rather than at the shared call below, which this
+		// branch returns before reaching, and it masks the source rather than
+		// the rendered output: rendering reflows text, and a value it wrapped
+		// across two lines is one no pattern would find.
+		if opt.Mask {
+			src = markdownMasker.Mask(src)
+		}
+
 		r, err := glamour.NewTermRenderer(
 			glamour.WithAutoStyle(),
 			glamour.WithWordWrap(-1),

@@ -278,6 +278,74 @@ func TestGat_Print_passthrough_holdsPrivateKeyBody(t *testing.T) {
 	}
 }
 
+// Binary content forced out raw is a fourth output path, and it masks too.
+// Piping gat sets --force-binary on its own, so this is the path a redirect to
+// a file takes, where an unmasked secret would be written to disk.
+func TestGat_Print_forceBinaryMasksSecrets(t *testing.T) {
+	const ghToken = "ghp_0123456789abcdefghijklmnopqrstuvwxyz123456"
+	in := "GITHUB_TOKEN=" + ghToken + "\n\x00\x01binary\n"
+
+	g, err := New(&Config{Theme: "noop", Format: "terminal", ForceBinary: true})
+	if err != nil {
+		t.Fatalf("New() error = %v", err)
+	}
+	var buf bytes.Buffer
+	if err := g.Print(&buf, strings.NewReader(in), WithMask(true)); err != nil {
+		t.Fatalf("Print() error = %v", err)
+	}
+	if strings.Contains(buf.String(), ghToken) {
+		t.Errorf("token not masked on the binary path: %q", buf.String())
+	}
+	if !strings.Contains(buf.String(), "\x00\x01binary") {
+		t.Errorf("binary bytes did not survive masking: %q", buf.String())
+	}
+}
+
+// Rendered markdown masks like every other output path, and has to do it in
+// the branch: the branch returns before the shared masking call, so a secret
+// reaches the renderer and the terminal unmasked unless it masks on its own.
+func TestGat_Print_markdownMasksSecrets(t *testing.T) {
+	const ghToken = "ghp_0123456789abcdefghijklmnopqrstuvwxyz123456"
+
+	// Every case here is a place where a redaction written in markup renders
+	// away instead of standing as a redaction: alone on a line and alone in a
+	// list item are thematic breaks when written in asterisks, and a value
+	// followed by a colon is a link reference definition when written in
+	// brackets, which takes its whole line with it.
+	tests := []struct {
+		name string
+		in   string
+	}{
+		{"inline", "# title\n\ntoken: " + ghToken + "\n"},
+		{"alone on a line", "# title\n\n" + ghToken + "\n"},
+		{"alone in a list item", "- one\n- " + ghToken + "\n- three\n"},
+		{"in a fenced block", "```\nexport K=" + ghToken + "\n```\n"},
+		{"followed by a colon", "intro\n\n" + ghToken + ": notes\n\nafter\n"},
+		{"inside emphasis", "a *" + ghToken + "* b\n"},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			g, err := New(&Config{Theme: "monokai", Format: "terminal256", RenderMarkdown: true})
+			if err != nil {
+				t.Fatalf("New() error = %v", err)
+			}
+			var buf bytes.Buffer
+			err = g.Print(&buf, strings.NewReader(tt.in), WithMask(true), WithFilename("readme.md"))
+			if err != nil {
+				t.Fatalf("Print() error = %v", err)
+			}
+			got := buf.String()
+			if strings.Contains(got, ghToken) {
+				t.Errorf("token not masked in rendered markdown: %q", got)
+			}
+			if !strings.Contains(got, "REDACTED") {
+				t.Errorf("redaction rendered away instead of being shown: %q", got)
+			}
+		})
+	}
+}
+
 // signalWriter records output and closes firstWrite on the first non-empty
 // write, so a test can detect that output was emitted before EOF.
 type signalWriter struct {
