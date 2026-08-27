@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.31.0](https://github.com/koki-develop/gat/compare/v0.30.2...v0.31.0) (2026-08-27)
+
+
+### Features
+
+* **masker:** mask with mask-go instead of in-repo patterns ([712cc5c](https://github.com/koki-develop/gat/commit/712cc5c8226bd86334fe84fedc7334c76c9d6f5b))
+
+
+### Bug Fixes
+
+* **gat:** mask secrets on the output paths that return early ([aca4969](https://github.com/koki-develop/gat/commit/aca49693fbd33a98c5b8190e3ca89ea57575385e))
+
 ## [0.30.2](https://github.com/koki-develop/gat/compare/v0.30.1...v0.30.2) (2026-06-03)
 
 
