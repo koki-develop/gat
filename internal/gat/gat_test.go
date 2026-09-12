@@ -4,12 +4,14 @@ import (
 	"bytes"
 	"compress/gzip"
 	"io"
+	"os"
 	"strings"
 	"sync"
 	"testing"
 	"time"
 
 	"github.com/koki-develop/gat/internal/display"
+	"golang.org/x/term"
 )
 
 func TestGat_isPassthrough(t *testing.T) {
@@ -341,6 +343,54 @@ func TestGat_Print_markdownMasksSecrets(t *testing.T) {
 			}
 			if !strings.Contains(got, "REDACTED") {
 				t.Errorf("redaction rendered away instead of being shown: %q", got)
+			}
+		})
+	}
+}
+
+// Rendered markdown is colored by glamour, which decides by looking at
+// os.Stdout rather than at w, so ForceColor is what has to override it.
+func TestGat_Print_markdownForceColor(t *testing.T) {
+	const src = "# title\n\nsome **bold** text\n"
+
+	tests := []struct {
+		name       string
+		forceColor bool
+		wantColor  bool
+	}{
+		{"without force color", false, false},
+		{"with force color", true, true},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			// Without ForceColor the style is glamour's own choice, and it
+			// colors whenever the test binary's own stdout is a terminal —
+			// which it is when that binary is run directly rather than by
+			// `go test`.
+			if !tt.forceColor && term.IsTerminal(int(os.Stdout.Fd())) {
+				t.Skip("stdout is a terminal, so glamour colors on its own")
+			}
+
+			g, err := New(&Config{
+				Theme:          "monokai",
+				Format:         "terminal256",
+				RenderMarkdown: true,
+				ForceColor:     tt.forceColor,
+			})
+			if err != nil {
+				t.Fatalf("New() error = %v", err)
+			}
+			var buf bytes.Buffer
+			if err := g.Print(&buf, strings.NewReader(src), WithFilename("readme.md")); err != nil {
+				t.Fatalf("Print() error = %v", err)
+			}
+			got := buf.String()
+			if colored := strings.Contains(got, "\x1b["); colored != tt.wantColor {
+				t.Errorf("colored = %v, want %v: %q", colored, tt.wantColor, got)
+			}
+			if !strings.Contains(got, "title") {
+				t.Errorf("markdown not rendered: %q", got)
 			}
 		})
 	}

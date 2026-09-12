@@ -64,6 +64,7 @@ var rootCmd = &cobra.Command{
 			Format:         flagFormat,
 			Theme:          flagTheme,
 			RenderMarkdown: flagRenderMarkdown,
+			ForceColor:     flagForceColor && !ist,
 			ForceBinary:    flagForceBinary,
 			NoResize:       flagNoResize,
 		})

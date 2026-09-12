@@ -15,6 +15,7 @@ import (
 
 	"github.com/alecthomas/chroma/v2"
 	"github.com/charmbracelet/glamour"
+	glamourstyles "github.com/charmbracelet/glamour/styles"
 	"github.com/koki-develop/gat/internal/display"
 	"github.com/koki-develop/gat/internal/formatters"
 	"github.com/koki-develop/gat/internal/lexers"
@@ -59,6 +60,7 @@ type Config struct {
 	Format         string
 	Theme          string
 	RenderMarkdown bool
+	ForceColor     bool
 	ForceBinary    bool
 	NoResize       bool
 }
@@ -68,6 +70,7 @@ type Gat struct {
 	formatter      chroma.Formatter
 	style          *chroma.Style
 	renderMarkdown bool
+	forceColor     bool
 	forceBinary    bool
 	noResize       bool
 	noColor        bool
@@ -77,6 +80,7 @@ type Gat struct {
 func New(cfg *Config) (*Gat, error) {
 	g := &Gat{
 		renderMarkdown: cfg.RenderMarkdown,
+		forceColor:     cfg.ForceColor,
 		forceBinary:    cfg.ForceBinary,
 		noResize:       cfg.NoResize,
 	}
@@ -281,8 +285,18 @@ func (g *Gat) Print(w io.Writer, r io.Reader, opts ...PrintOption) error {
 			src = markdownMasker.Mask(src)
 		}
 
+		// glamour chooses its own style, and the auto style resolves to the
+		// colorless notty one whenever stdout is not a terminal — the
+		// suppression forceColor exists to override. Dark because the
+		// background query that picks between dark and light needs a terminal
+		// to answer it.
+		style := glamour.WithAutoStyle()
+		if g.forceColor {
+			style = glamour.WithStandardStyle(glamourstyles.DarkStyle)
+		}
+
 		r, err := glamour.NewTermRenderer(
-			glamour.WithAutoStyle(),
+			style,
 			glamour.WithWordWrap(-1),
 		)
 		if err != nil {
