@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.1](https://github.com/koki-develop/gat/compare/v0.31.0...v0.31.1) (2026-11-27)
+
+
+### Bug Fixes
+
+* **deps:** update Go to 1.26.11 and vulnerable dependencies ([#290](https://github.com/koki-develop/gat/issues/290)) ([6d73b38](https://github.com/koki-develop/gat/commit/6d73b38f22da7bbba176542ad448e149204ae858))
+
 ## [0.31.0](https://github.com/koki-develop/gat/compare/v0.30.2...v0.31.0) (2026-09-12)
 
 
