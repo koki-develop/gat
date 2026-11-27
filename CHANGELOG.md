@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.31.2](https://github.com/koki-develop/gat/compare/v0.31.1...v0.31.2) (2026-11-27)
+
+
+### Bug Fixes
+
+* **deps:** build with Go 1.27.4 ([#292](https://github.com/koki-develop/gat/issues/292)) ([fc289cc](https://github.com/koki-develop/gat/commit/fc289ccff948c286fdc05095e18275f532d96953))
+
 ## [0.31.1](https://github.com/koki-develop/gat/compare/v0.31.0...v0.31.1) (2026-11-27)
 
 
