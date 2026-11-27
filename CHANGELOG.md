@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.32.0](https://github.com/koki-develop/gat/compare/v0.31.2...v0.32.0) (2026-11-27)
+
+
+### Features
+
+* **deps:** update chroma to v2.27.0 and other dependencies ([#294](https://github.com/koki-develop/gat/issues/294)) ([1d4657e](https://github.com/koki-develop/gat/commit/1d4657e7a6da866d02b71399c01d8e364fd4cba5))
+
 ## [0.31.2](https://github.com/koki-develop/gat/compare/v0.31.1...v0.31.2) (2026-11-27)
 
 
