@@ -2,7 +2,7 @@ module github.com/koki-develop/gat
 
 go 1.26.0
 
-toolchain go1.26.11
+toolchain go1.27.4
 
 require (
 	github.com/alecthomas/chroma/v2 v2.24.1
