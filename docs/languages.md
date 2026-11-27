@@ -19,6 +19,7 @@
 | `ArangoDB AQL` | `aql` |
 | `Arduino` | `arduino` |
 | `ArmAsm` | `armasm` |
+| `Arturo` | `arturo`, `art` |
 | `ATL` | `atl` |
 | `AutoHotkey` | `autohotkey`, `ahk` |
 | `AutoIt` | `autoit` |
@@ -85,6 +86,7 @@
 | `GAS` | `gas`, `asm` |
 | `GDScript` | `gdscript`, `gd` |
 | `GDScript3` | `gdscript3`, `gd3` |
+| `Gemfile.lock` | `gemfile-lock`, `gemfilelock` |
 | `Gettext` | `pot`, `po` |
 | `Gherkin` | `cucumber`, `Cucumber`, `gherkin`, `Gherkin` |
 | `Gleam` | `gleam` |
@@ -113,7 +115,7 @@
 | `Janet` | `janet` |
 | `Java` | `java` |
 | `JavaScript` | `js`, `javascript` |
-| `JSON` | `json` |
+| `JSON` | `json`, `jsonl` |
 | `JSONata` | `jsonata` |
 | `Jsonnet` | `jsonnet` |
 | `Julia` | `julia`, `jl` |
@@ -124,6 +126,7 @@
 | `Lateralus` | `lateralus`, `ltl` |
 | `Lean4` | `lean4`, `lean` |
 | `Lighttpd configuration file` | `lighty`, `lighttpd` |
+| `LilyPond` | `lilypond` |
 | `LLVM` | `llvm` |
 | `lox` | |
 | `Lua` | `lua` |
@@ -238,6 +241,7 @@
 | `TASM` | `tasm` |
 | `Tcl` | `tcl` |
 | `Tcsh` | `tcsh`, `csh` |
+| `Templ` | `templ` |
 | `Termcap` | `termcap` |
 | `Terminfo` | `terminfo` |
 | `Terraform` | `terraform`, `tf`, `hcl` |
@@ -294,3 +298,4 @@
 | `Raku` | `perl6`, `pl6`, `raku` |
 | `reStructuredText` | `rst`, `rest`, `restructuredtext` |
 | `Svelte` | `svelte` |
+| `YAML+Jinja` | `yaml+jinja`, `salt`, `sls`, `ansible` |
