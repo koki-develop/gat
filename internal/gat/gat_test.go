@@ -260,8 +260,7 @@ func TestGat_Print_passthrough_holdsPrivateKeyBody(t *testing.T) {
 	case <-w.firstWrite:
 	case <-time.After(2 * time.Second):
 		close(release)
-		<-done
-		t.Fatal("nothing was emitted before input terminated")
+		t.Fatalf("nothing was emitted before input terminated (Print() error = %v)", <-done)
 	}
 	if got := w.String(); strings.Contains(got, body) {
 		t.Errorf("private key body released before its block closed: %q", got)
@@ -455,8 +454,7 @@ func TestGat_Print_passthrough_streamsBeforeEOF(t *testing.T) {
 		// emitted before EOF — good
 	case <-time.After(2 * time.Second):
 		close(release)
-		<-done
-		t.Fatal("output was buffered: first chunk not emitted before input terminated")
+		t.Fatalf("output was buffered: first chunk not emitted before input terminated (Print() error = %v)", <-done)
 	}
 
 	close(release)
@@ -525,8 +523,7 @@ func TestGat_Print_passthrough_streamsBeforeEOF_masked(t *testing.T) {
 		// emitted before EOF — good
 	case <-time.After(2 * time.Second):
 		close(release)
-		<-done
-		t.Fatal("masked output was buffered: first line not emitted before input terminated")
+		t.Fatalf("masked output was buffered: first line not emitted before input terminated (Print() error = %v)", <-done)
 	}
 
 	close(release)
