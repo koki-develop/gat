@@ -10,7 +10,7 @@ require (
 	github.com/client9/csstool v0.2.2
 	github.com/google/yamlfmt v0.21.0
 	github.com/koki-develop/mask-go v0.0.1
-	github.com/mattn/go-sixel v0.0.9
+	github.com/mattn/go-sixel v0.0.14
 	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
 	github.com/tdewolff/minify/v2 v2.24.13
