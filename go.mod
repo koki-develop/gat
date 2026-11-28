@@ -6,7 +6,7 @@ toolchain go1.27.4
 
 require (
 	github.com/alecthomas/chroma/v2 v2.27.0
-	github.com/charmbracelet/glamour v1.0.0
+	github.com/charmbracelet/glamour/v2 v2.0.1
 	github.com/client9/csstool v0.2.2
 	github.com/google/yamlfmt v0.21.0
 	github.com/koki-develop/mask-go v0.0.1
